@@ -9,8 +9,26 @@
 #ifndef GamePad4US_MyHeader_h
 #define GamePad4US_MyHeader_h
 
-#define MAIN_ACE_BTN CGRectMake(100, 100, 100, 100)
-#define MAIN_NFS_BTN CGRectMake(300, 100, 100, 100)
-#define MAIN_HAWX_BTN CGRectMake(200, 100, 100, 100)
+#define ACCELERATE_X 10
+#define ACCELERATE_Y 40
+#define SHIFTUP_X 107.5
+#define SHIFTUP_Y 40
+#define SHIFTDOWN_X 107.5
+#define SHIFTDOWN_Y 175
+#define N2_X 295
+#define N2_Y 40
+#define HANDBREAK_X 341.5
+#define HANDBREAK_Y 40
+#define BREAK_X 341.5
+#define BREAK_Y 175
+
+enum theType {
+    accelerateType = 1,
+    shiftUpType,
+    shiftDownType,
+    n2Type,
+    handBreakType,
+    breakType
+    };
 
 #endif

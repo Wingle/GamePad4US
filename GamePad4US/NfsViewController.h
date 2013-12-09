@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyHeader.h"
 
 @class TouchRecord;
 
@@ -14,6 +15,26 @@
     UIImage * accelerateImg;
     UIImage * accelerateHLImg;
     UIImageView * accelerateImgView;
+    
+    UIImage * shiftDownImg;
+    UIImage * shiftDownHLImg;
+    UIImageView * shiftDownImgView;
+    
+    UIImage * shiftUpImg;
+    UIImage * shiftUpHLImg;
+    UIImageView * shiftUpImgView;
+    
+    UIImage * n2Img;
+    UIImage * n2HLImg;
+    UIImageView * n2ImgView;
+    
+    UIImage * handBreakImg;
+    UIImage * handBreakHLImg;
+    UIImageView * handBreakImgView;
+    
+    UIImage * breakImg;
+    UIImage * breakHLImg;
+    UIImageView * breakImgView;
     
     NSMutableArray * m_touchArray;
     

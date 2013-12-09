@@ -33,22 +33,29 @@
     //load backgound pic
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.jpg"]]];
     
+    //load ace button..
+    UIImage * aceImg = [UIImage imageNamed:@"main_ace.png"];
+    UIImage * aceHLImg = [UIImage imageNamed:@"main_ace_HL.png"];
     aceBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [aceBtn setBackgroundImage:[UIImage imageNamed:@"main_ace.png"] forState:UIControlStateNormal];
-    [aceBtn setBackgroundImage:[UIImage imageNamed:@"main_ace_HL.png"] forState:UIControlStateHighlighted];
-    aceBtn.frame = MAIN_ACE_BTN;
+    [aceBtn setBackgroundImage:aceImg forState:UIControlStateNormal];
+    [aceBtn setBackgroundImage:aceHLImg forState:UIControlStateHighlighted];
+    aceBtn.frame = CGRectMake(205, 88, aceImg.size.width, aceHLImg.size.height);
     [self.view addSubview:aceBtn];
     
+    UIImage * hawxImg = [UIImage imageNamed:@"main_hawx.png"];
+    UIImage * hawxHLImg = [UIImage imageNamed:@"main_hawx_HL.png"];
     hawxBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [hawxBtn setBackgroundImage:[UIImage imageNamed:@"main_hawx.png"] forState:UIControlStateNormal];
-    [hawxBtn setBackgroundImage:[UIImage imageNamed:@"main_hawx_HL.png"] forState:UIControlStateHighlighted];
-    hawxBtn.frame = MAIN_HAWX_BTN;
+    [hawxBtn setBackgroundImage:hawxImg forState:UIControlStateNormal];
+    [hawxBtn setBackgroundImage:hawxHLImg forState:UIControlStateHighlighted];
+    hawxBtn.frame = CGRectMake(375, 88, hawxImg.size.width, hawxImg.size.height);
     [self.view addSubview:hawxBtn];
     
+    UIImage * nfsImg = [UIImage imageNamed:@"main_nfs.png"];
+    UIImage * nfsHLImg = [UIImage imageNamed:@"main_nfs_HL.png"];
     nfsBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [nfsBtn setBackgroundImage:[UIImage imageNamed:@"main_nfs.png"] forState:UIControlStateNormal];
-    [nfsBtn setBackgroundImage:[UIImage imageNamed:@"main_nfs_HL.png"] forState:UIControlStateHighlighted];
-    nfsBtn.frame = MAIN_NFS_BTN;
+    [nfsBtn setBackgroundImage:nfsImg forState:UIControlStateNormal];
+    [nfsBtn setBackgroundImage:nfsHLImg forState:UIControlStateHighlighted];
+    nfsBtn.frame = CGRectMake(35, 88, nfsImg.size.width, nfsImg.size.height);
     [self.view addSubview:nfsBtn];
     
     //add target to Btn
