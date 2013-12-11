@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AsyncUdpSocket.h"
 #import "MyHeader.h"
 
 @class TouchRecord;
 
-@interface NfsViewController : UIViewController{
+@interface NfsViewController : UIViewController<AsyncUdpSocketDelegate>{
+    
+    AsyncUdpSocket * socket;
+    
     UIImage * accelerateImg;
     UIImage * accelerateHLImg;
     UIImageView * accelerateImgView;
@@ -39,5 +43,7 @@
     NSMutableArray * m_touchArray;
     
 }
+
+@property AsyncUdpSocket * socket;
 
 @end

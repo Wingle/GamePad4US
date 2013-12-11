@@ -22,6 +22,11 @@
 #define BREAK_X 341.5
 #define BREAK_Y 175
 
+//udp
+#define PORT_ACTIVE 1760
+
+#define USER_IP @"255.255.255.255"
+
 enum theType {
     accelerateType = 1,
     shiftUpType,

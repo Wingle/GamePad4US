@@ -23,6 +23,7 @@
 		620062D7185622C7004DE077 /* 19.mkm in Resources */ = {isa = PBXBuildFile; fileRef = 620062C7185622C6004DE077 /* 19.mkm */; };
 		620062D8185622C7004DE077 /* 19_MarkMan.png in Resources */ = {isa = PBXBuildFile; fileRef = 620062C8185622C6004DE077 /* 19_MarkMan.png */; };
 		620062D9185622C7004DE077 /* nfs_background@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 620062C9185622C7004DE077 /* nfs_background@2x.jpg */; };
+		621A29D8185768A4006D2A47 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 621A29D7185768A4006D2A47 /* AsyncUdpSocket.m */; };
 		621CF0311851A9DF006F5E2F /* NfsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621CF02F1851A9DF006F5E2F /* NfsViewController.m */; };
 		621CF0321851A9DF006F5E2F /* NfsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621CF0301851A9DF006F5E2F /* NfsViewController.xib */; };
 		621CF2761850B78D0062DCE3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621CF2751850B78D0062DCE3 /* Foundation.framework */; };
@@ -127,6 +128,8 @@
 		620062C7185622C6004DE077 /* 19.mkm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 19.mkm; sourceTree = "<group>"; };
 		620062C8185622C6004DE077 /* 19_MarkMan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 19_MarkMan.png; sourceTree = "<group>"; };
 		620062C9185622C7004DE077 /* nfs_background@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "nfs_background@2x.jpg"; sourceTree = "<group>"; };
+		621A29D6185768A4006D2A47 /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
+		621A29D7185768A4006D2A47 /* AsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncUdpSocket.m; sourceTree = "<group>"; };
 		621B82E81850DBF50022F255 /* MyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHeader.h; sourceTree = "<group>"; };
 		621CF02E1851A9DF006F5E2F /* NfsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NfsViewController.h; sourceTree = "<group>"; };
 		621CF02F1851A9DF006F5E2F /* NfsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NfsViewController.m; sourceTree = "<group>"; };
@@ -263,6 +266,16 @@
 			path = nfs_ios;
 			sourceTree = "<group>";
 		};
+		621A29D518576884006D2A47 /* AsyncUdpSocket */ = {
+			isa = PBXGroup;
+			children = (
+				621A29D6185768A4006D2A47 /* AsyncUdpSocket.h */,
+				621A29D7185768A4006D2A47 /* AsyncUdpSocket.m */,
+			);
+			name = AsyncUdpSocket;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		621CF2691850B78D0062DCE3 = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +309,7 @@
 		621CF27B1850B78D0062DCE3 /* GamePad4US */ = {
 			isa = PBXGroup;
 			children = (
+				621A29D518576884006D2A47 /* AsyncUdpSocket */,
 				621CF35D1850B8970062DCE3 /* nibFiles */,
 				621CF35C1850B88F0062DCE3 /* headers */,
 				621B82E81850DBF50022F255 /* MyHeader.h */,
@@ -344,7 +358,7 @@
 				620062B9185622C6004DE077 /* nfs_ios */,
 				621CF2AA1850B87A0062DCE3 /* ACE */,
 				621CF2C21850B87A0062DCE3 /* hawx */,
-				621CF2E91850B87A0062DCE3 /* 界面 */,
+				621CF2E91850B87A0062DCE3 /* main */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -409,7 +423,7 @@
 			path = hawx;
 			sourceTree = "<group>";
 		};
-		621CF2E91850B87A0062DCE3 /* 界面 */ = {
+		621CF2E91850B87A0062DCE3 /* main */ = {
 			isa = PBXGroup;
 			children = (
 				621CF2EA1850B87A0062DCE3 /* 1 (10).png */,
@@ -440,6 +454,7 @@
 				621CF3031850B87A0062DCE3 /* main_nfs@2x.png */,
 				621CF3041850B87A0062DCE3 /* main_nfs_HL@2x.png */,
 			);
+			name = main;
 			path = "界面";
 			sourceTree = "<group>";
 		};
@@ -620,6 +635,7 @@
 				621CF0311851A9DF006F5E2F /* NfsViewController.m in Sources */,
 				621EAB4418535E76004CB370 /* TouchRecord.m in Sources */,
 				621CF2861850B78D0062DCE3 /* AppDelegate.m in Sources */,
+				621A29D8185768A4006D2A47 /* AsyncUdpSocket.m in Sources */,
 				621CF2A71850B8640062DCE3 /* MainViewController.m in Sources */,
 				621CF2821850B78D0062DCE3 /* main.m in Sources */,
 			);

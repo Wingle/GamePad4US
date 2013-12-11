@@ -16,16 +16,50 @@
 
 @implementation NfsViewController
 
+@synthesize socket;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
         
+        [self initSocket];
         //Important!!! setMutipleTouch
         [self.view setMultipleTouchEnabled:YES];
     }
     return self;
+}
+
+- (void)initSocket
+{
+    socket = [[AsyncUdpSocket alloc] initIPv4];
+    [socket setDelegate:self];
+    
+    NSError * error = Nil;
+    [socket bindToPort:PORT_ACTIVE error:& error];
+    [socket enableBroadcast:YES error:& error];
+    
+    [socket receiveWithTimeout:-1 tag:0];
+    
+    NSString * testStr = [NSString stringWithFormat:@"test string"];
+    
+    NSData * data = [testStr dataUsingEncoding:NSASCIIStringEncoding] ;
+    
+    BOOL result = NO;
+    //开始发送
+    result = [socket sendData:data
+                            toHost:USER_IP
+                              port:PORT_ACTIVE
+                       withTimeout:-1
+                               tag:0];
+    
+    NSLog(@"send upd complete.");
+    
+    if (!result) {
+//        [self showAlertWhenFaield:@"Send failed"];//发送失败
+        NSLog(@"send failed");
+    }
 }
 
 - (void)viewDidLoad
@@ -316,6 +350,33 @@
     }
 //    accelerateImgView.image = accelerateImg;
 //    NSLog(@"touches ended");
+}
+
+#pragma mark - AsyncUdpSocket Delegate
+
+- (BOOL)onUdpSocket:(AsyncUdpSocket *)sock didReceiveData:(NSData *)data withTag:(long)tag fromHost:(NSString *)host port:(UInt16)port
+{
+    return YES;
+}
+
+- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotReceiveDataWithTag:(long)tag dueToError:(NSError *)error
+{
+    
+}
+
+- (void)onUdpSocket:(AsyncUdpSocket *)sock didSendDataWithTag:(long)tag
+{
+    
+}
+
+- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error
+{
+    
+}
+
+- (void)onUdpSocketDidClose:(AsyncUdpSocket *)sock
+{
+    
 }
 
 @end
