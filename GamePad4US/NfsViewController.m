@@ -8,6 +8,7 @@
 
 #import "NfsViewController.h"
 #import "TouchRecord.h"
+#import "NetWork.h"
 
 
 @interface NfsViewController ()
@@ -23,7 +24,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
+//        netWork = [[NetWork alloc] init];
+//        [netWork start];
         [self initSocket];
         //Important!!! setMutipleTouch
         [self.view setMultipleTouchEnabled:YES];
@@ -37,12 +39,12 @@
     [socket setDelegate:self];
 
     NSError * error = Nil;
-    [socket bindToPort:PORT_X error:& error];
+    [socket bindToPort:PORT_ACTIVE error:& error];
     [socket enableBroadcast:YES error:& error];
     
     [socket receiveWithTimeout:-1 tag:0];
     
-    NSMutableString * testStr = [NSMutableString stringWithFormat:@"STARTAJYEND"];
+    NSMutableString * testStr = [NSMutableString stringWithFormat:CONNECT_SEND_FIRST];
     
     NSData * data = [testStr dataUsingEncoding:NSASCIIStringEncoding] ;
     

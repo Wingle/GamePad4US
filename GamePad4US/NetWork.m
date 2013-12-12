@@ -53,13 +53,23 @@
 - (void)start
 {
     connectState = STATE_CONNECT_SEARCHING_CLIENT;
-    
-    [activeThread start];
-    [xThread start];
-    [yThread start];
-    [key1Thread start];
-    [key2Thread start];
-    [key3Thread start];
+
+//    socket = [[AsyncUdpSocket alloc] initIPv4];
+//    [socket setDelegate:self];
+//    NSError * error = nil;
+//    [socket bindToPort:PORT_ACTIVE error:& error];
+//    [socket enableBroadcast:YES error:& error];
+//    [socket receiveWithTimeout:-1 tag:0];
+//
+//    
+//    [self broadCast:USER_IP withSocket:socket withMessage:CONNECT_SEND_FIRST withPort:PORT_ACTIVE];
+    [self beginActiveThread];
+//    [activeThread start];
+//    [xThread start];
+//    [yThread start];
+//    [key1Thread start];
+//    [key2Thread start];
+//    [key3Thread start];
 }
 
 
@@ -128,29 +138,35 @@
 
 - (void)mainStartListening:(int)port withTId:(int)tId
 {
-    AsyncUdpSocket * socket = [[AsyncUdpSocket alloc] initIPv4];
+//    AsyncUdpSocket * socket = [[AsyncUdpSocket alloc] initIPv4];
+    socket = [[AsyncUdpSocket alloc] initIPv4];
     [socket setDelegate:self];
     NSError * error = nil;
     [socket bindToPort:port error:& error];
     [socket enableBroadcast:YES error:& error];
     [socket receiveWithTimeout:-1 tag:0];
     
+    
+//    [self broadCast:USER_IP withSocket:socket withMessage:CONNECT_SEND_FIRST withPort:PORT_ACTIVE];
+    
     while (YES) {
         switch (connectState) {
             case STATE_CONNECT_SEARCHING_CLIENT:
-                [self broadCast:USER_IP withSocket:socket withMessage:CONNECT_SEND_FIRST withPort:port];
-                [NSThread sleepForTimeInterval:0.1];
-                if (receiveMessage != nil) {
-                    NSRange found = [receiveMessage rangeOfString:CONNECT_RECEIVED_FIRST options:NSCaseInsensitiveSearch];
-                    if (found.length > 0) {
-                        [self broadCast:USER_IP withSocket:socket withMessage:CONNECT_SEND_SECOND withPort:port];
-                        connectState = STATE_CONNECT_ESTABLISHED;
-                    }
-                    else{
-                        [NSThread sleepForTimeInterval:0.9];
-                    }
-                }
-                
+                [self broadCast:USER_IP withSocket:socket withMessage:CONNECT_SEND_FIRST withPort:PORT_ACTIVE];
+            sleep(1);
+            break;
+//                [NSThread sleepForTimeInterval:1];
+//                if (receiveMessage != nil) {
+//                    NSRange found = [receiveMessage rangeOfString:CONNECT_RECEIVED_FIRST options:NSCaseInsensitiveSearch];
+//                    if (found.length > 0) {
+//                        [self broadCast:USER_IP withSocket:socket withMessage:CONNECT_SEND_SECOND withPort:port];
+//                        connectState = STATE_CONNECT_ESTABLISHED;
+//                    }
+//                    else{
+////                        [NSThread sleepForTimeInterval:0.9];
+//                    }
+//                }
+//                
             break;
             
             case STATE_CONNECT_ESTABLISHED:
@@ -177,6 +193,8 @@
 //            default:
 //            break;
         }
+        sleep(5);
+        break;
     }
 }
 
@@ -187,6 +205,20 @@
 
 - (void)broadCast:(NSString *)theHost withSocket:(AsyncUdpSocket *)theSocket withMessage:(NSString *)theMessage withPort:(int)thePort
 {
+//    NSString * theMessage = [NSString stringWithFormat:@"%@",CONNECT_SEND_FIRST];
+//
+//    NSData * data = [theMessage dataUsingEncoding:NSASCIIStringEncoding] ;
+//
+//    BOOL result = NO;
+//    //开始发送
+//    result = [socket sendData:data
+//                       toHost:USER_IP
+//                         port:PORT_ACTIVE
+//                  withTimeout:-1
+//                          tag:0];
+
+    
+    
     NSData * data = [theMessage dataUsingEncoding:NSASCIIStringEncoding] ;
     
     BOOL result = NO;
@@ -194,20 +226,20 @@
     result = [theSocket sendData:data
                        toHost:USER_IP
                          port:thePort
-                  withTimeout:1000
+                  withTimeout:-1
                           tag:0];
     
     NSLog(@"send upd complete.");
     
     if (!result) {
         //        [self showAlertWhenFaield:@"Send failed"];//发送失败
-//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"连接失败" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-//        [alert show];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"连接失败" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+        [alert show];
         NSLog(@"send failed");
     }
     else{
-//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"连接成功" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-//        [alert show];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"连接成功" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+        [alert show];
         NSLog(@"send succeed");
     }
 }
@@ -215,6 +247,64 @@
 - (NSString * )getNowSendMessage:(int)tId
 {
     return @"";
+}
+
+#pragma mark - AsyncUdpSocketDelegate methods
+
+- (BOOL)onUdpSocket:(AsyncUdpSocket *)sock didReceiveData:(NSData *)data withTag:(long)tag fromHost:(NSString *)host port:(UInt16)port
+{
+    NSLog(@"host---->%@",host);
+    
+    NSString *info=[[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
+    
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:info delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+    [alert show];
+    NSLog(@"send failed");
+    
+    NSLog(@"%@",info);
+    //已经处理完毕
+    
+    return YES;
+    
+//    [sock receiveWithTimeout:-1 tag:0];
+//    NSLog(@"host---->%@",host);
+//    
+//    NSString *info=[[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
+//    
+//    receiveMessage = [NSString stringWithFormat:@"%@",info];
+//    
+//    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:info delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+//    [alert show];
+//    NSLog(@"send failed");
+//    
+//    NSLog(@"%@",info);
+//    //已经处理完毕
+//    
+//    return YES;
+}
+
+- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotReceiveDataWithTag:(long)tag dueToError:(NSError *)error
+{
+    
+}
+
+- (void)onUdpSocket:(AsyncUdpSocket *)sock didSendDataWithTag:(long)tag
+{
+//    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"发送成功" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+//    [alert show];
+}
+
+- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error
+{
+//    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"发送失败" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+//    [alert show];
+    NSLog(@"send failed");
+    
+}
+
+- (void)onUdpSocketDidClose:(AsyncUdpSocket *)sock
+{
+    
 }
 
 @end

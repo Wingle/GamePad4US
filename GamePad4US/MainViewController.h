@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MyHeader.h"
 
+@class NetWork;
 @class NfsViewController;
 
 @interface MainViewController : UIViewController{
