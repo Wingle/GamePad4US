@@ -35,14 +35,14 @@
 {
     socket = [[AsyncUdpSocket alloc] initIPv4];
     [socket setDelegate:self];
-    
+
     NSError * error = Nil;
-    [socket bindToPort:PORT_ACTIVE error:& error];
+    [socket bindToPort:PORT_X error:& error];
     [socket enableBroadcast:YES error:& error];
     
     [socket receiveWithTimeout:-1 tag:0];
     
-    NSString * testStr = [NSString stringWithFormat:@"test string"];
+    NSMutableString * testStr = [NSMutableString stringWithFormat:@"STARTAJYEND"];
     
     NSData * data = [testStr dataUsingEncoding:NSASCIIStringEncoding] ;
     
@@ -58,8 +58,18 @@
     
     if (!result) {
 //        [self showAlertWhenFaield:@"Send failed"];//发送失败
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"连接失败" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+        [alert show];
         NSLog(@"send failed");
     }
+    else{
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"连接成功" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+        [alert show];
+        NSLog(@"send succeed");
+    }
+    
+    
+    
 }
 
 - (void)viewDidLoad
@@ -356,6 +366,18 @@
 
 - (BOOL)onUdpSocket:(AsyncUdpSocket *)sock didReceiveData:(NSData *)data withTag:(long)tag fromHost:(NSString *)host port:(UInt16)port
 {
+    [socket receiveWithTimeout:-1 tag:0];
+    NSLog(@"host---->%@",host);
+    
+    NSString *info=[[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
+    
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:info delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+    [alert show];
+    NSLog(@"send failed");
+    
+    NSLog(@"%@",info);
+    //已经处理完毕
+    
     return YES;
 }
 
@@ -366,12 +388,16 @@
 
 - (void)onUdpSocket:(AsyncUdpSocket *)sock didSendDataWithTag:(long)tag
 {
-    
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"发送成功" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 - (void)onUdpSocket:(AsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error
 {
-    
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"发送失败" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+    [alert show];
+    NSLog(@"send failed");
+
 }
 
 - (void)onUdpSocketDidClose:(AsyncUdpSocket *)sock
