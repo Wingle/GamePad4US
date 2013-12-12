@@ -11,7 +11,6 @@
 #import "MyHeader.h"
 
 @class TouchRecord;
-@class NetWork;
 
 @interface NfsViewController : UIViewController<AsyncUdpSocketDelegate>{
     
@@ -42,8 +41,7 @@
     UIImageView * breakImgView;
     
     NSMutableArray * m_touchArray;
-
-    NetWork * netWork;
+    
 }
 
 @property AsyncUdpSocket * socket;

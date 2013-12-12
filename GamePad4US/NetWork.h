@@ -12,7 +12,7 @@
 
 //@class AsyncUdpSocket;
 
-@interface NetWork : NSObject<AsyncUdpSocketDelegate>{
+@interface NetWork : NSObject{
     int connectState;
     
     NSString * targetIp;
@@ -33,8 +33,6 @@
     NSThread * key3Thread;
     
     NSString * receiveMessage;
-    
-    AsyncUdpSocket * socket;
 }
 //对外接口
 //添加按键信息
