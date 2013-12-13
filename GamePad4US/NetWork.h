@@ -12,7 +12,7 @@
 
 //@class AsyncUdpSocket;
 
-@interface NetWork : NSObject{
+@interface NetWork : NSObject<AsyncUdpSocketDelegate>{
     int connectState;
     
     NSString * targetIp;
@@ -31,6 +31,14 @@
     NSThread * key1Thread;
     NSThread * key2Thread;
     NSThread * key3Thread;
+    
+    
+    AsyncUdpSocket * activeSocket;
+    AsyncUdpSocket * xSocket;
+    AsyncUdpSocket * ySocket;
+    AsyncUdpSocket * key1Socket;
+    AsyncUdpSocket * key2Socket;
+    AsyncUdpSocket * key3Socket;
     
     NSString * receiveMessage;
 }

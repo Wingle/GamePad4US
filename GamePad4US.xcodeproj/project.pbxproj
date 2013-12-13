@@ -24,7 +24,6 @@
 		620062D8185622C7004DE077 /* 19_MarkMan.png in Resources */ = {isa = PBXBuildFile; fileRef = 620062C8185622C6004DE077 /* 19_MarkMan.png */; };
 		620062D9185622C7004DE077 /* nfs_background@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 620062C9185622C7004DE077 /* nfs_background@2x.jpg */; };
 		621A29D8185768A4006D2A47 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 621A29D7185768A4006D2A47 /* AsyncUdpSocket.m */; };
-		621CF0311851A9DF006F5E2F /* NfsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621CF02F1851A9DF006F5E2F /* NfsViewController.m */; };
 		621CF0321851A9DF006F5E2F /* NfsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621CF0301851A9DF006F5E2F /* NfsViewController.xib */; };
 		621CF2761850B78D0062DCE3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621CF2751850B78D0062DCE3 /* Foundation.framework */; };
 		621CF2781850B78D0062DCE3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621CF2771850B78D0062DCE3 /* CoreGraphics.framework */; };
@@ -33,7 +32,6 @@
 		621CF2821850B78D0062DCE3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 621CF2811850B78D0062DCE3 /* main.m */; };
 		621CF2861850B78D0062DCE3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 621CF2851850B78D0062DCE3 /* AppDelegate.m */; };
 		621CF2881850B78D0062DCE3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 621CF2871850B78D0062DCE3 /* Images.xcassets */; };
-		621CF2A71850B8640062DCE3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 621CF2A51850B8640062DCE3 /* MainViewController.m */; };
 		621CF2A81850B8640062DCE3 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 621CF2A61850B8640062DCE3 /* MainViewController.xib */; };
 		621CF3051850B87A0062DCE3 /* ace_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 621CF2AB1850B87A0062DCE3 /* ace_background.jpg */; };
 		621CF3061850B87A0062DCE3 /* ace_cannon.png in Resources */ = {isa = PBXBuildFile; fileRef = 621CF2AC1850B87A0062DCE3 /* ace_cannon.png */; };
@@ -110,6 +108,8 @@
 		621CF35B1850B87A0062DCE3 /* main_nfs_HL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 621CF3041850B87A0062DCE3 /* main_nfs_HL@2x.png */; };
 		621CFD8818594A2A008971E0 /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 621CFD8718594A2A008971E0 /* NetWork.m */; };
 		621EAB4418535E76004CB370 /* TouchRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 621EAB4318535E76004CB370 /* TouchRecord.m */; };
+		62FF89C0185AF3C2006F2F38 /* NfsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FF89BF185AF3C2006F2F38 /* NfsViewController.m */; };
+		62FF89C2185AF41E006F2F38 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FF89C1185AF41E006F2F38 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,7 +133,6 @@
 		621A29D7185768A4006D2A47 /* AsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncUdpSocket.m; sourceTree = "<group>"; };
 		621B82E81850DBF50022F255 /* MyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHeader.h; sourceTree = "<group>"; };
 		621CF02E1851A9DF006F5E2F /* NfsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NfsViewController.h; sourceTree = "<group>"; };
-		621CF02F1851A9DF006F5E2F /* NfsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NfsViewController.m; sourceTree = "<group>"; };
 		621CF0301851A9DF006F5E2F /* NfsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NfsViewController.xib; sourceTree = "<group>"; };
 		621CF2721850B78D0062DCE3 /* GamePad4US.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamePad4US.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		621CF2751850B78D0062DCE3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -151,7 +150,6 @@
 		621CF2981850B78D0062DCE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		621CF29A1850B78D0062DCE3 /* GamePad4USTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GamePad4USTests.m; sourceTree = "<group>"; };
 		621CF2A41850B8640062DCE3 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		621CF2A51850B8640062DCE3 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		621CF2A61850B8640062DCE3 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		621CF2AB1850B87A0062DCE3 /* ace_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ace_background.jpg; sourceTree = "<group>"; };
 		621CF2AC1850B87A0062DCE3 /* ace_cannon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ace_cannon.png; sourceTree = "<group>"; };
@@ -230,6 +228,8 @@
 		621CFD8718594A2A008971E0 /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
 		621EAB4218535E76004CB370 /* TouchRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchRecord.h; sourceTree = "<group>"; };
 		621EAB4318535E76004CB370 /* TouchRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchRecord.m; sourceTree = "<group>"; };
+		62FF89BF185AF3C2006F2F38 /* NfsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NfsViewController.m; sourceTree = "<group>"; };
+		62FF89C1185AF41E006F2F38 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,9 +317,9 @@
 				621CF35C1850B88F0062DCE3 /* headers */,
 				621B82E81850DBF50022F255 /* MyHeader.h */,
 				621CF2851850B78D0062DCE3 /* AppDelegate.m */,
-				621CF2A51850B8640062DCE3 /* MainViewController.m */,
+				62FF89BF185AF3C2006F2F38 /* NfsViewController.m */,
+				62FF89C1185AF41E006F2F38 /* MainViewController.m */,
 				621EAB4318535E76004CB370 /* TouchRecord.m */,
-				621CF02F1851A9DF006F5E2F /* NfsViewController.m */,
 				621CFD8718594A2A008971E0 /* NetWork.m */,
 				621CF2871850B78D0062DCE3 /* Images.xcassets */,
 				621CF27C1850B78D0062DCE3 /* Supporting Files */,
@@ -637,12 +637,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				621CF0311851A9DF006F5E2F /* NfsViewController.m in Sources */,
 				621CFD8818594A2A008971E0 /* NetWork.m in Sources */,
+				62FF89C0185AF3C2006F2F38 /* NfsViewController.m in Sources */,
 				621EAB4418535E76004CB370 /* TouchRecord.m in Sources */,
 				621CF2861850B78D0062DCE3 /* AppDelegate.m in Sources */,
+				62FF89C2185AF41E006F2F38 /* MainViewController.m in Sources */,
 				621A29D8185768A4006D2A47 /* AsyncUdpSocket.m in Sources */,
-				621CF2A71850B8640062DCE3 /* MainViewController.m in Sources */,
 				621CF2821850B78D0062DCE3 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

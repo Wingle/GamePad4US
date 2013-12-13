@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MyHeader.h"
+#import "NetWork.h"
 
 @class NfsViewController;
 

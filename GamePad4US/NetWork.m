@@ -11,6 +11,7 @@
 
 @implementation NetWork
 
+#pragma mark - init
 - (id)init
 {
     self = [super init];
@@ -18,13 +19,8 @@
         connectState = STATE_CONNECT_NONE;
 
 //        targetIp = [NSString stringWithFormat:@""];
-        
-        activeMessageArrayList = [[NSMutableString alloc] init];
-        xMessageArrayList = [[NSMutableString alloc] init];
-        yMessageArrayList = [[NSMutableString alloc] init];
-        key1MessageArrayList = [[NSMutableString alloc] init];
-        key2MessageArrayList = [[NSMutableString alloc] init];
-        key3MessageArrayList = [[NSMutableString alloc] init];
+        [self initSockets];
+        [self initMessagesArrayList];
         
 //        NSThread * myThread = [[NSThread alloc] initWithTarget:self
 //                                                      selector:@selector(doSomething:)
@@ -38,6 +34,55 @@
     }
     return self;
 }
+
+- (void)initMessagesArrayList
+{
+    activeMessageArrayList = [[NSMutableString alloc] init];
+    xMessageArrayList = [[NSMutableString alloc] init];
+    yMessageArrayList = [[NSMutableString alloc] init];
+    key1MessageArrayList = [[NSMutableString alloc] init];
+    key2MessageArrayList = [[NSMutableString alloc] init];
+    key3MessageArrayList = [[NSMutableString alloc] init];
+}
+
+- (void)initSockets
+{
+    NSError * error = Nil;
+    
+    activeSocket = [[AsyncUdpSocket alloc] initIPv4];
+    [activeSocket setDelegate:self];
+    [activeSocket bindToPort:PORT_ACTIVE error:& error];
+    [activeSocket enableBroadcast:YES error:& error];
+    [activeSocket receiveWithTimeout:-1 tag:0];
+    
+    xSocket = [[AsyncUdpSocket alloc] initIPv4];
+    [xSocket setDelegate:self];
+    [xSocket bindToPort:PORT_X error:& error];
+    [xSocket enableBroadcast:YES error:& error];
+    
+    ySocket = [[AsyncUdpSocket alloc] initIPv4];
+    [ySocket setDelegate:self];
+    [ySocket bindToPort:PORT_Y error:& error];
+    [ySocket enableBroadcast:YES error:& error];
+    
+    key1Socket = [[AsyncUdpSocket alloc] initIPv4];
+    [key1Socket setDelegate:self];
+    [key1Socket bindToPort:PORT_KEY_1 error:& error];
+    [key1Socket enableBroadcast:YES error:& error];
+    
+    key2Socket = [[AsyncUdpSocket alloc] initIPv4];
+    [key2Socket setDelegate:self];
+    [key2Socket bindToPort:PORT_KEY_2 error:& error];
+    [key2Socket enableBroadcast:YES error:& error];
+    
+    key3Socket = [[AsyncUdpSocket alloc] initIPv4];
+    [key3Socket setDelegate:self];
+    [key3Socket bindToPort:PORT_KEY_3 error:& error];
+    [key3Socket enableBroadcast:YES error:& error];
+    
+}
+
+#pragma mark - 对外接口
 
 - (void)addKeyMessage:(NSString *)theKeyMessage withIndex:(int)theIndex
 {
@@ -53,19 +98,71 @@
 - (void)start
 {
     connectState = STATE_CONNECT_SEARCHING_CLIENT;
+
+    //时间间隔
+    NSTimeInterval timeInterval = 2;
+    //定时器
+    NSTimer *mianTimer;
+    mianTimer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(beginMainTimer:)userInfo:nil repeats:YES];
     
-    [activeThread start];
-    [xThread start];
-    [yThread start];
-    [key1Thread start];
-    [key2Thread start];
-    [key3Thread start];
+//    [activeThread start];
+//    [xThread start];
+//    [yThread start];
+//    [key1Thread start];
+//    [key2Thread start];
+//    [key3Thread start];
 }
 
 
+
+ 	
+
 #pragma mark - private methods
 
+#pragma mark - new timers
+
+- (void)beginMainTimer:(NSTimer *)theTimer
+{
+    int thePort = PORT_ACTIVE;
+    
+    switch (connectState) {
+        case STATE_CONNECT_SEARCHING_CLIENT:
+            
+            if (receiveMessage != nil) {
+                NSRange found = [receiveMessage rangeOfString:CONNECT_RECEIVED_FIRST options:NSCaseInsensitiveSearch];
+                if (found.length > 0) {
+                    [self broadCast:USER_IP withSocket:activeSocket withMessage:CONNECT_SEND_SECOND withPort:thePort];
+                    NSLog(@"send message: %@",CONNECT_SEND_SECOND);
+                    connectState = STATE_CONNECT_ESTABLISHED;
+                }
+            }
+            [self broadCast:USER_IP withSocket:activeSocket withMessage:CONNECT_SEND_FIRST withPort:thePort];
+            NSLog(@"send message: %@",CONNECT_SEND_FIRST);
+
+            ;
+            break;
+            
+        case STATE_CONNECT_ESTABLISHED:
+            [self broadCast:USER_IP withSocket:activeSocket withMessage:CONNECT_SEND_ALWAYS withPort:thePort];
+            NSLog(@"send message: %@",CONNECT_SEND_ALWAYS);
+//            if (receiveMessage != nil) {
+//                NSRange found = [receiveMessage rangeOfString:CONNECT_RECEIVED_ALWAYS options:NSCaseInsensitiveSearch];
+//                if (found.length > 0) {
+//                    [self broadCast:USER_IP withSocket:activeSocket withMessage:CONNECT_SEND_ALWAYS withPort:thePort];
+//                    NSLog(@"send message: %@",CONNECT_SEND_ALWAYS);
+//                }
+//            }
+            ;
+            break;
+        default:
+            break;
+    }
+}
+
+
 #pragma mark - thread methods
+
+
 
 - (void)beginActiveThread
 {
@@ -217,4 +314,49 @@
     return @"";
 }
 
+#pragma mark - AsyncUdpSocket Delegate
+- (BOOL)onUdpSocket:(AsyncUdpSocket *)sock didReceiveData:(NSData *)data withTag:(long)tag fromHost:(NSString *)host port:(UInt16)port
+{
+    [sock receiveWithTimeout:-1 tag:0];
+    NSLog(@"host---->%@",host);
+    
+    NSString *info=[[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
+    NSLog(@"the resource string:%@",info);
+    
+    //已经处理完毕
+    if (!([info isEqualToString:CONNECT_SEND_FIRST]||[info isEqualToString:CONNECT_SEND_SECOND]||[info isEqualToString:CONNECT_SEND_ALWAYS])) {
+        receiveMessage = [NSString stringWithFormat:@"%@",info];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:receiveMessage delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+        [alert show];
+        
+        NSLog(@"recieved message:%@",info);
+    }
+
+    
+    return YES;
+}
+
+- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotReceiveDataWithTag:(long)tag dueToError:(NSError *)error
+{
+    
+}
+
+- (void)onUdpSocket:(AsyncUdpSocket *)sock didSendDataWithTag:(long)tag
+{
+//    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"发送成功" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+//    [alert show];
+}
+
+- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error
+{
+//    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"发送失败" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+//    [alert show];
+    NSLog(@"send failed");
+    
+}
+
+- (void)onUdpSocketDidClose:(AsyncUdpSocket *)sock
+{
+    
+}
 @end

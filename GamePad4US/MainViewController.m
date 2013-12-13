@@ -41,6 +41,7 @@
     [aceBtn setBackgroundImage:aceHLImg forState:UIControlStateHighlighted];
     aceBtn.frame = CGRectMake(205, 88, aceImg.size.width, aceHLImg.size.height);
     [self.view addSubview:aceBtn];
+    [aceBtn addTarget:self action:@selector(onPressAceBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     UIImage * hawxImg = [UIImage imageNamed:@"main_hawx.png"];
     UIImage * hawxHLImg = [UIImage imageNamed:@"main_hawx_HL.png"];
@@ -81,6 +82,13 @@
     
     
     NSLog(@"press nfs btn");
+}
+
+- (IBAction)onPressAceBtn:(id)sender
+{
+    
+    NetWork * network = [[NetWork alloc] init];
+    [network start];
 }
 
 
