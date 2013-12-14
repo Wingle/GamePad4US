@@ -32,7 +32,7 @@
         nfsNetWork = [[NetWork alloc] init];
         [nfsNetWork start];
         
-        motionManager = [[CMMotionManager alloc]init];
+//        motionManager = [[CMMotionManager alloc]init];
         
 //        [self initSocket];
         //Important!!! setMutipleTouch
@@ -86,6 +86,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.]
+    
+    //设置重力感应
+    motionManager = [[CMMotionManager alloc]init];
     
     //设置背景图
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"nfs_background.jpg"]]];
@@ -149,6 +152,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+//使客户端一直保持横屏
+-(NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskLandscapeLeft;
+}
+
+- (BOOL)shouldAutorotate
+{
+    return YES;
 }
 
 #pragma mark - NSTimer

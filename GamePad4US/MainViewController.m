@@ -71,6 +71,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+//保持横排方向
+-(NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskLandscapeLeft;
+}
+
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
 #pragma mark - btn events
 
 - (IBAction)onPressNfsBtn:(id)sender

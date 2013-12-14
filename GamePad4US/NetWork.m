@@ -437,7 +437,10 @@
         receiveMessage = [NSString stringWithFormat:@"%@",info];
 //        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:receiveMessage delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
 //        [alert show];
-        
+        if ((connectState == STATE_CONNECT_SEARCHING_CLIENT)&& (receiveMessage != nil)) {
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"可以进入极品飞车的手柄了~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+            [alert show];
+        }
         NSLog(@"recieved message:%@",info);
     }
 
