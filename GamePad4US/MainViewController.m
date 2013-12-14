@@ -22,6 +22,10 @@
     if (self) {
         // Custom initialization
         nfsVC = [[NfsViewController alloc] init];
+        
+        //禁止锁屏
+        [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
+        
     }
     return self;
 }
