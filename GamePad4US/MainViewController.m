@@ -81,6 +81,13 @@
     return YES;
 }
 
+//隐藏StateBar
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+
 #pragma mark - btn events
 
 - (IBAction)onPressNfsBtn:(id)sender

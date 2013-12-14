@@ -164,6 +164,12 @@
     return YES;
 }
 
+//隐藏StateBar
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 #pragma mark - NSTimer
 
 - (void)initTimer
