@@ -17,6 +17,7 @@
 
 @implementation NfsViewController
 
+@synthesize nfsNetWork;
 @synthesize socket;
 
 

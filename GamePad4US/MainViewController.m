@@ -21,6 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        nfsVC = [[NfsViewController alloc] init];
     }
     return self;
 }
@@ -74,12 +75,17 @@
 
 - (IBAction)onPressNfsBtn:(id)sender
 {
-    NfsViewController * nfsVC = [[NfsViewController alloc] init];
-    nfsVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:nfsVC animated:YES completion:^(void){
-        
-    }];
-    
+//    NfsViewController * nfsVC = [[NfsViewController alloc] init];
+    if (nfsVC.nfsNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    else{
+        nfsVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentViewController:nfsVC animated:YES completion:^(void){
+            
+        }];
+    }
     
     NSLog(@"press nfs btn");
 }

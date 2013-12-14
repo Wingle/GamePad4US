@@ -60,4 +60,6 @@
 
 @property AsyncUdpSocket * socket;
 
+@property NetWork * nfsNetWork;
+
 @end

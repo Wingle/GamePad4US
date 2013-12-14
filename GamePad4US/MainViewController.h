@@ -16,6 +16,8 @@
     UIButton * aceBtn;
     UIButton * hawxBtn;
     UIButton * nfsBtn;
+    
+    NfsViewController * nfsVC;
 }
 
 @end
