@@ -428,8 +428,8 @@
     //已经处理完毕
     if (!([info isEqualToString:CONNECT_SEND_FIRST]||[info isEqualToString:CONNECT_SEND_SECOND]||[info isEqualToString:CONNECT_SEND_ALWAYS])) {
         receiveMessage = [NSString stringWithFormat:@"%@",info];
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:receiveMessage delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-        [alert show];
+//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:receiveMessage delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+//        [alert show];
         
         NSLog(@"recieved message:%@",info);
     }
