@@ -110,6 +110,7 @@
 		621EAB4418535E76004CB370 /* TouchRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 621EAB4318535E76004CB370 /* TouchRecord.m */; };
 		62FF89C0185AF3C2006F2F38 /* NfsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FF89BF185AF3C2006F2F38 /* NfsViewController.m */; };
 		62FF89C2185AF41E006F2F38 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FF89C1185AF41E006F2F38 /* MainViewController.m */; };
+		62FF89C4185B2079006F2F38 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62FF89C3185B2079006F2F38 /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -230,6 +231,7 @@
 		621EAB4318535E76004CB370 /* TouchRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchRecord.m; sourceTree = "<group>"; };
 		62FF89BF185AF3C2006F2F38 /* NfsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NfsViewController.m; sourceTree = "<group>"; };
 		62FF89C1185AF41E006F2F38 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		62FF89C3185B2079006F2F38 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +239,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62FF89C4185B2079006F2F38 /* CoreMotion.framework in Frameworks */,
 				621CF2781850B78D0062DCE3 /* CoreGraphics.framework in Frameworks */,
 				621CF27A1850B78D0062DCE3 /* UIKit.framework in Frameworks */,
 				621CF2761850B78D0062DCE3 /* Foundation.framework in Frameworks */,
@@ -301,6 +304,7 @@
 		621CF2741850B78D0062DCE3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				62FF89C3185B2079006F2F38 /* CoreMotion.framework */,
 				621CF2751850B78D0062DCE3 /* Foundation.framework */,
 				621CF2771850B78D0062DCE3 /* CoreGraphics.framework */,
 				621CF2791850B78D0062DCE3 /* UIKit.framework */,

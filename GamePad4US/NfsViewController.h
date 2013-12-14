@@ -9,13 +9,27 @@
 #import <UIKit/UIKit.h>
 #import "AsyncUdpSocket.h"
 #import "MyHeader.h"
+#import <CoreMotion/CoreMotion.h>
+
 
 @class NetWork;
 @class TouchRecord;
 
 @interface NfsViewController : UIViewController<AsyncUdpSocketDelegate>{
-    
+    //test udp
     AsyncUdpSocket * socket;
+    
+    //main network
+    NetWork * nfsNetWork;
+    
+    //calculate the motion
+    CMMotionManager * motionManager;
+    
+    //label to show the motion
+    UILabel * motionLabel;
+    
+    //save the touches
+    NSMutableArray * m_touchArray;
     
     UIImage * accelerateImg;
     UIImage * accelerateHLImg;
@@ -41,9 +55,7 @@
     UIImage * breakHLImg;
     UIImageView * breakImgView;
     
-    NSMutableArray * m_touchArray;
 
-    NetWork * nfsNetWork;
 }
 
 @property AsyncUdpSocket * socket;

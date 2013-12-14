@@ -25,12 +25,12 @@
     NSMutableString * key2MessageArrayList;
     NSMutableString * key3MessageArrayList;
     
-    NSThread * activeThread;
-    NSThread * xThread;
-    NSThread * yThread;
-    NSThread * key1Thread;
-    NSThread * key2Thread;
-    NSThread * key3Thread;
+//    NSThread * activeThread;
+//    NSThread * xThread;
+//    NSThread * yThread;
+//    NSThread * key1Thread;
+//    NSThread * key2Thread;
+//    NSThread * key3Thread;
     
     
     AsyncUdpSocket * activeSocket;

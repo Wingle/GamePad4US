@@ -87,8 +87,8 @@
 - (IBAction)onPressAceBtn:(id)sender
 {
     
-    NetWork * network = [[NetWork alloc] init];
-    [network start];
+//    NetWork * network = [[NetWork alloc] init];
+//    [network start];
 }
 
 

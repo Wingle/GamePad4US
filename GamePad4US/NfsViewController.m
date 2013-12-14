@@ -19,62 +19,67 @@
 
 @synthesize socket;
 
+
+#pragma mark - init methods
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
         
-//        nfsNetWork = [[NetWork alloc] init];
-//        [nfsNetWork start];
+        nfsNetWork = [[NetWork alloc] init];
+        [nfsNetWork start];
         
-        [self initSocket];
+        motionManager = [[CMMotionManager alloc]init];
+        
+//        [self initSocket];
         //Important!!! setMutipleTouch
         [self.view setMultipleTouchEnabled:YES];
     }
     return self;
 }
 
-- (void)initSocket
-{
-    socket = [[AsyncUdpSocket alloc] initIPv4];
-    [socket setDelegate:self];
-
-    NSError * error = Nil;
-    [socket bindToPort:PORT_ACTIVE error:& error];
-    [socket enableBroadcast:YES error:& error];
-    
-    [socket receiveWithTimeout:-1 tag:0];
-    
-    NSMutableString * testStr = [NSMutableString stringWithFormat:@"STARTAJYEND"];
-    
-    NSData * data = [testStr dataUsingEncoding:NSASCIIStringEncoding] ;
-    
-    BOOL result = NO;
-    //开始发送
-    result = [socket sendData:data
-                            toHost:USER_IP
-                              port:PORT_ACTIVE
-                       withTimeout:-1
-                               tag:0];
-    
-    NSLog(@"send upd complete.");
-    
-    if (!result) {
-//        [self showAlertWhenFaield:@"Send failed"];//发送失败
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"连接失败" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-        [alert show];
-        NSLog(@"send failed");
-    }
-    else{
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"连接成功" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-        [alert show];
-        NSLog(@"send succeed");
-    }
-    
-    
-    
-}
+//- (void)initSocket
+//{
+//    socket = [[AsyncUdpSocket alloc] initIPv4];
+//    [socket setDelegate:self];
+//
+//    NSError * error = Nil;
+//    [socket bindToPort:PORT_ACTIVE error:& error];
+//    [socket enableBroadcast:YES error:& error];
+//    
+//    [socket receiveWithTimeout:-1 tag:0];
+//    
+//    NSMutableString * testStr = [NSMutableString stringWithFormat:@"STARTAJYEND"];
+//    
+//    NSData * data = [testStr dataUsingEncoding:NSASCIIStringEncoding] ;
+//    
+//    BOOL result = NO;
+//    //开始发送
+//    result = [socket sendData:data
+//                            toHost:USER_IP
+//                              port:PORT_ACTIVE
+//                       withTimeout:-1
+//                               tag:0];
+//    
+//    NSLog(@"send upd complete.");
+//    
+//    if (!result) {
+////        [self showAlertWhenFaield:@"Send failed"];//发送失败
+//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"连接失败" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+//        [alert show];
+//        NSLog(@"send failed");
+//    }
+//    else{
+//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"连接成功" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+//        [alert show];
+//        NSLog(@"send succeed");
+//    }
+//    
+//    
+//    
+//}
 
 - (void)viewDidLoad
 {
@@ -129,6 +134,12 @@
     [self.view addSubview:breakImgView];
     
     
+    //motion label init
+    motionLabel = [[UILabel alloc] init];
+    motionLabel.frame = CGRectMake(0, 10, 500, 20);
+    motionLabel.text = @"0";
+    [self.view addSubview:motionLabel];
+    
     [self initTimer];
     m_touchArray = [[NSMutableArray alloc] init];
 }
@@ -144,13 +155,24 @@
 - (void)initTimer
 {
     //时间间隔
-    NSTimeInterval timeInterval = 0.01;
+    NSTimeInterval timeInterval = NFS_REFRESH_TIME;
     //定时器
     NSTimer *showTimer;
     showTimer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(checkTouchedBtnWithTimer:)userInfo:nil repeats:YES];
 }
 
+//timer selector
 - (void)checkTouchedBtnWithTimer:(NSTimer *)theTimer
+{
+    [self checkButtonsAndChangeBtnState];
+    
+    [self checkButtonsAndSendMessages];
+    
+    [self checkMotionState];
+}
+
+//check buttons and change state to HL or NOR
+- (void)checkButtonsAndChangeBtnState
 {
     accelerateImgView.image = accelerateImg;
     shiftUpImgView.image = shiftUpImg;
@@ -184,6 +206,65 @@
             continue;
         }
     }
+}
+
+//check buttons and send message to network
+- (void)checkButtonsAndSendMessages
+{
+    if (accelerateImgView.image == accelerateHLImg) {
+        [nfsNetWork addKeyMessage:PRESS_ACCELERATE withIndex:3];
+    }
+    else{
+        [nfsNetWork addKeyMessage:RELEASE_ACCELERATE withIndex:MESSAGE_ID_KEY_1];
+    }
+    
+    if (shiftUpImgView.image == shiftUpHLImg) {
+        [nfsNetWork addKeyMessage:PRESS_SHIFTUP withIndex:MESSAGE_ID_KEY_2];
+    }
+    else{
+        [nfsNetWork addKeyMessage:RELEASE_SHIFTUP withIndex:MESSAGE_ID_KEY_2];
+    }
+    
+    if (shiftDownImgView.image == shiftDownHLImg) {
+        [nfsNetWork addKeyMessage:PRESS_SHIFTDOWN withIndex:MESSAGE_ID_KEY_2];
+    }
+    else{
+        [nfsNetWork addKeyMessage:RELEASE_SHIFTDOWN withIndex:MESSAGE_ID_KEY_2];
+    }
+    
+    if (n2ImgView.image == n2HLImg) {
+        [nfsNetWork addKeyMessage:PRESS_N2 withIndex:MESSAGE_ID_KEY_1];
+    }
+    else{
+        [nfsNetWork addKeyMessage:RELEASE_N2 withIndex:MESSAGE_ID_KEY_1];
+    }
+    
+    if (handBreakImgView.image == handBreakHLImg) {
+        [nfsNetWork addKeyMessage:PRESS_HANDBREAK withIndex:MESSAGE_ID_KEY_3];
+    }
+    else{
+        [nfsNetWork addKeyMessage:RELEASE_HANDBREAK withIndex:MESSAGE_ID_KEY_3];
+    }
+    
+    if (breakImgView.image == breakHLImg) {
+        [nfsNetWork addKeyMessage:PRESS_BREAK withIndex:MESSAGE_ID_KEY_3];
+    }
+    else{
+        [nfsNetWork addKeyMessage:RELEASE_BREAK withIndex:MESSAGE_ID_KEY_3];
+    }
+    
+}
+
+- (void)checkMotionState
+{
+    [motionManager startDeviceMotionUpdates];
+    double gravityX = motionManager.deviceMotion.gravity.x;
+    double gravityY = motionManager.deviceMotion.gravity.y;
+    double gravityZ = motionManager.deviceMotion.gravity.z;
+    double zTheta = atan2(gravityZ,sqrtf(gravityX*gravityX+gravityY*gravityY))/M_PI*180.0;
+    int theRotation = zTheta;
+    NSString * theMotion = [NSString stringWithFormat:@"%d",theRotation];
+    motionLabel.text = theMotion;
 }
 
 #pragma mark - isTouched
@@ -228,13 +309,14 @@
     
     CGFloat alpha = [self getRGBAsFromImage:theImgView.image atX:(int)thePoint.x andY:(int)thePoint.y];
     
-    NSLog(@"alpha = %f",alpha);
+//    NSLog(@"alpha = %f",alpha);
     
     if (alpha < 0.01) {
         return NO;
     }
     return YES;
 }
+
 
 //这个方法可以成功算出alpha的值，但是运行速度及其慢
 - (CGFloat)getRGBAsFromImage:(UIImage*)image atX:(int)xx andY:(int)yy
@@ -293,16 +375,7 @@
         TouchRecord * touchRecord = [[TouchRecord alloc] initWithTouch:touch pointInView:thePoint];
         [m_touchArray addObject:touchRecord];
     }
-    
-//    UITouch * touch = [touches anyObject];
-//    CGPoint point = [touch locationInView:self.view];
-//    if ([self isTouchedAccelerate:point]) {
-//        accelerateImgView.image = accelerateHLImg;
-//    }
-//    
-//    unsigned long i = [touches count];
-//    
-//    NSLog(@"touches begin! %lu",i);
+//    NSLog(@"touches begin");
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
@@ -332,24 +405,7 @@
             }
         }
     }
-    
-//    UITouch * touch = [touches anyObject];
-//    CGPoint point = [touch locationInView:self.view];
-//    if ([self isTouchedAccelerate:point]) {
-//        accelerateImgView.image = accelerateHLImg;
-//    }
-//    else{
-//        accelerateImgView.image = accelerateImg;
-//    }
-//    
-//    for (UITouch* touch in touches) {
-//        CGPoint point = [touch locationInView:self.view];
-//        NSLog(@"%f,%f",point.x,point.y);
-//    }
-//    
-//    unsigned long i = [touches count];
-//
-//    NSLog(@"touches moved %lu",i);
+//    NSLog(@"touches moved");
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -362,7 +418,6 @@
             }
         }
     }
-//    accelerateImgView.image = accelerateImg;
 //    NSLog(@"touches ended");
 }
 

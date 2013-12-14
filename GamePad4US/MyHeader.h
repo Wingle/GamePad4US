@@ -9,6 +9,7 @@
 #ifndef GamePad4US_MyHeader_h
 #define GamePad4US_MyHeader_h
 
+//nfs VC
 #define ACCELERATE_X 10
 #define ACCELERATE_Y 40
 #define SHIFTUP_X 107.5
@@ -22,7 +23,26 @@
 #define BREAK_X 341.5
 #define BREAK_Y 175
 
+#define NFS_REFRESH_TIME 0.01
+
+//send messages
+#define PRESS_ACCELERATE @"X*P#"
+#define RELEASE_ACCELERATE @"X*R#"
+#define PRESS_SHIFTUP @"Q*P#"
+#define RELEASE_SHIFTUP @"Q*R#"
+#define PRESS_SHIFTDOWN @"W*P#"
+#define RELEASE_SHIFTDOWN @"W*R#"
+#define PRESS_N2 @"E*P#"
+#define RELEASE_N2 @"E*R#"
+#define PRESS_HANDBREAK @"A*P#"
+#define RELEASE_HANDBREAK @"A*R#"
+#define PRESS_BREAK @"Z*P#"
+#define RELEASE_BREAK @"Z*R#"
+
 //NetWork
+#define NETWORK_SEND_ACTIVE_TIME 2
+#define NETWORK_SEND_OTHERS_TIME 0.01
+
 #define PORT_ACTIVE 1760
 #define PORT_X 1761
 #define PORT_Y 1762
