@@ -105,8 +105,9 @@
     //定时器
     NSTimer *mianTimer;
     mianTimer = [NSTimer scheduledTimerWithTimeInterval:activeTimeInterval target:self selector:@selector(beginMainTimer:)userInfo:nil repeats:YES];
-//    NSTimer * xTimer;
-//    xTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(beginXTimer:) userInfo:nil repeats:YES];
+
+    NSTimer * xTimer;
+    xTimer = [NSTimer scheduledTimerWithTimeInterval:otherTimeInterval target:self selector:@selector(beginXTimer:) userInfo:nil repeats:YES];
     
     
     NSTimer * key1Timer;
@@ -166,23 +167,25 @@
     }
 }
 
-//- (void)beginXTimer:(NSTimer *)theTimer
-//{
-//    int thePort = PORT_X;
-//    switch (connectState) {
-//        case STATE_CONNECT_SEARCHING_CLIENT:
-//            ;
-//            break;
-//            
-//        case STATE_CONNECT_ESTABLISHED:
-//            [self broadCast:USER_IP withSocket:xSocket withMessage:@"STARTOPTW*P#END" withPort:thePort];
-//            NSLog(@"send message : STARTOPTX#END");
-//            ;
-//            break;
-//        default:
-//            break;
-//    }
-//}
+- (void)beginXTimer:(NSTimer *)theTimer
+{
+    int thePort = PORT_X;
+    NSString * sendMessage;
+    switch (connectState) {
+        case STATE_CONNECT_SEARCHING_CLIENT:
+            ;
+            break;
+            
+        case STATE_CONNECT_ESTABLISHED:
+            sendMessage = [self getNowSendMessage:MESSAGE_ID_X];
+            [self broadCast:USER_IP withSocket:xSocket withMessage:sendMessage withPort:thePort];
+            NSLog(@"send message : %@",sendMessage);
+            ;
+            break;
+        default:
+            break;
+    }
+}
 
 - (void)beginKey1Timer:(NSTimer *)theTimer
 {
@@ -397,6 +400,10 @@
 {
     NSString * theResult;
     switch (tId) {
+        case MESSAGE_ID_X:
+            theResult = [NSString stringWithFormat:@"STARTOPT%@END",xMessageArrayList];
+            [xMessageArrayList setString:@""];
+            break;
         case MESSAGE_ID_KEY_1:
             theResult = [NSString stringWithFormat:@"STARTOPT%@END",key1MessageArrayList];
             [key1MessageArrayList setString:@""];
