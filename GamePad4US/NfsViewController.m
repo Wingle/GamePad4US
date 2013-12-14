@@ -32,55 +32,13 @@
         nfsNetWork = [[NetWork alloc] init];
         [nfsNetWork start];
         
-//        motionManager = [[CMMotionManager alloc]init];
-        
-//        [self initSocket];
         //Important!!! setMutipleTouch
         [self.view setMultipleTouchEnabled:YES];
     }
     return self;
 }
 
-//- (void)initSocket
-//{
-//    socket = [[AsyncUdpSocket alloc] initIPv4];
-//    [socket setDelegate:self];
-//
-//    NSError * error = Nil;
-//    [socket bindToPort:PORT_ACTIVE error:& error];
-//    [socket enableBroadcast:YES error:& error];
-//    
-//    [socket receiveWithTimeout:-1 tag:0];
-//    
-//    NSMutableString * testStr = [NSMutableString stringWithFormat:@"STARTAJYEND"];
-//    
-//    NSData * data = [testStr dataUsingEncoding:NSASCIIStringEncoding] ;
-//    
-//    BOOL result = NO;
-//    //开始发送
-//    result = [socket sendData:data
-//                            toHost:USER_IP
-//                              port:PORT_ACTIVE
-//                       withTimeout:-1
-//                               tag:0];
-//    
-//    NSLog(@"send upd complete.");
-//    
-//    if (!result) {
-////        [self showAlertWhenFaield:@"Send failed"];//发送失败
-//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"连接失败" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-//        [alert show];
-//        NSLog(@"send failed");
-//    }
-//    else{
-//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"连接成功" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-//        [alert show];
-//        NSLog(@"send succeed");
-//    }
-//    
-//    
-//    
-//}
+
 
 - (void)viewDidLoad
 {
@@ -144,7 +102,10 @@
     motionLabel.text = @"0";
     [self.view addSubview:motionLabel];
     
+    //Timer init and start
     [self initTimer];
+    
+    //touches init
     m_touchArray = [[NSMutableArray alloc] init];
 }
 
@@ -184,55 +145,128 @@
 //timer selector
 - (void)checkTouchedBtnWithTimer:(NSTimer *)theTimer
 {
+//    NSLog(@"开始检查按钮的状态");
     [self checkButtonsAndChangeBtnState];
     
+//    NSLog(@"开始检查按钮并发送状态");
     [self checkButtonsAndSendMessages];
     
+//    NSLog(@"开始检查陀螺仪并发送状态");
     [self checkMotionStateAndSendMessage];
+    
+//    NSLog(@"检查完毕");
 }
 
 //check buttons and change state to HL or NOR
 - (void)checkButtonsAndChangeBtnState
 {
-    accelerateImgView.image = accelerateImg;
-    shiftUpImgView.image = shiftUpImg;
-    shiftDownImgView.image = shiftDownImg;
-    n2ImgView.image = n2Img;
-    handBreakImgView.image = handBreakImg;
-    breakImgView.image = breakImg;
+//    accelerateImgView.image = accelerateImg;
+//    shiftUpImgView.image = shiftUpImg;
+//    shiftDownImgView.image = shiftDownImg;
+//    n2ImgView.image = n2Img;
+//    handBreakImgView.image = handBreakImg;
+//    breakImgView.image = breakImg;
+    BOOL theAcce = NO,theSU= NO,theSD= NO,theHB= NO,theB= NO,theN2= NO;
     for (TouchRecord * touchRecord in m_touchArray) {
         if ([self isTouchedByType:accelerateType withPoint:touchRecord.m_point]) {
-            accelerateImgView.image = accelerateHLImg;
+            theAcce = YES;
+//            accelerateImgView.image = accelerateHLImg;
             continue;
         }
         if ([self isTouchedByType:shiftUpType withPoint:touchRecord.m_point]) {
-            shiftUpImgView.image = shiftUpHLImg;
+            theSU = YES;
+//            shiftUpImgView.image = shiftUpHLImg;
             continue;
         }
         if ([self isTouchedByType:shiftDownType withPoint:touchRecord.m_point]) {
-            shiftDownImgView.image = shiftDownHLImg;
+            theSD = YES;
+//            shiftDownImgView.image = shiftDownHLImg;
             continue;
         }
         if ([self isTouchedByType:n2Type withPoint:touchRecord.m_point]) {
-            n2ImgView.image = n2HLImg;
+            theN2 = YES;
+//            n2ImgView.image = n2HLImg;
             continue;
         }
         if ([self isTouchedByType:handBreakType withPoint:touchRecord.m_point]) {
-            handBreakImgView.image = handBreakHLImg;
+            theHB = YES;
+//            handBreakImgView.image = handBreakHLImg;
             continue;
         }
         if ([self isTouchedByType:breakType withPoint:touchRecord.m_point]) {
-            breakImgView.image = breakHLImg;
+            theB = YES;
+//            breakImgView.image = breakHLImg;
             continue;
         }
     }
+    
+    if (theAcce) {
+        if (accelerateImgView.image == accelerateImg) {
+            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+        }
+        accelerateImgView.image = accelerateHLImg;
+    }
+    else{
+        accelerateImgView.image = accelerateImg;
+    }
+    
+    if (theSU) {
+        if (shiftUpImgView.image == shiftUpImg) {
+            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+        }
+        shiftUpImgView.image = shiftUpHLImg;
+    }
+    else{
+        shiftUpImgView.image = shiftUpImg;
+    }
+    
+    if (theSD) {
+        if (shiftDownImgView.image == shiftDownImg) {
+            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+        }
+        shiftDownImgView.image = shiftDownHLImg;
+    }
+    else{
+        shiftDownImgView.image = shiftDownImg;
+    }
+    
+    if (theN2) {
+        if (n2ImgView.image == n2Img) {
+            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+        }
+        n2ImgView.image = n2HLImg;
+    }
+    else{
+        n2ImgView.image = n2Img;
+    }
+    
+    if (theHB) {
+        if (handBreakImgView.image == handBreakImg) {
+            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+        }
+        handBreakImgView.image = handBreakHLImg;
+    }
+    else{
+        handBreakImgView.image = handBreakImg;
+    }
+    
+    if (theB) {
+        if (breakImgView.image == breakImg) {
+            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+        }
+        breakImgView.image = breakHLImg;
+    }
+    else{
+        breakImgView.image = breakImg;
+    }
+    
 }
 
 //check buttons and send message to network
 - (void)checkButtonsAndSendMessages
 {
     if (accelerateImgView.image == accelerateHLImg) {
-        [nfsNetWork addKeyMessage:PRESS_ACCELERATE withIndex:3];
+        [nfsNetWork addKeyMessage:PRESS_ACCELERATE withIndex:MESSAGE_ID_KEY_1];
     }
     else{
         [nfsNetWork addKeyMessage:RELEASE_ACCELERATE withIndex:MESSAGE_ID_KEY_1];

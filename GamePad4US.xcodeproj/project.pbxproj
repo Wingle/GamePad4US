@@ -107,6 +107,7 @@
 		621CF35A1850B87A0062DCE3 /* main_nfs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 621CF3031850B87A0062DCE3 /* main_nfs@2x.png */; };
 		621CF35B1850B87A0062DCE3 /* main_nfs_HL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 621CF3041850B87A0062DCE3 /* main_nfs_HL@2x.png */; };
 		621CFD8818594A2A008971E0 /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 621CFD8718594A2A008971E0 /* NetWork.m */; };
+		621D6509185C3CA400BE4913 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 621D6508185C3CA400BE4913 /* AudioToolbox.framework */; };
 		621EAB4418535E76004CB370 /* TouchRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 621EAB4318535E76004CB370 /* TouchRecord.m */; };
 		62FF89C0185AF3C2006F2F38 /* NfsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FF89BF185AF3C2006F2F38 /* NfsViewController.m */; };
 		62FF89C2185AF41E006F2F38 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FF89C1185AF41E006F2F38 /* MainViewController.m */; };
@@ -227,6 +228,7 @@
 		621CF3041850B87A0062DCE3 /* main_nfs_HL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_nfs_HL@2x.png"; sourceTree = "<group>"; };
 		621CFD8618594A2A008971E0 /* NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
 		621CFD8718594A2A008971E0 /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
+		621D6508185C3CA400BE4913 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		621EAB4218535E76004CB370 /* TouchRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchRecord.h; sourceTree = "<group>"; };
 		621EAB4318535E76004CB370 /* TouchRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchRecord.m; sourceTree = "<group>"; };
 		62FF89BF185AF3C2006F2F38 /* NfsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NfsViewController.m; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				621D6509185C3CA400BE4913 /* AudioToolbox.framework in Frameworks */,
 				62FF89C4185B2079006F2F38 /* CoreMotion.framework in Frameworks */,
 				621CF2781850B78D0062DCE3 /* CoreGraphics.framework in Frameworks */,
 				621CF27A1850B78D0062DCE3 /* UIKit.framework in Frameworks */,
@@ -304,6 +307,7 @@
 		621CF2741850B78D0062DCE3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				621D6508185C3CA400BE4913 /* AudioToolbox.framework */,
 				62FF89C3185B2079006F2F38 /* CoreMotion.framework */,
 				621CF2751850B78D0062DCE3 /* Foundation.framework */,
 				621CF2771850B78D0062DCE3 /* CoreGraphics.framework */,

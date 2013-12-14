@@ -38,13 +38,13 @@
     //load backgound pic
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.jpg"]]];
     
-    //load ace button..
+    //load buttons..
     UIImage * aceImg = [UIImage imageNamed:@"main_ace.png"];
     UIImage * aceHLImg = [UIImage imageNamed:@"main_ace_HL.png"];
     aceBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [aceBtn setBackgroundImage:aceImg forState:UIControlStateNormal];
     [aceBtn setBackgroundImage:aceHLImg forState:UIControlStateHighlighted];
-    aceBtn.frame = CGRectMake(205, 88, aceImg.size.width, aceHLImg.size.height);
+    aceBtn.frame = CGRectMake(MAIN_ACE_X, MAIN_ACE_Y, aceImg.size.width, aceHLImg.size.height);
     [self.view addSubview:aceBtn];
     [aceBtn addTarget:self action:@selector(onPressAceBtn:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -53,18 +53,17 @@
     hawxBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [hawxBtn setBackgroundImage:hawxImg forState:UIControlStateNormal];
     [hawxBtn setBackgroundImage:hawxHLImg forState:UIControlStateHighlighted];
-    hawxBtn.frame = CGRectMake(375, 88, hawxImg.size.width, hawxImg.size.height);
+    hawxBtn.frame = CGRectMake(MAIN_HAWX_X, MAIN_HAWX_Y, hawxImg.size.width, hawxImg.size.height);
     [self.view addSubview:hawxBtn];
+    [hawxBtn addTarget:self action:@selector(onPressHawxBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     UIImage * nfsImg = [UIImage imageNamed:@"main_nfs.png"];
     UIImage * nfsHLImg = [UIImage imageNamed:@"main_nfs_HL.png"];
     nfsBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [nfsBtn setBackgroundImage:nfsImg forState:UIControlStateNormal];
     [nfsBtn setBackgroundImage:nfsHLImg forState:UIControlStateHighlighted];
-    nfsBtn.frame = CGRectMake(35, 88, nfsImg.size.width, nfsImg.size.height);
+    nfsBtn.frame = CGRectMake(MAIN_NFS_X, MAIN_NFS_Y, nfsImg.size.width, nfsImg.size.height);
     [self.view addSubview:nfsBtn];
-    
-    //add target to Btn
     [nfsBtn addTarget:self action:@selector(onPressNfsBtn:) forControlEvents:UIControlEventTouchUpInside];
     
 }
@@ -114,10 +113,11 @@
 - (IBAction)onPressAceBtn:(id)sender
 {
     
-//    NetWork * network = [[NetWork alloc] init];
-//    [network start];
 }
 
-
+- (IBAction)onPressHawxBtn:(id)sender
+{
+    
+}
 
 @end
