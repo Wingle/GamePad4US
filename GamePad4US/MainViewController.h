@@ -17,6 +17,8 @@
     UIButton * hawxBtn;
     UIButton * nfsBtn;
     
+    NetWork * mainNetWork;
+    
     NfsViewController * nfsVC;
 }
 

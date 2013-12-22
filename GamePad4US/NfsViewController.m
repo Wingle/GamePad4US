@@ -32,8 +32,8 @@
     if (self) {
         // Custom initialization
         
-        nfsNetWork = [[NetWork alloc] init];
-        [nfsNetWork start];
+//        nfsNetWork = [[NetWork alloc] init];
+//        [nfsNetWork start];
         
         //Important!!! setMutipleTouch
         [self.view setMultipleTouchEnabled:YES];
@@ -397,7 +397,7 @@
         TouchRecord * touchRecord = [[TouchRecord alloc] initWithTouch:touch pointInView:thePoint];
         [m_touchArray addObject:touchRecord];
     }
-//    NSLog(@"touches begin");
+    NSLog(@"touches begin");
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event

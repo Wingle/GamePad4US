@@ -21,8 +21,12 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        nfsVC = [[NfsViewController alloc] init];
+        mainNetWork = [[NetWork alloc] init];
+        [mainNetWork start];
         
+        
+//        nfsVC = [[NfsViewController alloc] init];
+//        nfsVC.nfsNetWork = mainNetWork;
         //禁止锁屏
         [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
         
@@ -97,6 +101,8 @@
 
 - (IBAction)onPressNfsBtn:(id)sender
 {
+    nfsVC = [[NfsViewController alloc] init];
+    nfsVC.nfsNetWork = mainNetWork;
 //    NfsViewController * nfsVC = [[NfsViewController alloc] init];
     if (nfsVC.nfsNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
