@@ -38,7 +38,7 @@
     //load backgound pic
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.jpg"]]];
     
-    //load buttons..
+    //init ace button..
     UIImage * aceImg = [UIImage imageNamed:@"main_ace.png"];
     UIImage * aceHLImg = [UIImage imageNamed:@"main_ace_HL.png"];
     aceBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -48,6 +48,7 @@
     [self.view addSubview:aceBtn];
     [aceBtn addTarget:self action:@selector(onPressAceBtn:) forControlEvents:UIControlEventTouchUpInside];
     
+    //init hawx button..
     UIImage * hawxImg = [UIImage imageNamed:@"main_hawx.png"];
     UIImage * hawxHLImg = [UIImage imageNamed:@"main_hawx_HL.png"];
     hawxBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -57,6 +58,7 @@
     [self.view addSubview:hawxBtn];
     [hawxBtn addTarget:self action:@selector(onPressHawxBtn:) forControlEvents:UIControlEventTouchUpInside];
     
+    //init nfs button..
     UIImage * nfsImg = [UIImage imageNamed:@"main_nfs.png"];
     UIImage * nfsHLImg = [UIImage imageNamed:@"main_nfs_HL.png"];
     nfsBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -106,7 +108,7 @@
             
         }];
     }
-    
+
     NSLog(@"press nfs btn");
 }
 

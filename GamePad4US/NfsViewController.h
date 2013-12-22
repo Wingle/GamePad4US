@@ -12,13 +12,10 @@
 #import <CoreMotion/CoreMotion.h>
 #import "AudioToolbox/AudioToolbox.h"
 
-
-
-
 @class NetWork;
 @class TouchRecord;
 
-@interface NfsViewController : UIViewController<AsyncUdpSocketDelegate>{
+@interface NfsViewController : UIViewController/*<AsyncUdpSocketDelegate>*/{
     //test udp
     AsyncUdpSocket * socket;
     
