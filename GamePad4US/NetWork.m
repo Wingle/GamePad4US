@@ -17,7 +17,9 @@
     self = [super init];
     if (self) {
         connectState = STATE_CONNECT_NONE;
-
+        
+        pcHost = [NSString stringWithFormat:@"%@",USER_IP];
+        
 //        targetIp = [NSString stringWithFormat:@""];
         [self initSockets];
         [self initMessagesArrayList];
@@ -132,20 +134,24 @@
             if (receiveMessage != nil) {
                 NSRange found = [receiveMessage rangeOfString:CONNECT_RECEIVED_FIRST options:NSCaseInsensitiveSearch];
                 if (found.length > 0) {
-                    [self broadCast:USER_IP withSocket:activeSocket withMessage:CONNECT_SEND_SECOND withPort:thePort];
+                    [self broadCast:pcHost withSocket:activeSocket withMessage:CONNECT_SEND_SECOND withPort:thePort];
+                    [self broadCast:pcHost withSocket:activeSocket withMessage:CONNECT_SEND_SECOND withPort:thePort];
+                    [self broadCast:pcHost withSocket:activeSocket withMessage:CONNECT_SEND_SECOND withPort:thePort];
+                    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"可以进入手柄了~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+                    [alert show];
                     NSLog(@"send message: %@",CONNECT_SEND_SECOND);
                     connectState = STATE_CONNECT_ESTABLISHED;
                     return;
                 }
             }
-            [self broadCast:USER_IP withSocket:activeSocket withMessage:CONNECT_SEND_FIRST withPort:thePort];
+            [self broadCast:pcHost withSocket:activeSocket withMessage:CONNECT_SEND_FIRST withPort:thePort];
             NSLog(@"send message: %@",CONNECT_SEND_FIRST);
 
             ;
             break;
             
         case STATE_CONNECT_ESTABLISHED:
-            [self broadCast:USER_IP withSocket:activeSocket withMessage:CONNECT_SEND_ALWAYS withPort:thePort];
+            [self broadCast:pcHost withSocket:activeSocket withMessage:CONNECT_SEND_ALWAYS withPort:thePort];
             NSLog(@"send message: %@",CONNECT_SEND_ALWAYS);
             ;
             break;
@@ -165,7 +171,7 @@
             
         case STATE_CONNECT_ESTABLISHED:
             sendMessage = [self getNowSendMessage:MESSAGE_ID_X];
-            [self broadCast:USER_IP withSocket:xSocket withMessage:sendMessage withPort:thePort];
+            [self broadCast:pcHost withSocket:xSocket withMessage:sendMessage withPort:thePort];
             NSLog(@"send message : %@",sendMessage);
             ;
             break;
@@ -185,7 +191,7 @@
             
         case STATE_CONNECT_ESTABLISHED:
             sendMessage = [self getNowSendMessage:MESSAGE_ID_Y];
-            [self broadCast:USER_IP withSocket:ySocket withMessage:sendMessage withPort:thePort];
+            [self broadCast:pcHost withSocket:ySocket withMessage:sendMessage withPort:thePort];
             NSLog(@"send message : %@",sendMessage);
             ;
             break;
@@ -206,7 +212,7 @@
             
         case STATE_CONNECT_ESTABLISHED:
             sendMessage = [self getNowSendMessage:MESSAGE_ID_KEY_1];
-            [self broadCast:USER_IP withSocket:key1Socket withMessage:sendMessage withPort:thePort];
+            [self broadCast:pcHost withSocket:key1Socket withMessage:sendMessage withPort:thePort];
             NSLog(@"send Message : %@",sendMessage);
             ;
             break;
@@ -226,7 +232,7 @@
             
         case STATE_CONNECT_ESTABLISHED:
             sendMessage = [self getNowSendMessage:MESSAGE_ID_KEY_2];
-            [self broadCast:USER_IP withSocket:key2Socket withMessage:sendMessage withPort:thePort];
+            [self broadCast:pcHost withSocket:key2Socket withMessage:sendMessage withPort:thePort];
             NSLog(@"send Message : %@",sendMessage);
             ;
             break;
@@ -245,7 +251,7 @@
             
         case STATE_CONNECT_ESTABLISHED:
             sendMessage = [self getNowSendMessage:MESSAGE_ID_KEY_3];
-            [self broadCast:USER_IP withSocket:key3Socket withMessage:sendMessage withPort:thePort];
+            [self broadCast:pcHost withSocket:key3Socket withMessage:sendMessage withPort:thePort];
             NSLog(@"send Message : %@",sendMessage);
             ;
             break;
@@ -292,7 +298,7 @@
     BOOL result = NO;
     //开始发送
     result = [theSocket sendData:data
-                       toHost:USER_IP
+                       toHost:pcHost
                          port:thePort
                   withTimeout:1000
                           tag:0];
@@ -344,16 +350,32 @@
     
     NSString *info=[[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
     NSLog(@"the resource string:%@",info);
+
+    if ([info isEqualToString:CONNECT_RECEIVED_FIRST]) {
+        pcHost = host;
+        receiveMessage = [NSString stringWithFormat:@"%@",info];
+        ;
+    }
+    
+    if ([info isEqualToString:CONNECT_RECEIVED_ALWAYS]) {
+        receiveMessage = [NSString stringWithFormat:@"%@",info];
+    }
+    
+//    if ((connectState == STATE_CONNECT_SEARCHING_CLIENT)&& (receiveMessage != nil)) {
+//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"可以进入手柄了~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+//        [alert show];
+//    }
+
     
     //已经处理完毕
-    if (!([info isEqualToString:CONNECT_SEND_FIRST]||[info isEqualToString:CONNECT_SEND_SECOND]||[info isEqualToString:CONNECT_SEND_ALWAYS])) {
-        receiveMessage = [NSString stringWithFormat:@"%@",info];
-        if ((connectState == STATE_CONNECT_SEARCHING_CLIENT)&& (receiveMessage != nil)) {
-            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"可以进入手柄了~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-            [alert show];
-        }
-        NSLog(@"recieved message:%@",info);
-    }
+//    if (!([info isEqualToString:CONNECT_SEND_FIRST]||[info isEqualToString:CONNECT_SEND_SECOND]||[info isEqualToString:CONNECT_SEND_ALWAYS])) {
+//        receiveMessage = [NSString stringWithFormat:@"%@",info];
+//        if ((connectState == STATE_CONNECT_SEARCHING_CLIENT)&& (receiveMessage != nil)) {
+//            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"可以进入手柄了~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+//            [alert show];
+//        }
+//        NSLog(@"recieved message:%@",info);
+//    }
 
     
     return YES;

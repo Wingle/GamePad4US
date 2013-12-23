@@ -121,10 +121,18 @@
 {
     aceVC = [[AceViewController alloc] init];
     aceVC.aceNetWork = mainNetWork;
-    aceVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:aceVC animated:YES completion:^(void){
-        
-    }];
+    if (aceVC.aceNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+        [alert show];
+
+    }
+    else{
+        aceVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentViewController:aceVC animated:YES completion:^(void){
+            
+        }];
+    }
+    NSLog(@"press ace btn");
 }
 
 - (IBAction)onPressHawxBtn:(id)sender

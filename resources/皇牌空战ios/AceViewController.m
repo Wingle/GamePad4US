@@ -366,7 +366,7 @@
     [motionManager startDeviceMotionUpdates];
     double gravityX = motionManager.deviceMotion.gravity.x;
     double gravityY = motionManager.deviceMotion.gravity.y;
-    double gravityZ = motionManager.deviceMotion.gravity.z;
+//    double gravityZ = motionManager.deviceMotion.gravity.z;
     //    double zTheta = atan2(gravityZ,sqrtf(gravityX*gravityX+gravityY*gravityY))/M_PI*180.0;
     int theRotationX = gravityY * 90 + 90;
 

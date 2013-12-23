@@ -320,9 +320,9 @@
 //    double gravityZ = motionManager.deviceMotion.gravity.z;
 //    double zTheta = atan2(gravityZ,sqrtf(gravityX*gravityX+gravityY*gravityY))/M_PI*180.0;
     int theRotation = gravityY * 90 + 90;
-    if ((theRotation > 75)&&(theRotation < 105)) {
-        theRotation = 90;
-    }
+//    if ((theRotation > 75)&&(theRotation < 105)) {
+//        theRotation = 90;
+//    }
     NSString * theMotion = [NSString stringWithFormat:@"%d#",theRotation];
     motionLabel.text = theMotion;
     

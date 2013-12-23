@@ -36,6 +36,8 @@
     AsyncUdpSocket * key3Socket;
     
     NSString * receiveMessage;
+    
+    NSString * pcHost;
 }
 //对外接口
 //添加按键信息
