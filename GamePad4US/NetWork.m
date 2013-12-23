@@ -99,7 +99,9 @@
 
     NSTimer * xTimer;
     xTimer = [NSTimer scheduledTimerWithTimeInterval:otherTimeInterval target:self selector:@selector(beginXTimer:) userInfo:nil repeats:YES];
-    
+
+    NSTimer * yTimer;
+    yTimer = [NSTimer scheduledTimerWithTimeInterval:otherTimeInterval target:self selector:@selector(beginYTimer:) userInfo:nil repeats:YES];
     
     NSTimer * key1Timer;
     key1Timer = [NSTimer scheduledTimerWithTimeInterval:otherTimeInterval target:self selector:@selector(beginKey1Timer:) userInfo:nil repeats:YES];
@@ -171,6 +173,27 @@
             break;
     }
 }
+
+- (void)beginYTimer:(NSTimer *)theTimer
+{
+    int thePort = PORT_Y;
+    NSString * sendMessage;
+    switch (connectState) {
+        case STATE_CONNECT_SEARCHING_CLIENT:
+            ;
+            break;
+            
+        case STATE_CONNECT_ESTABLISHED:
+            sendMessage = [self getNowSendMessage:MESSAGE_ID_Y];
+            [self broadCast:USER_IP withSocket:ySocket withMessage:sendMessage withPort:thePort];
+            NSLog(@"send message : %@",sendMessage);
+            ;
+            break;
+        default:
+            break;
+    }
+}
+
 
 - (void)beginKey1Timer:(NSTimer *)theTimer
 {
@@ -290,6 +313,10 @@
             theResult = [NSString stringWithFormat:@"STARTOPT%@END",xMessageArrayList];
             [xMessageArrayList setString:@""];
             break;
+        case MESSAGE_ID_Y:
+            theResult = [NSString stringWithFormat:@"STARTOPT%@END",yMessageArrayList];
+            [yMessageArrayList setString:@""];
+            break;
         case MESSAGE_ID_KEY_1:
             theResult = [NSString stringWithFormat:@"STARTOPT%@END",key1MessageArrayList];
             [key1MessageArrayList setString:@""];
@@ -322,7 +349,7 @@
     if (!([info isEqualToString:CONNECT_SEND_FIRST]||[info isEqualToString:CONNECT_SEND_SECOND]||[info isEqualToString:CONNECT_SEND_ALWAYS])) {
         receiveMessage = [NSString stringWithFormat:@"%@",info];
         if ((connectState == STATE_CONNECT_SEARCHING_CLIENT)&& (receiveMessage != nil)) {
-            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"可以进入极品飞车的手柄了~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"可以进入手柄了~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
             [alert show];
         }
         NSLog(@"recieved message:%@",info);

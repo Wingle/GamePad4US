@@ -11,6 +11,7 @@
 #import "NetWork.h"
 
 @class NfsViewController;
+@class AceViewController;
 
 @interface MainViewController : UIViewController{
     UIButton * aceBtn;
@@ -20,6 +21,7 @@
     NetWork * mainNetWork;
     
     NfsViewController * nfsVC;
+    AceViewController * aceVC;
 }
 
 @end

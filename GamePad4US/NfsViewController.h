@@ -11,12 +11,17 @@
 #import "MyHeader.h"
 #import <CoreMotion/CoreMotion.h>
 #import "AudioToolbox/AudioToolbox.h"
+//#import <AVFoundation/AVFoundation.h>
+
 
 @class NetWork;
 @class TouchRecord;
 
-@interface NfsViewController : UIViewController/*<AsyncUdpSocketDelegate>*/{
+@interface NfsViewController : UIViewController/*<AVAudioPlayerDelegate><AsyncUdpSocketDelegate>*/{
     //test udp
+//    AVAudioPlayer * avAudioPlayer;
+    SystemSoundID soundID;
+    
     AsyncUdpSocket * socket;
     
     //main network

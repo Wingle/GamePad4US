@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 #import "NfsViewController.h"
-
+#import "AceViewController.h"
 
 @interface MainViewController ()
 
@@ -103,7 +103,6 @@
 {
     nfsVC = [[NfsViewController alloc] init];
     nfsVC.nfsNetWork = mainNetWork;
-//    NfsViewController * nfsVC = [[NfsViewController alloc] init];
     if (nfsVC.nfsNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
         [alert show];
@@ -120,7 +119,12 @@
 
 - (IBAction)onPressAceBtn:(id)sender
 {
-    
+    aceVC = [[AceViewController alloc] init];
+    aceVC.aceNetWork = mainNetWork;
+    aceVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:aceVC animated:YES completion:^(void){
+        
+    }];
 }
 
 - (IBAction)onPressHawxBtn:(id)sender

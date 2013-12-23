@@ -35,11 +35,19 @@
 //        nfsNetWork = [[NetWork alloc] init];
 //        [nfsNetWork start];
         
+        
+//        NSURL * url = [[NSBundle mainBundle] URLForResource:@"click.wav" withExtension:nil];
+//        AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundID);
+
+//        NSString *path = [[NSBundle bundleWithIdentifier:@"com.apple.UIKit"] pathForResource:@"Tock" ofType:@"aiff"];
+//        AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:path], &soundID);
+
         //Important!!! setMutipleTouch
         [self.view setMultipleTouchEnabled:YES];
     }
     return self;
 }
+
 
 
 
@@ -168,8 +176,9 @@
     }
     if (isTouched) {
         if (accelerateImgView.image == accelerateImg) {
-            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
             accelerateImgView.image = accelerateHLImg;
+            [self playSound];
+//            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
         }
         [nfsNetWork addKeyMessage:PRESS_ACCELERATE withIndex:MESSAGE_ID_KEY_1];
     }
@@ -187,8 +196,9 @@
     }
     if (isTouched) {
         if (shiftUpImgView.image == shiftUpImg) {
-            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+//            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
             shiftUpImgView.image = shiftUpHLImg;
+            [self playSound];
         }
         [nfsNetWork addKeyMessage:PRESS_SHIFTUP withIndex:MESSAGE_ID_KEY_2];
     }
@@ -206,8 +216,9 @@
     }
     if (isTouched) {
         if (shiftDownImgView.image == shiftDownImg) {
-            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+//            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
             shiftDownImgView.image = shiftDownHLImg;
+            [self playSound];
         }
         [nfsNetWork addKeyMessage:PRESS_SHIFTDOWN withIndex:MESSAGE_ID_KEY_2];
     }
@@ -225,8 +236,9 @@
     }
     if (isTouched) {
         if (n2ImgView.image == n2Img) {
-            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+//            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
             n2ImgView.image = n2HLImg;
+            [self playSound];
         }
         [nfsNetWork addKeyMessage:PRESS_N2 withIndex:MESSAGE_ID_KEY_2];
     }
@@ -244,8 +256,9 @@
     }
     if (isTouched) {
         if (handBreakImgView.image == handBreakImg) {
-            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+//            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
             handBreakImgView.image = handBreakHLImg;
+            [self playSound];
         }
         [nfsNetWork addKeyMessage:PRESS_HANDBREAK withIndex:MESSAGE_ID_KEY_2];
     }
@@ -263,8 +276,9 @@
     }
     if (isTouched) {
         if (breakImgView.image == breakImg) {
-            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+//            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
             breakImgView.image = breakHLImg;
+            [self playSound];
         }
         [nfsNetWork addKeyMessage:PRESS_BREAK withIndex:MESSAGE_ID_KEY_2];
     }
@@ -272,6 +286,30 @@
         breakImgView.image = breakImg;
         [nfsNetWork addKeyMessage:RELEASE_BREAK withIndex:MESSAGE_ID_KEY_2];
     }
+}
+
+- (void)playSound
+{
+//    NSString * path = [[NSBundle mainBundle] pathForResource:@"click" ofType:@"wav"];
+//    NSURL * fileURL = [NSURL fileURLWithPath:path];
+    
+//    SystemSoundID soundID;
+//
+//    NSString * filename = [NSString stringWithFormat:@"%@",@"click.wav"];
+//    
+//    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:filename withExtension:nil];
+//    if (fileURL != nil)
+//    {
+//        SystemSoundID theSoundID;
+//        OSStatus error = AudioServicesCreateSystemSoundID((__bridge CFURLRef)fileURL, &theSoundID);
+//        if (error == kAudioServicesNoError){
+//            soundID = theSoundID;
+//        }else {
+//            NSLog(@"Failed to create sound ");
+//        }
+//    }
+    
+//    AudioServicesPlaySystemSound(soundID);
 }
 
 - (void)checkMotionStateAndSendMessage
@@ -397,7 +435,7 @@
         TouchRecord * touchRecord = [[TouchRecord alloc] initWithTouch:touch pointInView:thePoint];
         [m_touchArray addObject:touchRecord];
     }
-    NSLog(@"touches begin");
+//    NSLog(@"touches begin");
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
@@ -444,16 +482,36 @@
 }
 
 #pragma mark - unused methods
-//-(void) playSound
-//
+//AVAudioPlayer 适合播放长的声音，不适合播放短声音
+//- (void) playSound
 //{
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"click" ofType:@"wav"];
-//    if (path) {
-//        //注册声音到系统
-//        AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:path],&shake_sound_male_id);
-//        AudioServicesPlaySystemSound(shake_sound_male_id);
-//        //        AudioServicesPlaySystemSound(shake_sound_male_id);//如果无法再下面播放，可以尝试在此播放
-//    }
+//    NSTimer * showTimer;
+//    showTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(playSoundWithTimer:)userInfo:nil repeats:NO];
+//
+//}
+//
+//- (void)playSoundWithTimer:(NSTimer *)theTimer
+//{
+//    NSLog(@"music begin");
+//    //    AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+//    avAudioPlayer.currentTime = 0;  //当前播放时间设置为0
+//    [avAudioPlayer stop];
+//    [avAudioPlayer play];
+//    NSLog(@"music over");
+//}
+
+//- (void)initAvAudioPlayer
+//{
+//    NSString * path = [[NSBundle mainBundle] pathForResource:@"click" ofType:@"wav"];
+//    NSURL * url = [NSURL fileURLWithPath:path];
+//    avAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+//    avAudioPlayer.delegate = self;
+//    [avAudioPlayer prepareToPlay];
+//    avAudioPlayer.numberOfLoops = 1;
+//    avAudioPlayer.volume = 1;
+//}
+
+
 //
 //    AudioServicesPlaySystemSound(shake_sound_male_id);   //播放注册的声音，（此句代码，可以在本类中的任意位置调用，不限于本方法中）
 //

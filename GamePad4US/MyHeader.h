@@ -34,6 +34,34 @@
 //检测刷新的时间间隔
 #define NFS_REFRESH_TIME 0.01
 
+//ace VC
+//所有按钮坐标
+#define TITLE_X 200
+#define TITLE_Y 0
+
+#define THRUST_X 15
+#define THRUST_Y 45
+#define YAWLEFT_X 0
+#define YAWLEFT_Y 60
+#define YAWRIGHT_X 160
+#define YAWRIGHT_Y 60
+#define BRAKES_X 15
+#define BRAKES_Y 200
+#define CANNON_X 300
+#define CANNON_Y 50
+#define CHANGE_X 430
+#define CHANGE_Y 0
+#define WEAPON_X 430
+#define WEAPON_Y 110
+#define LOCKON_X 300
+#define LOCKON_Y 180
+#define TARGET_X 430
+#define TARGET_Y 240
+//检测刷新的时间间隔
+#define ACE_REFRESH_TIME 0.01
+
+
+
 //send messages
 //NFS发送的消息
 #define PRESS_ACCELERATE @"X*P#"
@@ -48,6 +76,27 @@
 #define RELEASE_HANDBREAK @"A*R#"
 #define PRESS_BREAK @"Z*P#"
 #define RELEASE_BREAK @"Z*R#"
+
+//ACE发送的消息
+#define PRESS_THRUST @"X*P#"
+#define RELEASE_THRUST @"X*R#"
+#define PRESS_YAWRIGHT @"D*P#"
+#define RELEASE_YAWRIGHT @"D*R#"
+#define PRESS_YAWLEFT @"S*P#"
+#define RELEASE_YAWLEFT @"S*R#"
+#define PRESS_BRAKES @"Z*P#"
+#define RELEASE_BRAKES @"Z*R#"
+#define PRESS_CHANGE @"A*P#"
+#define RELEASE_CHANGE @"A*R#"
+#define PRESS_CANNON @"E*P#"
+#define RELEASE_CANNON @"E*R#"
+#define PRESS_LOCKON @"B*P#"
+#define RELEASE_LOCKON @"B*R#"
+#define PRESS_WEAPON @"W*P#"
+#define RELEASE_WEAPON @"W*R#"
+#define PRESS_TARGET @"Q*P#"
+#define RELEASE_TARGET @"Q*R#"
+
 
 //NetWork
 //发送心跳消息的时间间隔
@@ -82,13 +131,26 @@
 #define CONNECT_RECEIVED_ALWAYS @"STARTHEARTEND"
 #define CONNECT_SEND_ALWAYS @"STARTHEARTEND"
 
-enum theType {
+enum nfsType {
     accelerateType = 1,
     shiftUpType,
     shiftDownType,
     n2Type,
     handBreakType,
-    breakType
+    breakType,
     };
+
+enum aceType {
+    thrustType = 1,
+    yawleftType,
+    yawrightType,
+    brakesType,
+    cannonType,
+    changeType,
+    weaponType,
+    targetType,
+    lockonType
+    };
+
 
 #endif
