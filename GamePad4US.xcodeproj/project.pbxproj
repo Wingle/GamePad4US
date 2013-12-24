@@ -87,6 +87,29 @@
 		622BCE0B1867DD53001C4025 /* ace_example@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 622BCDF61867DD53001C4025 /* ace_example@2x.png */; };
 		622BCE0F1867DE57001C4025 /* AceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 622BCE0D1867DE57001C4025 /* AceViewController.m */; };
 		622BCE101867DE57001C4025 /* AceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 622BCE0E1867DE57001C4025 /* AceViewController.xib */; };
+		62692CF1186865A9003685D5 /* hawx_thrust_HL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CDC186865A9003685D5 /* hawx_thrust_HL@2x.png */; };
+		62692CF2186865A9003685D5 /* hawx_cannon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CDD186865A9003685D5 /* hawx_cannon@2x.png */; };
+		62692CF3186865A9003685D5 /* hawx_target_HL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CDE186865A9003685D5 /* hawx_target_HL@2x.png */; };
+		62692CF4186865A9003685D5 /* hawx_target@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CDF186865A9003685D5 /* hawx_target@2x.png */; };
+		62692CF5186865A9003685D5 /* hawx_flares_HL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CE0186865A9003685D5 /* hawx_flares_HL@2x.png */; };
+		62692CF6186865A9003685D5 /* hawx_flares@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CE1186865A9003685D5 /* hawx_flares@2x.png */; };
+		62692CF7186865A9003685D5 /* hawx_weapon_HL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CE2186865A9003685D5 /* hawx_weapon_HL@2x.png */; };
+		62692CF8186865A9003685D5 /* hawx_weapon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CE3186865A9003685D5 /* hawx_weapon@2x.png */; };
+		62692CF9186865A9003685D5 /* hawx_thrust@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CE4186865A9003685D5 /* hawx_thrust@2x.png */; };
+		62692CFA186865A9003685D5 /* hawx_brakes_HL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CE5186865A9003685D5 /* hawx_brakes_HL@2x.png */; };
+		62692CFB186865A9003685D5 /* hawx_brakes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CE6186865A9003685D5 /* hawx_brakes@2x.png */; };
+		62692CFC186865A9003685D5 /* hawx_yawright_HL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CE7186865A9003685D5 /* hawx_yawright_HL@2x.png */; };
+		62692CFD186865A9003685D5 /* hawx_yawright@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CE8186865A9003685D5 /* hawx_yawright@2x.png */; };
+		62692CFE186865A9003685D5 /* hawx_yawleft_HL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CE9186865A9003685D5 /* hawx_yawleft_HL@2x.png */; };
+		62692CFF186865A9003685D5 /* hawx_yawleft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CEA186865A9003685D5 /* hawx_yawleft@2x.png */; };
+		62692D00186865A9003685D5 /* hawx_cannon_HL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CEB186865A9003685D5 /* hawx_cannon_HL@2x.png */; };
+		62692D01186865A9003685D5 /* hawx_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CEC186865A9003685D5 /* hawx_background@2x.png */; };
+		62692D02186865A9003685D5 /* hawx_title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CED186865A9003685D5 /* hawx_title@2x.png */; };
+		62692D03186865A9003685D5 /* 鹰击长空效果图 拷贝.mkm in Resources */ = {isa = PBXBuildFile; fileRef = 62692CEE186865A9003685D5 /* 鹰击长空效果图 拷贝.mkm */; };
+		62692D04186865A9003685D5 /* hawx_example.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CEF186865A9003685D5 /* hawx_example.png */; };
+		62692D05186865A9003685D5 /* hawx_example1.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CF0186865A9003685D5 /* hawx_example1.png */; };
+		62692D0918686A73003685D5 /* HawxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62692D0718686A73003685D5 /* HawxViewController.m */; };
+		62692D0A18686A73003685D5 /* HawxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62692D0818686A73003685D5 /* HawxViewController.xib */; };
 		62FF89C0185AF3C2006F2F38 /* NfsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FF89BF185AF3C2006F2F38 /* NfsViewController.m */; };
 		62FF89C2185AF41E006F2F38 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FF89C1185AF41E006F2F38 /* MainViewController.m */; };
 		62FF89C4185B2079006F2F38 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62FF89C3185B2079006F2F38 /* CoreMotion.framework */; };
@@ -188,6 +211,30 @@
 		622BCE0C1867DE57001C4025 /* AceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AceViewController.h; path = "../resources/皇牌空战ios/AceViewController.h"; sourceTree = "<group>"; };
 		622BCE0D1867DE57001C4025 /* AceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AceViewController.m; path = "../resources/皇牌空战ios/AceViewController.m"; sourceTree = "<group>"; };
 		622BCE0E1867DE57001C4025 /* AceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AceViewController.xib; path = "../resources/皇牌空战ios/AceViewController.xib"; sourceTree = "<group>"; };
+		62692CDC186865A9003685D5 /* hawx_thrust_HL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hawx_thrust_HL@2x.png"; sourceTree = "<group>"; };
+		62692CDD186865A9003685D5 /* hawx_cannon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hawx_cannon@2x.png"; sourceTree = "<group>"; };
+		62692CDE186865A9003685D5 /* hawx_target_HL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hawx_target_HL@2x.png"; sourceTree = "<group>"; };
+		62692CDF186865A9003685D5 /* hawx_target@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hawx_target@2x.png"; sourceTree = "<group>"; };
+		62692CE0186865A9003685D5 /* hawx_flares_HL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hawx_flares_HL@2x.png"; sourceTree = "<group>"; };
+		62692CE1186865A9003685D5 /* hawx_flares@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hawx_flares@2x.png"; sourceTree = "<group>"; };
+		62692CE2186865A9003685D5 /* hawx_weapon_HL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hawx_weapon_HL@2x.png"; sourceTree = "<group>"; };
+		62692CE3186865A9003685D5 /* hawx_weapon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hawx_weapon@2x.png"; sourceTree = "<group>"; };
+		62692CE4186865A9003685D5 /* hawx_thrust@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hawx_thrust@2x.png"; sourceTree = "<group>"; };
+		62692CE5186865A9003685D5 /* hawx_brakes_HL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hawx_brakes_HL@2x.png"; sourceTree = "<group>"; };
+		62692CE6186865A9003685D5 /* hawx_brakes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hawx_brakes@2x.png"; sourceTree = "<group>"; };
+		62692CE7186865A9003685D5 /* hawx_yawright_HL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hawx_yawright_HL@2x.png"; sourceTree = "<group>"; };
+		62692CE8186865A9003685D5 /* hawx_yawright@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hawx_yawright@2x.png"; sourceTree = "<group>"; };
+		62692CE9186865A9003685D5 /* hawx_yawleft_HL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hawx_yawleft_HL@2x.png"; sourceTree = "<group>"; };
+		62692CEA186865A9003685D5 /* hawx_yawleft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hawx_yawleft@2x.png"; sourceTree = "<group>"; };
+		62692CEB186865A9003685D5 /* hawx_cannon_HL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hawx_cannon_HL@2x.png"; sourceTree = "<group>"; };
+		62692CEC186865A9003685D5 /* hawx_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hawx_background@2x.png"; sourceTree = "<group>"; };
+		62692CED186865A9003685D5 /* hawx_title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hawx_title@2x.png"; sourceTree = "<group>"; };
+		62692CEE186865A9003685D5 /* 鹰击长空效果图 拷贝.mkm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "鹰击长空效果图 拷贝.mkm"; sourceTree = "<group>"; };
+		62692CEF186865A9003685D5 /* hawx_example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hawx_example.png; sourceTree = "<group>"; };
+		62692CF0186865A9003685D5 /* hawx_example1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hawx_example1.png; sourceTree = "<group>"; };
+		62692D0618686A73003685D5 /* HawxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HawxViewController.h; sourceTree = "<group>"; };
+		62692D0718686A73003685D5 /* HawxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HawxViewController.m; sourceTree = "<group>"; };
+		62692D0818686A73003685D5 /* HawxViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HawxViewController.xib; sourceTree = "<group>"; };
 		62FF89BF185AF3C2006F2F38 /* NfsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NfsViewController.m; sourceTree = "<group>"; };
 		62FF89C1185AF41E006F2F38 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		62FF89C3185B2079006F2F38 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -262,6 +309,7 @@
 				621B82E81850DBF50022F255 /* MyHeader.h */,
 				621CF2851850B78D0062DCE3 /* AppDelegate.m */,
 				622BCE0D1867DE57001C4025 /* AceViewController.m */,
+				62692D0718686A73003685D5 /* HawxViewController.m */,
 				62FF89BF185AF3C2006F2F38 /* NfsViewController.m */,
 				62FF89C1185AF41E006F2F38 /* MainViewController.m */,
 				621EAB4318535E76004CB370 /* TouchRecord.m */,
@@ -304,6 +352,7 @@
 		621CF2A91850B87A0062DCE3 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				62692CDB186865A9003685D5 /* 鹰击长空ios */,
 				622BCDE11867DD53001C4025 /* 皇牌空战ios */,
 				621DE3BD185D5CC2005A2862 /* 极品飞车ios */,
 				621CF2E91850B87A0062DCE3 /* main */,
@@ -349,6 +398,7 @@
 		621CF35C1850B88F0062DCE3 /* headers */ = {
 			isa = PBXGroup;
 			children = (
+				62692D0618686A73003685D5 /* HawxViewController.h */,
 				622BCE0C1867DE57001C4025 /* AceViewController.h */,
 				621CFD8618594A2A008971E0 /* NetWork.h */,
 				621EAB4218535E76004CB370 /* TouchRecord.h */,
@@ -362,6 +412,7 @@
 		621CF35D1850B8970062DCE3 /* nibFiles */ = {
 			isa = PBXGroup;
 			children = (
+				62692D0818686A73003685D5 /* HawxViewController.xib */,
 				622BCE0E1867DE57001C4025 /* AceViewController.xib */,
 				621CF0301851A9DF006F5E2F /* NfsViewController.xib */,
 				621CF2A61850B8640062DCE3 /* MainViewController.xib */,
@@ -420,6 +471,34 @@
 			path = "皇牌空战ios";
 			sourceTree = "<group>";
 		};
+		62692CDB186865A9003685D5 /* 鹰击长空ios */ = {
+			isa = PBXGroup;
+			children = (
+				62692CDC186865A9003685D5 /* hawx_thrust_HL@2x.png */,
+				62692CDD186865A9003685D5 /* hawx_cannon@2x.png */,
+				62692CDE186865A9003685D5 /* hawx_target_HL@2x.png */,
+				62692CDF186865A9003685D5 /* hawx_target@2x.png */,
+				62692CE0186865A9003685D5 /* hawx_flares_HL@2x.png */,
+				62692CE1186865A9003685D5 /* hawx_flares@2x.png */,
+				62692CE2186865A9003685D5 /* hawx_weapon_HL@2x.png */,
+				62692CE3186865A9003685D5 /* hawx_weapon@2x.png */,
+				62692CE4186865A9003685D5 /* hawx_thrust@2x.png */,
+				62692CE5186865A9003685D5 /* hawx_brakes_HL@2x.png */,
+				62692CE6186865A9003685D5 /* hawx_brakes@2x.png */,
+				62692CE7186865A9003685D5 /* hawx_yawright_HL@2x.png */,
+				62692CE8186865A9003685D5 /* hawx_yawright@2x.png */,
+				62692CE9186865A9003685D5 /* hawx_yawleft_HL@2x.png */,
+				62692CEA186865A9003685D5 /* hawx_yawleft@2x.png */,
+				62692CEB186865A9003685D5 /* hawx_cannon_HL@2x.png */,
+				62692CEC186865A9003685D5 /* hawx_background@2x.png */,
+				62692CED186865A9003685D5 /* hawx_title@2x.png */,
+				62692CEE186865A9003685D5 /* 鹰击长空效果图 拷贝.mkm */,
+				62692CEF186865A9003685D5 /* hawx_example.png */,
+				62692CF0186865A9003685D5 /* hawx_example1.png */,
+			);
+			path = "鹰击长空ios";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -474,13 +553,17 @@
 				622BCDF71867DD53001C4025 /* ace_thrust_HL@2x.png in Resources */,
 				622BCDFF1867DD53001C4025 /* ace_target_HL@2x.png in Resources */,
 				621CF3411850B87A0062DCE3 /* 1 (10).png in Resources */,
+				62692CF8186865A9003685D5 /* hawx_weapon@2x.png in Resources */,
 				622BCDF81867DD53001C4025 /* ace_cannon@2x.png in Resources */,
 				621CF3571850B87A0062DCE3 /* main_example2.jpg in Resources */,
 				622BCE091867DD53001C4025 /* ace_title@2x.png in Resources */,
+				62692CFD186865A9003685D5 /* hawx_yawright@2x.png in Resources */,
 				621CF34D1850B87A0062DCE3 /* 1 (5).png in Resources */,
 				621DE3CF185D5CC2005A2862 /* nfs_shiftup@2x.png in Resources */,
 				621CF3451850B87A0062DCE3 /* 1 (14).png in Resources */,
 				621DE3DB185D66E3005A2862 /* click.wav in Resources */,
+				62692D0A18686A73003685D5 /* HawxViewController.xib in Resources */,
+				62692CFA186865A9003685D5 /* hawx_brakes_HL@2x.png in Resources */,
 				621DE3D0185D5CC2005A2862 /* nfs_accelerate@2x.png in Resources */,
 				622BCE021867DD53001C4025 /* ace_brakes_HL@2x.png in Resources */,
 				621CF34F1850B87A0062DCE3 /* 1(0).png in Resources */,
@@ -493,13 +576,17 @@
 				621CF3491850B87A0062DCE3 /* 1 (18).png in Resources */,
 				621DE3D8185D5CC2005A2862 /* nfs_background@2x.png in Resources */,
 				622BCDFC1867DD53001C4025 /* ace_change@2x.png in Resources */,
+				62692CF2186865A9003685D5 /* hawx_cannon@2x.png in Resources */,
+				62692D01186865A9003685D5 /* hawx_background@2x.png in Resources */,
 				621CF34E1850B87A0062DCE3 /* 1 (6).png in Resources */,
+				62692CFF186865A9003685D5 /* hawx_yawleft@2x.png in Resources */,
 				621DE3D4185D5CC2005A2862 /* nfs_handbreak@2x.png in Resources */,
 				622BCE001867DD53001C4025 /* ace_target@2x.png in Resources */,
 				621CF2801850B78D0062DCE3 /* InfoPlist.strings in Resources */,
 				621CF3541850B87A0062DCE3 /* main_ace_HL@2x.png in Resources */,
 				622BCDFA1867DD53001C4025 /* ace_lockon@2x.png in Resources */,
 				622BCE081867DD53001C4025 /* ace_cannon_HL@2x.png in Resources */,
+				62692D02186865A9003685D5 /* hawx_title@2x.png in Resources */,
 				622BCE031867DD53001C4025 /* ace_brakes@2x.png in Resources */,
 				621CF2A81850B8640062DCE3 /* MainViewController.xib in Resources */,
 				621CF3441850B87A0062DCE3 /* 1 (13).png in Resources */,
@@ -511,35 +598,49 @@
 				621CF34A1850B87A0062DCE3 /* 1 (2).png in Resources */,
 				621DE3D9185D5CC2005A2862 /* 控制器白.png in Resources */,
 				621CF3431850B87A0062DCE3 /* 1 (12).png in Resources */,
+				62692D05186865A9003685D5 /* hawx_example1.png in Resources */,
 				621CF3561850B87A0062DCE3 /* main_example1.jpg in Resources */,
 				622BCE071867DD53001C4025 /* ace_yawleft@2x.png in Resources */,
 				621CF3591850B87A0062DCE3 /* main_hawx_HL@2x.png in Resources */,
 				621CF0321851A9DF006F5E2F /* NfsViewController.xib in Resources */,
 				621CF3421850B87A0062DCE3 /* 1 (11).png in Resources */,
+				62692CFE186865A9003685D5 /* hawx_yawleft_HL@2x.png in Resources */,
+				62692CF5186865A9003685D5 /* hawx_flares_HL@2x.png in Resources */,
 				622BCE101867DE57001C4025 /* AceViewController.xib in Resources */,
 				621DE3CD185D5CC2005A2862 /* nfs_shiftdown@2x.png in Resources */,
 				621DE3D1185D5CC2005A2862 /* nfs_n2_HL@2x.png in Resources */,
 				621CF34B1850B87A0062DCE3 /* 1 (3).png in Resources */,
 				622BCE061867DD53001C4025 /* ace_yawleft_HL@2x.png in Resources */,
+				62692D03186865A9003685D5 /* 鹰击长空效果图 拷贝.mkm in Resources */,
+				62692CFC186865A9003685D5 /* hawx_yawright_HL@2x.png in Resources */,
 				622BCE051867DD53001C4025 /* ace_yawright@2x.png in Resources */,
 				621DE3D6185D5CC2005A2862 /* nfs_break@2x.png in Resources */,
+				62692CF6186865A9003685D5 /* hawx_flares@2x.png in Resources */,
 				621DE3D7185D5CC2005A2862 /* nfs_shiftdown_HL@2x.png in Resources */,
 				621DE3CC185D5CC2005A2862 /* nfs_accelerate_HL@2x.png in Resources */,
 				622BCDFD1867DD53001C4025 /* ace_weapon_HL@2x.png in Resources */,
 				622BCE041867DD53001C4025 /* ace_yawright_HL@2x.png in Resources */,
 				622BCE0B1867DD53001C4025 /* ace_example@2x.png in Resources */,
+				62692CF3186865A9003685D5 /* hawx_target_HL@2x.png in Resources */,
+				62692D00186865A9003685D5 /* hawx_cannon_HL@2x.png in Resources */,
 				621CF3521850B87A0062DCE3 /* help.png in Resources */,
+				62692CF7186865A9003685D5 /* hawx_weapon_HL@2x.png in Resources */,
 				621CF34C1850B87A0062DCE3 /* 1 (4).png in Resources */,
 				621CF3481850B87A0062DCE3 /* 1 (17).png in Resources */,
+				62692CFB186865A9003685D5 /* hawx_brakes@2x.png in Resources */,
 				621CF3511850B87A0062DCE3 /* background@2x.jpg in Resources */,
 				621CF3551850B87A0062DCE3 /* main_example.jpg in Resources */,
+				62692CF1186865A9003685D5 /* hawx_thrust_HL@2x.png in Resources */,
 				621DE3CE185D5CC2005A2862 /* nfs_shiftup_HL@2x.png in Resources */,
 				621CF35A1850B87A0062DCE3 /* main_nfs@2x.png in Resources */,
 				621CF3501850B87A0062DCE3 /* 1.png in Resources */,
 				622BCE0A1867DD53001C4025 /* ace_background@2x.png in Resources */,
 				621CF2881850B78D0062DCE3 /* Images.xcassets in Resources */,
 				621CF3461850B87A0062DCE3 /* 1 (15).png in Resources */,
+				62692D04186865A9003685D5 /* hawx_example.png in Resources */,
+				62692CF9186865A9003685D5 /* hawx_thrust@2x.png in Resources */,
 				621CF35B1850B87A0062DCE3 /* main_nfs_HL@2x.png in Resources */,
+				62692CF4186865A9003685D5 /* hawx_target@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +659,7 @@
 				621A29D8185768A4006D2A47 /* AsyncUdpSocket.m in Sources */,
 				622BCE0F1867DE57001C4025 /* AceViewController.m in Sources */,
 				621CF2821850B78D0062DCE3 /* main.m in Sources */,
+				62692D0918686A73003685D5 /* HawxViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

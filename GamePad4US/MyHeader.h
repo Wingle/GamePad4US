@@ -39,28 +39,50 @@
 #define TITLE_X 200
 #define TITLE_Y 0
 
-#define THRUST_X 15
-#define THRUST_Y 45
-#define YAWLEFT_X 0
-#define YAWLEFT_Y 60
+#define THRUST_X 20
+#define THRUST_Y 52
+#define YAWLEFT_X 10
+#define YAWLEFT_Y 66
 #define YAWRIGHT_X 160
-#define YAWRIGHT_Y 60
-#define BRAKES_X 15
-#define BRAKES_Y 200
-#define CANNON_X 300
-#define CANNON_Y 50
+#define YAWRIGHT_Y 66
+#define BRAKES_X 20
+#define BRAKES_Y 204
+#define CANNON_X 299
+#define CANNON_Y 49
 #define CHANGE_X 430
 #define CHANGE_Y 0
 #define WEAPON_X 430
 #define WEAPON_Y 110
-#define LOCKON_X 300
-#define LOCKON_Y 180
+#define LOCKON_X 299
+#define LOCKON_Y 183
 #define TARGET_X 430
-#define TARGET_Y 240
+#define TARGET_Y 242
 //检测刷新的时间间隔
 #define ACE_REFRESH_TIME 0.01
 
+//hawx VC
+//所有按钮坐标
+#define HAWX_TITLE_X 200
+#define HAWX_TITLE_Y 0
 
+#define HAWX_THRUST_X 20
+#define HAWX_THRUST_Y 52
+#define HAWX_YAWRIGHT_X 160
+#define HAWX_YAWRIGHT_Y 66
+#define HAWX_YAWLEFT_X 10
+#define HAWX_YAWLEFT_Y 66
+#define HAWX_BRAKES_X 20
+#define HAWX_BRAKES_Y 204
+#define HAWX_CANNON_X 298
+#define HAWX_CANNON_Y 46
+#define HAWX_TARGET_X 430
+#define HAWX_TARGET_Y 46
+#define HAWX_FLARES_X 298
+#define HAWX_FLARES_Y 183
+#define HAWX_WEAPON_X 430
+#define HAWX_WEAPON_Y 183
+//检测刷新的时间间隔
+#define HAWX_REFRESH_TIME 0.01
 
 //send messages
 //NFS发送的消息
@@ -97,6 +119,23 @@
 #define PRESS_TARGET @"Q*P#"
 #define RELEASE_TARGET @"Q*R#"
 
+//HAWX发送的消息
+#define PRESS_HAWX_THRUST @"X*P#"
+#define RELEASE_HAWX_THRUST @"X*R#"
+#define PRESS_HAWX_YAWLEFT @"S*P#"
+#define RELEASE_HAWX_YAWLEFT @"S*R#"
+#define PRESS_HAWX_YAWRIGHT @"D*P#"
+#define RELEASE_HAWX_YAWRIGHT @"D*R#"
+#define PRESS_HAWX_BRAKES @"Z*P#"
+#define RELEASE_HAWX_BRAKES @"Z*R#"
+#define PRESS_HAWX_TARGET @"Q*P#"
+#define RELEASE_HAWX_TARGET @"Q*R#"
+#define PRESS_HAWX_CANNON @"W*P#"
+#define RELEASE_HAWX_CANNON @"W*R#"
+#define PRESS_HAWX_FLARES @"A*P#"
+#define RELEASE_HAWX_FLARES @"A*R#"
+#define PRESS_HAWX_WEAPON @"E*P#"
+#define RELEASE_HAWX_WEAPON @"E*R#"
 
 //NetWork
 //发送心跳消息的时间间隔
@@ -149,7 +188,8 @@ enum aceType {
     changeType,
     weaponType,
     targetType,
-    lockonType
+    lockonType,
+    flaresType
     };
 
 

@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "NfsViewController.h"
 #import "AceViewController.h"
+#import "HawxViewController.h"
 
 @interface MainViewController ()
 
@@ -137,7 +138,11 @@
 
 - (IBAction)onPressHawxBtn:(id)sender
 {
-    
+    hawxVC = [[HawxViewController alloc] init];
+    hawxVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:hawxVC animated:YES completion:^(void){
+        
+    }];
 }
 
 @end

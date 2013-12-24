@@ -12,6 +12,7 @@
 
 @class NfsViewController;
 @class AceViewController;
+@class HawxViewController;
 
 @interface MainViewController : UIViewController{
     UIButton * aceBtn;
@@ -22,6 +23,7 @@
     
     NfsViewController * nfsVC;
     AceViewController * aceVC;
+    HawxViewController * hawxVC;
 }
 
 @end
