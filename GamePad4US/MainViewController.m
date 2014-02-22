@@ -104,16 +104,17 @@
 {
     nfsVC = [[NfsViewController alloc] init];
     nfsVC.nfsNetWork = mainNetWork;
-    if (nfsVC.nfsNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-        [alert show];
-    }
-    else{
+//    if (nfsVC.nfsNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
+//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+//        [alert show];
+//    }
+//    else{
+        //视图转换时的动画选择
         nfsVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:nfsVC animated:YES completion:^(void){
             
         }];
-    }
+//    }
 
     NSLog(@"press nfs btn");
 }
@@ -122,23 +123,24 @@
 {
     aceVC = [[AceViewController alloc] init];
     aceVC.aceNetWork = mainNetWork;
-    if (aceVC.aceNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-        [alert show];
-
-    }
-    else{
+//    if (aceVC.aceNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
+//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+//        [alert show];
+//
+//    }
+//    else{
         aceVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:aceVC animated:YES completion:^(void){
             
         }];
-    }
+//    }
     NSLog(@"press ace btn");
 }
 
 - (IBAction)onPressHawxBtn:(id)sender
 {
     hawxVC = [[HawxViewController alloc] init];
+    hawxVC.hawxNetWork = mainNetWork;
     hawxVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:hawxVC animated:YES completion:^(void){
         

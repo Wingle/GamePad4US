@@ -110,6 +110,23 @@
 		62692D05186865A9003685D5 /* hawx_example1.png in Resources */ = {isa = PBXBuildFile; fileRef = 62692CF0186865A9003685D5 /* hawx_example1.png */; };
 		62692D0918686A73003685D5 /* HawxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62692D0718686A73003685D5 /* HawxViewController.m */; };
 		62692D0A18686A73003685D5 /* HawxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62692D0818686A73003685D5 /* HawxViewController.xib */; };
+		62D1264C18B888A5004EA330 /* 120px.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D1263D18B888A5004EA330 /* 120px.png */; };
+		62D1264D18B888A5004EA330 /* 29px.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D1263E18B888A5004EA330 /* 29px.png */; };
+		62D1264E18B888A5004EA330 /* 40px.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D1263F18B888A5004EA330 /* 40px.png */; };
+		62D1264F18B888A5004EA330 /* 58px.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D1264018B888A5004EA330 /* 58px.png */; };
+		62D1265018B888A5004EA330 /* 60px.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D1264118B888A5004EA330 /* 60px.png */; };
+		62D1265118B888A5004EA330 /* 80px.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D1264218B888A5004EA330 /* 80px.png */; };
+		62D1265218B888A5004EA330 /* 128px.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D1264418B888A5004EA330 /* 128px.png */; };
+		62D1265318B888A5004EA330 /* 144px.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D1264518B888A5004EA330 /* 144px.png */; };
+		62D1265418B888A5004EA330 /* 48px.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D1264618B888A5004EA330 /* 48px.png */; };
+		62D1265518B888A5004EA330 /* 72px.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D1264718B888A5004EA330 /* 72px.png */; };
+		62D1265618B888A5004EA330 /* 96px.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D1264818B888A5004EA330 /* 96px.png */; };
+		62D1265718B888A5004EA330 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D1264918B888A5004EA330 /* Icon.png */; };
+		62D1265818B888A5004EA330 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D1264A18B888A5004EA330 /* Icon@2x.png */; };
+		62D1265918B888A5004EA330 /* wp 灰白色边框.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D1264B18B888A5004EA330 /* wp 灰白色边框.png */; };
+		62D1265F18B888AC004EA330 /* logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D1265C18B888AC004EA330 /* logo2.png */; };
+		62D1266018B888AC004EA330 /* 背景.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D1265D18B888AC004EA330 /* 背景.png */; };
+		62D1266218B88A28004EA330 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62D1266118B88A28004EA330 /* Default-568h@2x.png */; };
 		62FF89C0185AF3C2006F2F38 /* NfsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FF89BF185AF3C2006F2F38 /* NfsViewController.m */; };
 		62FF89C2185AF41E006F2F38 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FF89C1185AF41E006F2F38 /* MainViewController.m */; };
 		62FF89C4185B2079006F2F38 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62FF89C3185B2079006F2F38 /* CoreMotion.framework */; };
@@ -235,6 +252,23 @@
 		62692D0618686A73003685D5 /* HawxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HawxViewController.h; sourceTree = "<group>"; };
 		62692D0718686A73003685D5 /* HawxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HawxViewController.m; sourceTree = "<group>"; };
 		62692D0818686A73003685D5 /* HawxViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HawxViewController.xib; sourceTree = "<group>"; };
+		62D1263D18B888A5004EA330 /* 120px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120px.png; sourceTree = "<group>"; };
+		62D1263E18B888A5004EA330 /* 29px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 29px.png; sourceTree = "<group>"; };
+		62D1263F18B888A5004EA330 /* 40px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 40px.png; sourceTree = "<group>"; };
+		62D1264018B888A5004EA330 /* 58px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58px.png; sourceTree = "<group>"; };
+		62D1264118B888A5004EA330 /* 60px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 60px.png; sourceTree = "<group>"; };
+		62D1264218B888A5004EA330 /* 80px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 80px.png; sourceTree = "<group>"; };
+		62D1264418B888A5004EA330 /* 128px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 128px.png; sourceTree = "<group>"; };
+		62D1264518B888A5004EA330 /* 144px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 144px.png; sourceTree = "<group>"; };
+		62D1264618B888A5004EA330 /* 48px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 48px.png; sourceTree = "<group>"; };
+		62D1264718B888A5004EA330 /* 72px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 72px.png; sourceTree = "<group>"; };
+		62D1264818B888A5004EA330 /* 96px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 96px.png; sourceTree = "<group>"; };
+		62D1264918B888A5004EA330 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		62D1264A18B888A5004EA330 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		62D1264B18B888A5004EA330 /* wp 灰白色边框.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wp 灰白色边框.png"; sourceTree = "<group>"; };
+		62D1265C18B888AC004EA330 /* logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo2.png; sourceTree = "<group>"; };
+		62D1265D18B888AC004EA330 /* 背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "背景.png"; sourceTree = "<group>"; };
+		62D1266118B88A28004EA330 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		62FF89BF185AF3C2006F2F38 /* NfsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NfsViewController.m; sourceTree = "<group>"; };
 		62FF89C1185AF41E006F2F38 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		62FF89C3185B2079006F2F38 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -352,6 +386,8 @@
 		621CF2A91850B87A0062DCE3 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				62D1265A18B888AC004EA330 /* 启动页面 */,
+				62D1263C18B888A5004EA330 /* icon */,
 				62692CDB186865A9003685D5 /* 鹰击长空ios */,
 				622BCDE11867DD53001C4025 /* 皇牌空战ios */,
 				621DE3BD185D5CC2005A2862 /* 极品飞车ios */,
@@ -499,6 +535,45 @@
 			path = "鹰击长空ios";
 			sourceTree = "<group>";
 		};
+		62D1263C18B888A5004EA330 /* icon */ = {
+			isa = PBXGroup;
+			children = (
+				62D1263D18B888A5004EA330 /* 120px.png */,
+				62D1263E18B888A5004EA330 /* 29px.png */,
+				62D1263F18B888A5004EA330 /* 40px.png */,
+				62D1264018B888A5004EA330 /* 58px.png */,
+				62D1264118B888A5004EA330 /* 60px.png */,
+				62D1264218B888A5004EA330 /* 80px.png */,
+				62D1264318B888A5004EA330 /* android */,
+				62D1264918B888A5004EA330 /* Icon.png */,
+				62D1264A18B888A5004EA330 /* Icon@2x.png */,
+				62D1264B18B888A5004EA330 /* wp 灰白色边框.png */,
+			);
+			path = icon;
+			sourceTree = "<group>";
+		};
+		62D1264318B888A5004EA330 /* android */ = {
+			isa = PBXGroup;
+			children = (
+				62D1264418B888A5004EA330 /* 128px.png */,
+				62D1264518B888A5004EA330 /* 144px.png */,
+				62D1264618B888A5004EA330 /* 48px.png */,
+				62D1264718B888A5004EA330 /* 72px.png */,
+				62D1264818B888A5004EA330 /* 96px.png */,
+			);
+			path = android;
+			sourceTree = "<group>";
+		};
+		62D1265A18B888AC004EA330 /* 启动页面 */ = {
+			isa = PBXGroup;
+			children = (
+				62D1266118B88A28004EA330 /* Default-568h@2x.png */,
+				62D1265C18B888AC004EA330 /* logo2.png */,
+				62D1265D18B888AC004EA330 /* 背景.png */,
+			);
+			path = "启动页面";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -527,6 +602,18 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "朱 俊健";
+				TargetAttributes = {
+					621CF2711850B78D0062DCE3 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.iOS = {
+								enabled = 0;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 621CF26D1850B78D0062DCE3 /* Build configuration list for PBXProject "GamePad4US" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -551,14 +638,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				622BCDF71867DD53001C4025 /* ace_thrust_HL@2x.png in Resources */,
+				62D1265818B888A5004EA330 /* Icon@2x.png in Resources */,
 				622BCDFF1867DD53001C4025 /* ace_target_HL@2x.png in Resources */,
 				621CF3411850B87A0062DCE3 /* 1 (10).png in Resources */,
 				62692CF8186865A9003685D5 /* hawx_weapon@2x.png in Resources */,
 				622BCDF81867DD53001C4025 /* ace_cannon@2x.png in Resources */,
+				62D1266218B88A28004EA330 /* Default-568h@2x.png in Resources */,
 				621CF3571850B87A0062DCE3 /* main_example2.jpg in Resources */,
 				622BCE091867DD53001C4025 /* ace_title@2x.png in Resources */,
 				62692CFD186865A9003685D5 /* hawx_yawright@2x.png in Resources */,
 				621CF34D1850B87A0062DCE3 /* 1 (5).png in Resources */,
+				62D1265018B888A5004EA330 /* 60px.png in Resources */,
 				621DE3CF185D5CC2005A2862 /* nfs_shiftup@2x.png in Resources */,
 				621CF3451850B87A0062DCE3 /* 1 (14).png in Resources */,
 				621DE3DB185D66E3005A2862 /* click.wav in Resources */,
@@ -592,28 +682,39 @@
 				621CF3441850B87A0062DCE3 /* 1 (13).png in Resources */,
 				621CF3581850B87A0062DCE3 /* main_hawx@2x.png in Resources */,
 				621DE3D3185D5CC2005A2862 /* nfs_handbreak_HL@2x.png in Resources */,
+				62D1265518B888A5004EA330 /* 72px.png in Resources */,
 				621DE3D5185D5CC2005A2862 /* nfs_break_HL@2x.png in Resources */,
 				621DE3D2185D5CC2005A2862 /* nfs_n2@2x.png in Resources */,
+				62D1265218B888A5004EA330 /* 128px.png in Resources */,
 				621F48931866D6C100814C55 /* click.mp3 in Resources */,
+				62D1265418B888A5004EA330 /* 48px.png in Resources */,
+				62D1264D18B888A5004EA330 /* 29px.png in Resources */,
 				621CF34A1850B87A0062DCE3 /* 1 (2).png in Resources */,
 				621DE3D9185D5CC2005A2862 /* 控制器白.png in Resources */,
 				621CF3431850B87A0062DCE3 /* 1 (12).png in Resources */,
+				62D1265118B888A5004EA330 /* 80px.png in Resources */,
 				62692D05186865A9003685D5 /* hawx_example1.png in Resources */,
 				621CF3561850B87A0062DCE3 /* main_example1.jpg in Resources */,
+				62D1265718B888A5004EA330 /* Icon.png in Resources */,
 				622BCE071867DD53001C4025 /* ace_yawleft@2x.png in Resources */,
 				621CF3591850B87A0062DCE3 /* main_hawx_HL@2x.png in Resources */,
+				62D1265F18B888AC004EA330 /* logo2.png in Resources */,
 				621CF0321851A9DF006F5E2F /* NfsViewController.xib in Resources */,
 				621CF3421850B87A0062DCE3 /* 1 (11).png in Resources */,
 				62692CFE186865A9003685D5 /* hawx_yawleft_HL@2x.png in Resources */,
 				62692CF5186865A9003685D5 /* hawx_flares_HL@2x.png in Resources */,
 				622BCE101867DE57001C4025 /* AceViewController.xib in Resources */,
 				621DE3CD185D5CC2005A2862 /* nfs_shiftdown@2x.png in Resources */,
+				62D1264E18B888A5004EA330 /* 40px.png in Resources */,
+				62D1265918B888A5004EA330 /* wp 灰白色边框.png in Resources */,
 				621DE3D1185D5CC2005A2862 /* nfs_n2_HL@2x.png in Resources */,
 				621CF34B1850B87A0062DCE3 /* 1 (3).png in Resources */,
 				622BCE061867DD53001C4025 /* ace_yawleft_HL@2x.png in Resources */,
 				62692D03186865A9003685D5 /* 鹰击长空效果图 拷贝.mkm in Resources */,
 				62692CFC186865A9003685D5 /* hawx_yawright_HL@2x.png in Resources */,
+				62D1264C18B888A5004EA330 /* 120px.png in Resources */,
 				622BCE051867DD53001C4025 /* ace_yawright@2x.png in Resources */,
+				62D1264F18B888A5004EA330 /* 58px.png in Resources */,
 				621DE3D6185D5CC2005A2862 /* nfs_break@2x.png in Resources */,
 				62692CF6186865A9003685D5 /* hawx_flares@2x.png in Resources */,
 				621DE3D7185D5CC2005A2862 /* nfs_shiftdown_HL@2x.png in Resources */,
@@ -621,8 +722,10 @@
 				622BCDFD1867DD53001C4025 /* ace_weapon_HL@2x.png in Resources */,
 				622BCE041867DD53001C4025 /* ace_yawright_HL@2x.png in Resources */,
 				622BCE0B1867DD53001C4025 /* ace_example@2x.png in Resources */,
+				62D1265318B888A5004EA330 /* 144px.png in Resources */,
 				62692CF3186865A9003685D5 /* hawx_target_HL@2x.png in Resources */,
 				62692D00186865A9003685D5 /* hawx_cannon_HL@2x.png in Resources */,
+				62D1266018B888AC004EA330 /* 背景.png in Resources */,
 				621CF3521850B87A0062DCE3 /* help.png in Resources */,
 				62692CF7186865A9003685D5 /* hawx_weapon_HL@2x.png in Resources */,
 				621CF34C1850B87A0062DCE3 /* 1 (4).png in Resources */,
@@ -636,6 +739,7 @@
 				621CF3501850B87A0062DCE3 /* 1.png in Resources */,
 				622BCE0A1867DD53001C4025 /* ace_background@2x.png in Resources */,
 				621CF2881850B78D0062DCE3 /* Images.xcassets in Resources */,
+				62D1265618B888A5004EA330 /* 96px.png in Resources */,
 				621CF3461850B87A0062DCE3 /* 1 (15).png in Resources */,
 				62692D04186865A9003685D5 /* hawx_example.png in Resources */,
 				62692CF9186865A9003685D5 /* hawx_thrust@2x.png in Resources */,
@@ -762,10 +866,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "GamePad4US/GamePad4US-Prefix.pch";
 				INFOPLIST_FILE = "GamePad4US/GamePad4US-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -775,10 +880,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "GamePad4US/GamePad4US-Prefix.pch";
 				INFOPLIST_FILE = "GamePad4US/GamePad4US-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
