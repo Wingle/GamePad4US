@@ -13,6 +13,8 @@
     CGPoint m_point;  // touch对象的位置
     
     UITouchPhase m_phase;  //touch对象的状态
+    
+//    BOOL 
 
 }
 

@@ -16,6 +16,11 @@
 #define MAIN_ACE_Y 88
 #define MAIN_HAWX_X 375
 #define MAIN_HAWX_Y 88
+#define MAIN_TOPIC_X 215
+#define MAIN_TOPIC_Y 18
+
+//所有子视图退出时的手势响应区域
+#define EXIT_AREA CGRectMake(120, 0, 330, 35)
 
 //nfs VC
 //所有按钮的坐标
@@ -84,6 +89,44 @@
 //检测刷新的时间间隔
 #define HAWX_REFRESH_TIME 0.01
 
+//xbox VC
+//所有按钮坐标
+#define XBOX_CROSS_X 29
+#define XBOX_CROSS_Y 66
+
+#define XBOX_RB_X 123
+#define XBOX_RB_Y 87
+#define XBOX_LB_X 49
+#define XBOX_LB_Y 162
+#define XBOX_LT_X 200
+#define XBOX_LT_Y 162
+#define XBOX_RT_X 126
+#define XBOX_RT_Y 244
+#define XBOX_Y_X 383
+#define XBOX_Y_Y 50
+#define XBOX_B_X 460
+#define XBOX_B_Y 120
+#define XBOX_A_X 388
+#define XBOX_A_Y 201
+#define XBOX_X_X 308
+#define XBOX_X_Y 128
+
+#define XBOX_START_X 305
+#define XBOX_START_Y 262
+#define XBOX_SELECT_X 233
+#define XBOX_SELECT_Y 262
+
+#define XBOX_UP_X 28
+#define XBOX_UP_Y 43
+#define XBOX_DOWN_X 28
+#define XBOX_DOWN_Y 211
+#define XBOX_LEFT_X 7
+#define XBOX_LEFT_Y 58
+#define XBOX_RIGHT_X 178
+#define XBOX_RIGHT_Y 58
+//检测刷新的时间间隔
+#define XBOX_REFRESH_TIME 0.01
+
 //send messages
 //NFS发送的消息
 #define PRESS_ACCELERATE @"X*P#"
@@ -137,9 +180,32 @@
 #define PRESS_HAWX_WEAPON @"E*P#"
 #define RELEASE_HAWX_WEAPON @"E*R#"
 
+//XBOX发送的消息
+#define PRESS_XBOX_RB @"D*P#"
+#define RELEASE_XBOX_RB @"D*R#"
+#define PRESS_XBOX_LB @"S*P#"
+#define RELEASE_XBOX_LB @"S*R#"
+#define PRESS_XBOX_LT @"Z*P#"
+#define RELEASE_XBOX_LT @"Z*R#"
+#define PRESS_XBOX_RT @"X*P#"
+#define RELEASE_XBOX_RT @"X*R#"
+#define PRESS_XBOX_Y @"Q*P#"
+#define RELEASE_XBOX_Y @"Q*R#"
+#define PRESS_XBOX_X @"A*P#"
+#define RELEASE_XBOX_X @"A*R#"
+#define PRESS_XBOX_A @"E*P#"
+#define RELEASE_XBOX_A @"E*R#"
+#define PRESS_XBOX_B @"W*P#"
+#define RELEASE_XBOX_B @"W*R#"
+
+#define PRESS_XBOX_SELECT @"C*P#"
+#define RELEASE_XBOX_SELECT @"C*R#"
+#define PRESS_XBOX_START @"V*P#"
+#define RELEASE_XBOX_START @"V*R#"
+
 //NetWork
 //发送心跳消息的时间间隔
-#define NETWORK_SEND_ACTIVE_TIME 2
+#define NETWORK_SEND_ACTIVE_TIME 1
 //发送按键消息的时间间隔
 #define NETWORK_SEND_OTHERS_TIME 0.01
 //端口
@@ -191,6 +257,16 @@ enum aceType {
     lockonType,
     flaresType
     };
-
+enum xboxType {
+    rbType = 1,
+    lbType,
+    ltType,
+    rtType,
+    xType,
+    yType,
+    aType,
+    bType,
+    
+    };
 
 #endif

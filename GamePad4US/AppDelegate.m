@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
-
+#import "loadingViewController.h"
 
 @implementation AppDelegate
 
@@ -18,7 +18,10 @@
     // Override point for customization after application launch.
 //    self.window.backgroundColor = [UIColor whiteColor];
 
-    self.viewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+//    self.viewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+//    self.window.rootViewController = self.viewController;
+
+    self.viewController = [[loadingViewController alloc] initWithNibName:@"loadingViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
 
 

@@ -19,6 +19,10 @@
 @synthesize aceNetWork;
 @synthesize socket;
 
+@synthesize playSound;
+@synthesize playShock;
+
+
 #pragma mark - init methods
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -26,6 +30,13 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        NSURL* system_sound_url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"click" ofType:@"wav"]];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)system_sound_url,&soundID);
+        
+        shockID = kSystemSoundID_Vibrate;
+        
+        playShock = NO;
+        playSound = YES;
         
         [self.view setMultipleTouchEnabled:YES];
     }
@@ -41,7 +52,7 @@
     motionManager = [[CMMotionManager alloc]init];
     
     //设置背景图
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"ace_background.jpg"]]];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"ace_background.png"]]];
     
     //title init
     titleImg = [UIImage imageNamed:@"ace_title.png"];
@@ -117,13 +128,21 @@
     motionLabel = [[UILabel alloc] init];
     motionLabel.frame = CGRectMake(0, 10, 500, 20);
     motionLabel.text = @"0";
-    [self.view addSubview:motionLabel];
+//    [self.view addSubview:motionLabel];
     
     //Timer init and start
     [self initTimer];
     
     //touches init
     m_touchArray = [[NSMutableArray alloc] init];
+    
+    
+    //gesture init
+    UISwipeGestureRecognizer * gestureExit = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(gestureToExit:)];
+    [gestureExit setDirection:UISwipeGestureRecognizerDirectionDown];
+    [gestureExit setDelegate:self];
+    [gestureExit setNumberOfTouchesRequired:2];
+    [self.view addGestureRecognizer:gestureExit];
     
 }
 
@@ -184,7 +203,7 @@
     if (isTouched) {
         if (thrustImgView.image == thrustImg) {
             thrustImgView.image = thrustHLImg;
-            [self playSound];
+            [self playSoundAndShock];
             //            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
         }
         [aceNetWork addKeyMessage:PRESS_THRUST withIndex:MESSAGE_ID_KEY_1];
@@ -204,7 +223,7 @@
     if (isTouched) {
         if (yawleftImgView.image == yawleftImg) {
             yawleftImgView.image = yawleftHLImg;
-            [self playSound];
+            [self playSoundAndShock];
             //            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
         }
         [aceNetWork addKeyMessage:PRESS_YAWLEFT withIndex:MESSAGE_ID_KEY_1];
@@ -224,7 +243,7 @@
     if (isTouched) {
         if (yawrightImgView.image == yawrightImg) {
             yawrightImgView.image = yawrightHLImg;
-            [self playSound];
+            [self playSoundAndShock];
             //            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
         }
         [aceNetWork addKeyMessage:PRESS_YAWRIGHT withIndex:MESSAGE_ID_KEY_1];
@@ -244,7 +263,7 @@
     if (isTouched) {
         if (brakesImgView.image == brakesImg) {
             brakesImgView.image = brakesHLImg;
-            [self playSound];
+            [self playSoundAndShock];
             //            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
         }
         [aceNetWork addKeyMessage:PRESS_BRAKES withIndex:MESSAGE_ID_KEY_1];
@@ -264,7 +283,7 @@
     if (isTouched) {
         if (cannonImgView.image == cannonImg) {
             cannonImgView.image = cannonHLImg;
-            [self playSound];
+            [self playSoundAndShock];
             //            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
         }
         [aceNetWork addKeyMessage:PRESS_CANNON withIndex:MESSAGE_ID_KEY_1];
@@ -284,7 +303,7 @@
     if (isTouched) {
         if (changeImgView.image == changeImg) {
             changeImgView.image = changeHLImg;
-            [self playSound];
+            [self playSoundAndShock];
             //            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
         }
         [aceNetWork addKeyMessage:PRESS_CHANGE withIndex:MESSAGE_ID_KEY_1];
@@ -304,7 +323,7 @@
     if (isTouched) {
         if (lockonImgView.image == lockonImg) {
             lockonImgView.image = lockonHLImg;
-            [self playSound];
+            [self playSoundAndShock];
             //            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
         }
         [aceNetWork addKeyMessage:PRESS_LOCKON withIndex:MESSAGE_ID_KEY_1];
@@ -324,7 +343,7 @@
     if (isTouched) {
         if (weaponImgView.image == weaponImg) {
             weaponImgView.image = weaponHLImg;
-            [self playSound];
+            [self playSoundAndShock];
             //            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
         }
         [aceNetWork addKeyMessage:PRESS_WEAPON withIndex:MESSAGE_ID_KEY_1];
@@ -344,7 +363,7 @@
     if (isTouched) {
         if (targetImgView.image == targetImg) {
             targetImgView.image = targetHLImg;
-            [self playSound];
+            [self playSoundAndShock];
             //            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
         }
         [aceNetWork addKeyMessage:PRESS_TARGET withIndex:MESSAGE_ID_KEY_1];
@@ -355,9 +374,14 @@
     }
 }
 
-- (void)playSound
+- (void)playSoundAndShock
 {
-
+    if (playSound) {
+        AudioServicesPlaySystemSound(soundID);
+    }
+    if (playShock) {
+        AudioServicesPlaySystemSound(shockID);
+    }
 }
 
 
@@ -553,5 +577,23 @@
 }
 
 
+#pragma mark - gesture to exit
+- (IBAction)gestureToExit:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    CGPoint currentPoint = [gestureRecognizer locationInView:self.view];
+    if (CGRectContainsPoint(EXIT_AREA, currentPoint)) {
+        return YES;
+    }
+    return NO;
+}
+
 
 @end
+

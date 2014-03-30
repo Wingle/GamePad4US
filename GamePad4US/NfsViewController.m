@@ -22,7 +22,8 @@
 
 @synthesize nfsNetWork;
 @synthesize socket;
-
+@synthesize playShock;
+@synthesize playSound;
 
 #pragma mark - init methods
 
@@ -32,16 +33,14 @@
     if (self) {
         // Custom initialization
         
-//        nfsNetWork = [[NetWork alloc] init];
-//        [nfsNetWork start];
+        NSURL* system_sound_url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"click" ofType:@"wav"]];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)system_sound_url,&soundID);
         
+        shockID = kSystemSoundID_Vibrate;
+
+        playShock = NO;
+        playSound = YES;
         
-//        NSURL * url = [[NSBundle mainBundle] URLForResource:@"click.wav" withExtension:nil];
-//        AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundID);
-
-//        NSString *path = [[NSBundle bundleWithIdentifier:@"com.apple.UIKit"] pathForResource:@"Tock" ofType:@"aiff"];
-//        AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:path], &soundID);
-
         //Important!!! setMutipleTouch
         [self.view setMultipleTouchEnabled:YES];
     }
@@ -60,7 +59,7 @@
     motionManager = [[CMMotionManager alloc]init];
     
     //设置背景图
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"nfs_background.jpg"]]];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"nfs_background.png"]]];
     
     //accelerate init
     accelerateHLImg = [UIImage imageNamed:@"nfs_accelerate_HL.png"];
@@ -111,13 +110,20 @@
     motionLabel = [[UILabel alloc] init];
     motionLabel.frame = CGRectMake(0, 10, 500, 20);
     motionLabel.text = @"0";
-    [self.view addSubview:motionLabel];
+//    [self.view addSubview:motionLabel];
     
     //Timer init and start
     [self initTimer];
     
     //touches init
     m_touchArray = [[NSMutableArray alloc] init];
+    
+    //gesture init
+    UISwipeGestureRecognizer * gestureExit = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(gestureToExit:)];
+    [gestureExit setDirection:UISwipeGestureRecognizerDirectionDown];
+    [gestureExit setDelegate:self];
+    [gestureExit setNumberOfTouchesRequired:2];
+    [self.view addGestureRecognizer:gestureExit];
 }
 
 - (void)didReceiveMemoryWarning
@@ -177,7 +183,7 @@
     if (isTouched) {
         if (accelerateImgView.image == accelerateImg) {
             accelerateImgView.image = accelerateHLImg;
-            [self playSound];
+            [self playSoundAndShock];
 //            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
         }
         [nfsNetWork addKeyMessage:PRESS_ACCELERATE withIndex:MESSAGE_ID_KEY_1];
@@ -198,7 +204,7 @@
         if (shiftUpImgView.image == shiftUpImg) {
 //            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
             shiftUpImgView.image = shiftUpHLImg;
-            [self playSound];
+            [self playSoundAndShock];
         }
         [nfsNetWork addKeyMessage:PRESS_SHIFTUP withIndex:MESSAGE_ID_KEY_2];
     }
@@ -218,7 +224,7 @@
         if (shiftDownImgView.image == shiftDownImg) {
 //            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
             shiftDownImgView.image = shiftDownHLImg;
-            [self playSound];
+            [self playSoundAndShock];
         }
         [nfsNetWork addKeyMessage:PRESS_SHIFTDOWN withIndex:MESSAGE_ID_KEY_2];
     }
@@ -238,7 +244,7 @@
         if (n2ImgView.image == n2Img) {
 //            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
             n2ImgView.image = n2HLImg;
-            [self playSound];
+            [self playSoundAndShock];
         }
         [nfsNetWork addKeyMessage:PRESS_N2 withIndex:MESSAGE_ID_KEY_2];
     }
@@ -258,7 +264,7 @@
         if (handBreakImgView.image == handBreakImg) {
 //            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
             handBreakImgView.image = handBreakHLImg;
-            [self playSound];
+            [self playSoundAndShock];
         }
         [nfsNetWork addKeyMessage:PRESS_HANDBREAK withIndex:MESSAGE_ID_KEY_2];
     }
@@ -278,7 +284,7 @@
         if (breakImgView.image == breakImg) {
 //            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
             breakImgView.image = breakHLImg;
-            [self playSound];
+            [self playSoundAndShock];
         }
         [nfsNetWork addKeyMessage:PRESS_BREAK withIndex:MESSAGE_ID_KEY_2];
     }
@@ -288,28 +294,14 @@
     }
 }
 
-- (void)playSound
+- (void)playSoundAndShock
 {
-//    NSString * path = [[NSBundle mainBundle] pathForResource:@"click" ofType:@"wav"];
-//    NSURL * fileURL = [NSURL fileURLWithPath:path];
-    
-//    SystemSoundID soundID;
-//
-//    NSString * filename = [NSString stringWithFormat:@"%@",@"click.wav"];
-//    
-//    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:filename withExtension:nil];
-//    if (fileURL != nil)
-//    {
-//        SystemSoundID theSoundID;
-//        OSStatus error = AudioServicesCreateSystemSoundID((__bridge CFURLRef)fileURL, &theSoundID);
-//        if (error == kAudioServicesNoError){
-//            soundID = theSoundID;
-//        }else {
-//            NSLog(@"Failed to create sound ");
-//        }
-//    }
-    
-//    AudioServicesPlaySystemSound(soundID);
+    if (playSound) {
+        AudioServicesPlaySystemSound(soundID);
+    }
+    if (playShock) {
+        AudioServicesPlaySystemSound(shockID);
+    }
 }
 
 - (void)checkMotionStateAndSendMessage
@@ -703,5 +695,20 @@
 //    
 //}
 
+#pragma mark - gesture to exit
+- (IBAction)gestureToExit:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
 
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    CGPoint currentPoint = [gestureRecognizer locationInView:self.view];
+    if (CGRectContainsPoint(EXIT_AREA, currentPoint)) {
+        return YES;
+    }
+    return NO;
+}
 @end

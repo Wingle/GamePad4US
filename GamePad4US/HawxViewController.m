@@ -134,7 +134,7 @@
 
 - (BOOL)shouldAutorotate
 {
-    return YES;
+    return NO;
 }
 
 //隐藏StateBar

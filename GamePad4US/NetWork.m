@@ -41,15 +41,11 @@
 - (void)initSockets
 {
     NSError * error = Nil;
-    //使用IPv4初始化一个Socket
+    
     activeSocket = [[AsyncUdpSocket alloc] initIPv4];
-    //设置委托为自身
     [activeSocket setDelegate:self];
-    //PORT_ACTIVE为发送端口
     [activeSocket bindToPort:PORT_ACTIVE error:& error];
-    //允许广播信息
     [activeSocket enableBroadcast:YES error:& error];
-    //允许接受信息
     [activeSocket receiveWithTimeout:-1 tag:0];
     
     xSocket = [[AsyncUdpSocket alloc] initIPv4];
@@ -141,8 +137,8 @@
                     [self broadCast:pcHost withSocket:activeSocket withMessage:CONNECT_SEND_SECOND withPort:thePort];
                     [self broadCast:pcHost withSocket:activeSocket withMessage:CONNECT_SEND_SECOND withPort:thePort];
                     [self broadCast:pcHost withSocket:activeSocket withMessage:CONNECT_SEND_SECOND withPort:thePort];
-                    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"可以进入手柄了~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-                    [alert show];
+//                    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"可以进入手柄了~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+//                    [alert show];
                     NSLog(@"send message: %@",CONNECT_SEND_SECOND);
                     connectState = STATE_CONNECT_ESTABLISHED;
                     return;
@@ -297,13 +293,10 @@
 
 - (void)broadCast:(NSString *)theHost withSocket:(AsyncUdpSocket *)theSocket withMessage:(NSString *)theMessage withPort:(int)thePort
 {
-    //theMessage为NSString，为需要发送的数据
     NSData * data = [theMessage dataUsingEncoding:NSASCIIStringEncoding] ;
     
     BOOL result = NO;
     //开始发送
-    //pcHost为接收方的ip地址，255.255.255.255为向全域广播
-    //thePort为发送端口
     result = [theSocket sendData:data
                        toHost:pcHost
                          port:thePort
@@ -311,10 +304,10 @@
                           tag:0];
     
     if (!result) {
-        NSLog(@"send failed");
+//        NSLog(@"send failed");
     }
     else{
-        NSLog(@"send succeed");
+//        NSLog(@"send succeed");
     }
 }
 
@@ -352,11 +345,9 @@
 #pragma mark - AsyncUdpSocket Delegate
 - (BOOL)onUdpSocket:(AsyncUdpSocket *)sock didReceiveData:(NSData *)data withTag:(long)tag fromHost:(NSString *)host port:(UInt16)port
 {
-    //重新设置接收时间
     [sock receiveWithTimeout:-1 tag:0];
     NSLog(@"host---->%@",host);
     
-    //info就为接收到的数据
     NSString *info=[[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
     NSLog(@"the resource string:%@",info);
 

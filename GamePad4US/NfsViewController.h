@@ -17,10 +17,9 @@
 @class NetWork;
 @class TouchRecord;
 
-@interface NfsViewController : UIViewController/*<AVAudioPlayerDelegate><AsyncUdpSocketDelegate>*/{
+@interface NfsViewController : UIViewController<UIGestureRecognizerDelegate>/*<AVAudioPlayerDelegate><AsyncUdpSocketDelegate>*/{
     //test udp
 //    AVAudioPlayer * avAudioPlayer;
-    SystemSoundID soundID;
     
     AsyncUdpSocket * socket;
     
@@ -60,11 +59,19 @@
     UIImage * breakHLImg;
     UIImageView * breakImgView;
     
+    BOOL playSound;
+    BOOL playShock;
 
+    SystemSoundID soundID;
+    SystemSoundID shockID;
+    
 }
 
 @property AsyncUdpSocket * socket;
 
 @property NetWork * nfsNetWork;
+
+@property BOOL playSound;
+@property BOOL playShock;
 
 @end

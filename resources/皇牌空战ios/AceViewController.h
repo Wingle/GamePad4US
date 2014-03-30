@@ -16,10 +16,14 @@
 @class NetWork;
 @class TouchRecord;
 
-@interface AceViewController : UIViewController{
+@interface AceViewController : UIViewController<UIGestureRecognizerDelegate>{
     //test udp
     //    AVAudioPlayer * avAudioPlayer;
+    BOOL playSound;
+    BOOL playShock;
+    
     SystemSoundID soundID;
+    SystemSoundID shockID;
     
     AsyncUdpSocket * socket;
     
@@ -78,5 +82,8 @@
 
 @property AsyncUdpSocket * socket;
 @property NetWork * aceNetWork;
+
+@property BOOL playSound;
+@property BOOL playShock;
 
 @end

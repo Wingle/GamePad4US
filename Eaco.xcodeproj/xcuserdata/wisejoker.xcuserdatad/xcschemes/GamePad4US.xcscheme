@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "621CF2711850B78D0062DCE3"
                BuildableName = "GamePad4US.app"
-               BlueprintName = "GamePad4US"
-               ReferencedContainer = "container:GamePad4US.xcodeproj">
+               BlueprintName = "Eaco"
+               ReferencedContainer = "container:Eaco.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "621CF28C1850B78D0062DCE3"
                BuildableName = "GamePad4USTests.xctest"
                BlueprintName = "GamePad4USTests"
-               ReferencedContainer = "container:GamePad4US.xcodeproj">
+               ReferencedContainer = "container:Eaco.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,8 +44,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "621CF2711850B78D0062DCE3"
             BuildableName = "GamePad4US.app"
-            BlueprintName = "GamePad4US"
-            ReferencedContainer = "container:GamePad4US.xcodeproj">
+            BlueprintName = "Eaco"
+            ReferencedContainer = "container:Eaco.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "621CF2711850B78D0062DCE3"
             BuildableName = "GamePad4US.app"
-            BlueprintName = "GamePad4US"
-            ReferencedContainer = "container:GamePad4US.xcodeproj">
+            BlueprintName = "Eaco"
+            ReferencedContainer = "container:Eaco.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -81,8 +81,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "621CF2711850B78D0062DCE3"
             BuildableName = "GamePad4US.app"
-            BlueprintName = "GamePad4US"
-            ReferencedContainer = "container:GamePad4US.xcodeproj">
+            BlueprintName = "Eaco"
+            ReferencedContainer = "container:Eaco.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
