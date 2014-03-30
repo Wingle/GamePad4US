@@ -205,7 +205,7 @@
 
 //NetWork
 //发送心跳消息的时间间隔
-#define NETWORK_SEND_ACTIVE_TIME 1
+#define NETWORK_SEND_ACTIVE_TIME 0.2
 //发送按键消息的时间间隔
 #define NETWORK_SEND_OTHERS_TIME 0.01
 //端口

@@ -13,8 +13,7 @@
 #import "XBoxViewController.h"
 #import <SystemConfiguration/CaptiveNetwork.h>
 
-//#import <systemconfiguration captivenetwork.h="">
-//#import <corefoundation corefoundation.h="">
+
 
 @interface MainViewController ()
 
@@ -32,9 +31,9 @@
         
         //禁止锁屏
         [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
-        aceVC = [[AceViewController alloc] init];
-        nfsVC = [[NfsViewController alloc] init];
-        xboxVC = [[XBoxViewController alloc] init];
+//        aceVC = [[AceViewController alloc] init];
+//        nfsVC = [[NfsViewController alloc] init];
+//        xboxVC = [[XBoxViewController alloc] init];
         
     }
     return self;
@@ -220,7 +219,7 @@
 
 - (IBAction)onPressNfsBtn:(id)sender
 {
-//    nfsVC = [[NfsViewController alloc] init];
+    nfsVC = [[NfsViewController alloc] init];
     nfsVC.nfsNetWork = mainNetWork;
     if (nfsVC.nfsNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
@@ -238,7 +237,7 @@
 
 - (IBAction)onPressAceBtn:(id)sender
 {
-//    aceVC = [[AceViewController alloc] init];
+    aceVC = [[AceViewController alloc] init];
     aceVC.aceNetWork = mainNetWork;
     if (aceVC.aceNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
@@ -256,7 +255,7 @@
 
 - (IBAction)onPressXboxBtn:(id)sender
 {
-//    xboxVC = [[XBoxViewController alloc] init];
+    xboxVC = [[XBoxViewController alloc] init];
     xboxVC.xboxNetWork = mainNetWork;
     if (xboxVC.xboxNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
