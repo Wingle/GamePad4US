@@ -237,7 +237,7 @@
 #define CONNECT_SEND_ALWAYS @"STARTHEARTEND"
 
 enum nfsType {
-    accelerateType = 1,
+    accelerateType = 0,
     shiftUpType,
     shiftDownType,
     n2Type,

@@ -10,10 +10,6 @@
 #import "TouchRecord.h"
 #import "NetWork.h"
 
-//static SystemSoundID shake_sound_male_id = 0;
-
-
-
 @interface NfsViewController ()
 
 @end
@@ -53,13 +49,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.]
     
     //设置重力感应
     motionManager = [[CMMotionManager alloc]init];
     
     //设置背景图
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"nfs_background.png"]]];
+    
+    //初始化控件数组
+    imgViewArray = [NSMutableArray arrayWithCapacity:6];
+    normalImgArray = [NSMutableArray arrayWithCapacity:6];
+    highlightImgArray = [NSMutableArray arrayWithCapacity:6];
     
     //accelerate init
     accelerateHLImg = [UIImage imageNamed:@"nfs_accelerate_HL.png"];
@@ -68,14 +68,10 @@
     accelerateImgView.frame = CGRectMake(ACCELERATE_X, ACCELERATE_Y, accelerateImg.size.width, accelerateImg.size.height);
     [self.view addSubview:accelerateImgView];
     
-
-    //shiftdown init
-    shiftDownHLImg = [UIImage imageNamed:@"nfs_shiftdown_HL.png"];
-    shiftDownImg = [UIImage imageNamed:@"nfs_shiftdown.png"];
-    shiftDownImgView = [[UIImageView alloc]initWithImage:shiftDownImg];
-    shiftDownImgView.frame = CGRectMake(SHIFTDOWN_X, SHIFTDOWN_Y, shiftDownImg.size.width, shiftDownImg.size.height);
-    [self.view addSubview:shiftDownImgView];
-
+    [imgViewArray addObject:accelerateImgView];
+    [normalImgArray addObject:accelerateImg];
+    [highlightImgArray addObject:accelerateHLImg];
+    
     //shiftup init
     shiftUpHLImg = [UIImage imageNamed:@"nfs_shiftup_HL.png"];
     shiftUpImg = [UIImage imageNamed:@"nfs_shiftup.png"];
@@ -83,12 +79,32 @@
     shiftUpImgView.frame = CGRectMake(SHIFTUP_X, SHIFTUP_Y, shiftUpImg.size.width, shiftUpImg.size.height);
     [self.view addSubview:shiftUpImgView];
     
+    [imgViewArray addObject:shiftUpImgView];
+    [normalImgArray addObject:shiftUpImg];
+    [highlightImgArray addObject:shiftUpHLImg];
+
+    //shiftdown init
+    shiftDownHLImg = [UIImage imageNamed:@"nfs_shiftdown_HL.png"];
+    shiftDownImg = [UIImage imageNamed:@"nfs_shiftdown.png"];
+    shiftDownImgView = [[UIImageView alloc]initWithImage:shiftDownImg];
+    shiftDownImgView.frame = CGRectMake(SHIFTDOWN_X, SHIFTDOWN_Y, shiftDownImg.size.width, shiftDownImg.size.height);
+    [self.view addSubview:shiftDownImgView];
+    
+    [imgViewArray addObject:shiftDownImgView];
+    [normalImgArray addObject:shiftDownImg];
+    [highlightImgArray addObject:shiftDownHLImg];
+    
+    
     //n2 init
     n2HLImg = [UIImage imageNamed:@"nfs_n2_HL.png"];
     n2Img = [UIImage imageNamed:@"nfs_n2.png"];
     n2ImgView = [[UIImageView alloc]initWithImage:n2Img];
     n2ImgView.frame = CGRectMake(N2_X, N2_Y, n2Img.size.width, n2Img.size.height);
     [self.view addSubview:n2ImgView];
+    
+    [imgViewArray addObject:n2ImgView];
+    [normalImgArray addObject:n2Img];
+    [highlightImgArray addObject:n2HLImg];
     
     
     //handbreak init
@@ -98,6 +114,10 @@
     handBreakImgView.frame = CGRectMake(HANDBREAK_X, HANDBREAK_Y, handBreakImg.size.width, handBreakImg.size.height);
     [self.view addSubview:handBreakImgView];
     
+    [imgViewArray addObject:handBreakImgView];
+    [normalImgArray addObject:handBreakImg];
+    [highlightImgArray addObject:handBreakHLImg];
+    
     //break init
     breakHLImg = [UIImage imageNamed:@"nfs_break_HL.png"];
     breakImg = [UIImage imageNamed:@"nfs_break.png"];
@@ -105,6 +125,9 @@
     breakImgView.frame = CGRectMake(BREAK_X, BREAK_Y, breakImg.size.width, breakImg.size.height);
     [self.view addSubview:breakImgView];
     
+    [imgViewArray addObject:breakImgView];
+    [normalImgArray addObject:breakImg];
+    [highlightImgArray addObject:breakHLImg];
     
     //motion label init
     motionLabel = [[UILabel alloc] init];
@@ -162,135 +185,58 @@
 //timer selector
 - (void)checkTouchedBtnWithTimer:(NSTimer *)theTimer
 {
-//    [self checkButtonsAndChangeBtnState];
-//    
-//    [self checkButtonsAndSendMessages];
-
     [self checkButtonsAndChangeStateAndSendMessages];
     
     [self checkMotionStateAndSendMessage];
 }
 
+
+
 - (void)checkButtonsAndChangeStateAndSendMessages
 {
-    BOOL isTouched = NO;
-    for (TouchRecord * touchRecord in m_touchArray) {
-        if ([self isTouchedByType:accelerateType withPoint:touchRecord.m_point]) {
-            isTouched = YES;
-            break;
+    for (int i = accelerateType; i <= breakType; i++) {
+        BOOL isTouched = NO;
+        for (TouchRecord * touchRecord in m_touchArray) {
+            if ([self isTouchedByType:i withPoint:touchRecord.m_point]) {
+                isTouched = YES;
+                break;
+            }
         }
+        [self changeButtonStateWithType:i Touched:isTouched];
     }
-    if (isTouched) {
-        if (accelerateImgView.image == accelerateImg) {
-            accelerateImgView.image = accelerateHLImg;
-            [self playSoundAndShock];
-//            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-        }
-        [nfsNetWork addKeyMessage:PRESS_ACCELERATE withIndex:MESSAGE_ID_KEY_1];
-    }
-    else{
-        accelerateImgView.image = accelerateImg;
-        [nfsNetWork addKeyMessage:RELEASE_ACCELERATE withIndex:MESSAGE_ID_KEY_1];
-    }
+}
+
+- (void)checkMotionStateAndSendMessage
+{
+    [motionManager startDeviceMotionUpdates];
+//    double gravityX = motionManager.deviceMotion.gravity.x;
+    double gravityY = motionManager.deviceMotion.gravity.y;
+//    double gravityZ = motionManager.deviceMotion.gravity.z;
+
+    int theRotation = gravityY * 90 + 90;
+    NSString * theMotion = [NSString stringWithFormat:@"%d#",theRotation];
+    motionLabel.text = theMotion;
     
-    isTouched = NO;
-    for (TouchRecord * touchRecord in m_touchArray) {
-        if ([self isTouchedByType:shiftUpType withPoint:touchRecord.m_point]) {
-            isTouched = YES;
-            break;
-        }
-    }
-    if (isTouched) {
-        if (shiftUpImgView.image == shiftUpImg) {
-//            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-            shiftUpImgView.image = shiftUpHLImg;
-            [self playSoundAndShock];
-        }
-        [nfsNetWork addKeyMessage:PRESS_SHIFTUP withIndex:MESSAGE_ID_KEY_2];
-    }
-    else{
-        shiftUpImgView.image = shiftUpImg;
-        [nfsNetWork addKeyMessage:RELEASE_SHIFTUP withIndex:MESSAGE_ID_KEY_2];
-    }
+    [nfsNetWork addKeyMessage:theMotion withIndex:MESSAGE_ID_X];
+}
+
+#pragma mark - 按下按钮效果
+- (void)changeButtonStateWithType:(int)theType Touched:(BOOL)isTouched
+{
+    UIImageView * theTouchedImgView = imgViewArray[theType];
+    UIImage * theTouchedImg = normalImgArray[theType];
+    UIImage * theTouchedHLImg = highlightImgArray[theType];
     
-    isTouched = NO;
-    for (TouchRecord * touchRecord in m_touchArray) {
-        if ([self isTouchedByType:shiftDownType withPoint:touchRecord.m_point]) {
-            isTouched = YES;
-            break;
-        }
-    }
     if (isTouched) {
-        if (shiftDownImgView.image == shiftDownImg) {
-//            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-            shiftDownImgView.image = shiftDownHLImg;
+        if (theTouchedImgView.image == theTouchedImg) {
+            theTouchedImgView.image = theTouchedHLImg;
             [self playSoundAndShock];
         }
-        [nfsNetWork addKeyMessage:PRESS_SHIFTDOWN withIndex:MESSAGE_ID_KEY_2];
+        [self sendMessageWithType:theType pressed:YES];
     }
     else{
-        shiftDownImgView.image = shiftDownImg;
-        [nfsNetWork addKeyMessage:RELEASE_SHIFTDOWN withIndex:MESSAGE_ID_KEY_2];
-    }
-    
-    isTouched = NO;
-    for (TouchRecord * touchRecord in m_touchArray) {
-        if ([self isTouchedByType:n2Type withPoint:touchRecord.m_point]) {
-            isTouched = YES;
-            break;
-        }
-    }
-    if (isTouched) {
-        if (n2ImgView.image == n2Img) {
-//            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-            n2ImgView.image = n2HLImg;
-            [self playSoundAndShock];
-        }
-        [nfsNetWork addKeyMessage:PRESS_N2 withIndex:MESSAGE_ID_KEY_2];
-    }
-    else{
-        n2ImgView.image = n2Img;
-        [nfsNetWork addKeyMessage:RELEASE_N2 withIndex:MESSAGE_ID_KEY_2];
-    }
-    
-    isTouched = NO;
-    for (TouchRecord * touchRecord in m_touchArray) {
-        if ([self isTouchedByType:handBreakType withPoint:touchRecord.m_point]) {
-            isTouched = YES;
-            break;
-        }
-    }
-    if (isTouched) {
-        if (handBreakImgView.image == handBreakImg) {
-//            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-            handBreakImgView.image = handBreakHLImg;
-            [self playSoundAndShock];
-        }
-        [nfsNetWork addKeyMessage:PRESS_HANDBREAK withIndex:MESSAGE_ID_KEY_2];
-    }
-    else{
-        handBreakImgView.image = handBreakImg;
-        [nfsNetWork addKeyMessage:RELEASE_HANDBREAK withIndex:MESSAGE_ID_KEY_2];
-    }
-    
-    isTouched = NO;
-    for (TouchRecord * touchRecord in m_touchArray) {
-        if ([self isTouchedByType:breakType withPoint:touchRecord.m_point]) {
-            isTouched = YES;
-            break;
-        }
-    }
-    if (isTouched) {
-        if (breakImgView.image == breakImg) {
-//            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-            breakImgView.image = breakHLImg;
-            [self playSoundAndShock];
-        }
-        [nfsNetWork addKeyMessage:PRESS_BREAK withIndex:MESSAGE_ID_KEY_2];
-    }
-    else{
-        breakImgView.image = breakImg;
-        [nfsNetWork addKeyMessage:RELEASE_BREAK withIndex:MESSAGE_ID_KEY_2];
+        theTouchedImgView.image = theTouchedImg;
+        [self sendMessageWithType:theType pressed:NO];
     }
 }
 
@@ -304,22 +250,72 @@
     }
 }
 
-- (void)checkMotionStateAndSendMessage
+- (void)sendMessageWithType:(int)theType pressed:(BOOL)isPressed
 {
-    [motionManager startDeviceMotionUpdates];
-//    double gravityX = motionManager.deviceMotion.gravity.x;
-    double gravityY = motionManager.deviceMotion.gravity.y;
-//    double gravityZ = motionManager.deviceMotion.gravity.z;
-//    double zTheta = atan2(gravityZ,sqrtf(gravityX*gravityX+gravityY*gravityY))/M_PI*180.0;
-    int theRotation = gravityY * 90 + 90;
-//    if ((theRotation > 75)&&(theRotation < 105)) {
-//        theRotation = 90;
-//    }
-    NSString * theMotion = [NSString stringWithFormat:@"%d#",theRotation];
-    motionLabel.text = theMotion;
+    NSString * message;
+    int index = 0;
+    switch (theType) {
+        case accelerateType:
+            if (isPressed) {
+                message = PRESS_ACCELERATE;
+            }
+            else{
+                message = RELEASE_ACCELERATE;
+            }
+            index = MESSAGE_ID_KEY_1;
+            break;
+        case shiftUpType:
+            if (isPressed) {
+                message = PRESS_SHIFTUP;
+            }
+            else{
+                message = RELEASE_SHIFTUP;
+            }
+            index = MESSAGE_ID_KEY_2;
+            break;
+        case shiftDownType:
+            if (isPressed) {
+                message = PRESS_SHIFTDOWN;
+            }
+            else{
+                message = RELEASE_SHIFTDOWN;
+            }
+            index = MESSAGE_ID_KEY_2;
+            break;
+        case n2Type:
+            if (isPressed) {
+                message = PRESS_N2;
+            }
+            else{
+                message = RELEASE_N2;
+            }
+            index = MESSAGE_ID_KEY_2;
+            break;
+        case handBreakType:
+            if (isPressed) {
+                message = PRESS_HANDBREAK;
+            }
+            else{
+                message = RELEASE_HANDBREAK;
+            }
+            index = MESSAGE_ID_KEY_2;
+            break;
+        case breakType:
+            if (isPressed) {
+                message = PRESS_BREAK;
+            }
+            else{
+                message = RELEASE_BREAK;
+            }
+            index = MESSAGE_ID_KEY_2;
+            break;
+        default:
+            break;
+    }
     
-    [nfsNetWork addKeyMessage:theMotion withIndex:MESSAGE_ID_X];
+    [nfsNetWork addKeyMessage:message withIndex:index];
 }
+
 
 #pragma mark - isTouched
 
@@ -427,7 +423,6 @@
         TouchRecord * touchRecord = [[TouchRecord alloc] initWithTouch:touch pointInView:thePoint];
         [m_touchArray addObject:touchRecord];
     }
-//    NSLog(@"touches begin");
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
@@ -440,8 +435,6 @@
             }
         }
     }
-    
-//    NSLog(@"touches cancelld");
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -457,7 +450,6 @@
             }
         }
     }
-//    NSLog(@"touches moved");
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -470,230 +462,7 @@
             }
         }
     }
-//    NSLog(@"touches ended");
 }
-
-#pragma mark - unused methods
-//AVAudioPlayer 适合播放长的声音，不适合播放短声音
-//- (void) playSound
-//{
-//    NSTimer * showTimer;
-//    showTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(playSoundWithTimer:)userInfo:nil repeats:NO];
-//
-//}
-//
-//- (void)playSoundWithTimer:(NSTimer *)theTimer
-//{
-//    NSLog(@"music begin");
-//    //    AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-//    avAudioPlayer.currentTime = 0;  //当前播放时间设置为0
-//    [avAudioPlayer stop];
-//    [avAudioPlayer play];
-//    NSLog(@"music over");
-//}
-
-//- (void)initAvAudioPlayer
-//{
-//    NSString * path = [[NSBundle mainBundle] pathForResource:@"click" ofType:@"wav"];
-//    NSURL * url = [NSURL fileURLWithPath:path];
-//    avAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
-//    avAudioPlayer.delegate = self;
-//    [avAudioPlayer prepareToPlay];
-//    avAudioPlayer.numberOfLoops = 1;
-//    avAudioPlayer.volume = 1;
-//}
-
-
-//
-//    AudioServicesPlaySystemSound(shake_sound_male_id);   //播放注册的声音，（此句代码，可以在本类中的任意位置调用，不限于本方法中）
-//
-//    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);   //让手机震动
-//}
-
-
-////check buttons and change state to HL or NOR
-//- (void)checkButtonsAndChangeBtnState
-//{
-//    BOOL theAcce = NO,theSU= NO,theSD= NO,theHB= NO,theB= NO,theN2= NO;
-//    for (TouchRecord * touchRecord in m_touchArray) {
-//        if ([self isTouchedByType:accelerateType withPoint:touchRecord.m_point]) {
-//            theAcce = YES;
-//            continue;
-//        }
-//        if ([self isTouchedByType:shiftUpType withPoint:touchRecord.m_point]) {
-//            theSU = YES;
-//            continue;
-//        }
-//        if ([self isTouchedByType:shiftDownType withPoint:touchRecord.m_point]) {
-//            theSD = YES;
-//            continue;
-//        }
-//        if ([self isTouchedByType:n2Type withPoint:touchRecord.m_point]) {
-//            theN2 = YES;
-//            continue;
-//        }
-//        if ([self isTouchedByType:handBreakType withPoint:touchRecord.m_point]) {
-//            theHB = YES;
-//            continue;
-//        }
-//        if ([self isTouchedByType:breakType withPoint:touchRecord.m_point]) {
-//            theB = YES;
-//            continue;
-//        }
-//    }
-//
-//    if (theAcce) {
-//        if (accelerateImgView.image == accelerateImg) {
-//            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-////            [self playSound];
-//        }
-//        accelerateImgView.image = accelerateHLImg;
-//    }
-//    else{
-//        accelerateImgView.image = accelerateImg;
-//    }
-//
-//    if (theSU) {
-//        if (shiftUpImgView.image == shiftUpImg) {
-//            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-//        }
-//        shiftUpImgView.image = shiftUpHLImg;
-//    }
-//    else{
-//        shiftUpImgView.image = shiftUpImg;
-//    }
-//
-//    if (theSD) {
-//        if (shiftDownImgView.image == shiftDownImg) {
-//            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-//        }
-//        shiftDownImgView.image = shiftDownHLImg;
-//    }
-//    else{
-//        shiftDownImgView.image = shiftDownImg;
-//    }
-//
-//    if (theN2) {
-//        if (n2ImgView.image == n2Img) {
-//            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-//        }
-//        n2ImgView.image = n2HLImg;
-//    }
-//    else{
-//        n2ImgView.image = n2Img;
-//    }
-//
-//    if (theHB) {
-//        if (handBreakImgView.image == handBreakImg) {
-//            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-//        }
-//        handBreakImgView.image = handBreakHLImg;
-//    }
-//    else{
-//        handBreakImgView.image = handBreakImg;
-//    }
-//
-//    if (theB) {
-//        if (breakImgView.image == breakImg) {
-//            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-//        }
-//        breakImgView.image = breakHLImg;
-//    }
-//    else{
-//        breakImgView.image = breakImg;
-//    }
-//
-//}
-//check buttons and send message to network
-//- (void)checkButtonsAndSendMessages
-//{
-//    if (accelerateImgView.image == accelerateHLImg) {
-//        [nfsNetWork addKeyMessage:PRESS_ACCELERATE withIndex:MESSAGE_ID_KEY_1];
-//    }
-//    else{
-//        [nfsNetWork addKeyMessage:RELEASE_ACCELERATE withIndex:MESSAGE_ID_KEY_1];
-//    }
-//
-//    if (shiftUpImgView.image == shiftUpHLImg) {
-//        [nfsNetWork addKeyMessage:PRESS_SHIFTUP withIndex:MESSAGE_ID_KEY_2];
-//    }
-//    else{
-//        [nfsNetWork addKeyMessage:RELEASE_SHIFTUP withIndex:MESSAGE_ID_KEY_2];
-//    }
-//
-//    if (shiftDownImgView.image == shiftDownHLImg) {
-//        [nfsNetWork addKeyMessage:PRESS_SHIFTDOWN withIndex:MESSAGE_ID_KEY_2];
-//    }
-//    else{
-//        [nfsNetWork addKeyMessage:RELEASE_SHIFTDOWN withIndex:MESSAGE_ID_KEY_2];
-//    }
-//
-//    if (n2ImgView.image == n2HLImg) {
-//        [nfsNetWork addKeyMessage:PRESS_N2 withIndex:MESSAGE_ID_KEY_1];
-//    }
-//    else{
-//        [nfsNetWork addKeyMessage:RELEASE_N2 withIndex:MESSAGE_ID_KEY_1];
-//    }
-//
-//    if (handBreakImgView.image == handBreakHLImg) {
-//        [nfsNetWork addKeyMessage:PRESS_HANDBREAK withIndex:MESSAGE_ID_KEY_3];
-//    }
-//    else{
-//        [nfsNetWork addKeyMessage:RELEASE_HANDBREAK withIndex:MESSAGE_ID_KEY_3];
-//    }
-//
-//    if (breakImgView.image == breakHLImg) {
-//        [nfsNetWork addKeyMessage:PRESS_BREAK withIndex:MESSAGE_ID_KEY_3];
-//    }
-//    else{
-//        [nfsNetWork addKeyMessage:RELEASE_BREAK withIndex:MESSAGE_ID_KEY_3];
-//    }
-//
-//}
-
-
-//#pragma mark - AsyncUdpSocket Delegate
-//
-//- (BOOL)onUdpSocket:(AsyncUdpSocket *)sock didReceiveData:(NSData *)data withTag:(long)tag fromHost:(NSString *)host port:(UInt16)port
-//{
-//    [socket receiveWithTimeout:-1 tag:0];
-//    NSLog(@"host---->%@",host);
-//    
-//    NSString *info=[[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
-//    
-//    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:info delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-//    [alert show];
-//    NSLog(@"send failed");
-//    
-//    NSLog(@"%@",info);
-//    //已经处理完毕
-//    
-//    return YES;
-//}
-//
-//- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotReceiveDataWithTag:(long)tag dueToError:(NSError *)error
-//{
-//    
-//}
-//
-//- (void)onUdpSocket:(AsyncUdpSocket *)sock didSendDataWithTag:(long)tag
-//{
-//    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"发送成功" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-//    [alert show];
-//}
-//
-//- (void)onUdpSocket:(AsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error
-//{
-//    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"发送失败" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-//    [alert show];
-//    NSLog(@"send failed");
-//
-//}
-//
-//- (void)onUdpSocketDidClose:(AsyncUdpSocket *)sock
-//{
-//    
-//}
 
 #pragma mark - gesture to exit
 - (IBAction)gestureToExit:(id)sender

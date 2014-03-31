@@ -11,15 +11,12 @@
 #import "MyHeader.h"
 #import <CoreMotion/CoreMotion.h>
 #import "AudioToolbox/AudioToolbox.h"
-//#import <AVFoundation/AVFoundation.h>
 
 
 @class NetWork;
 @class TouchRecord;
 
-@interface NfsViewController : UIViewController<UIGestureRecognizerDelegate>/*<AVAudioPlayerDelegate><AsyncUdpSocketDelegate>*/{
-    //test udp
-//    AVAudioPlayer * avAudioPlayer;
+@interface NfsViewController : UIViewController<UIGestureRecognizerDelegate>{
     
     AsyncUdpSocket * socket;
     
@@ -58,6 +55,11 @@
     UIImage * breakImg;
     UIImage * breakHLImg;
     UIImageView * breakImgView;
+    
+    //图片控件数组
+    NSMutableArray * imgViewArray;
+    NSMutableArray * normalImgArray;
+    NSMutableArray * highlightImgArray;
     
     BOOL playSound;
     BOOL playShock;
