@@ -194,14 +194,21 @@
 
 - (void)checkButtonsAndChangeStateAndSendMessages
 {
+    //总共6个按钮，i为按钮的类型，为枚举，每个按钮分别做一次遍历
     for (int i = accelerateType; i <= breakType; i++) {
+        //判断触摸点是否点击到这个按钮
         BOOL isTouched = NO;
+        
+        //每个触摸点做一次判断，touchRecord为遍历中的一个触摸点
         for (TouchRecord * touchRecord in m_touchArray) {
+            //判断这个触摸点是否能触摸到当前按钮，如果触摸到了，就退出当前循环
             if ([self isTouchedByType:i withPoint:touchRecord.m_point]) {
                 isTouched = YES;
                 break;
             }
         }
+        
+        //根据按钮类型和是否被触摸来改变按钮的状态
         [self changeButtonStateWithType:i Touched:isTouched];
     }
 }

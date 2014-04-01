@@ -221,10 +221,10 @@
 {
     nfsVC = [[NfsViewController alloc] init];
     nfsVC.nfsNetWork = mainNetWork;
-    if (nfsVC.nfsNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-        [alert show];
-    }
+//    if (nfsVC.nfsNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
+//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+//        [alert show];
+//    }
 //    else{
         nfsVC.modalTransitionStyle = 0;
         [self presentViewController:nfsVC animated:YES completion:^(void){
@@ -239,17 +239,17 @@
 {
     aceVC = [[AceViewController alloc] init];
     aceVC.aceNetWork = mainNetWork;
-    if (aceVC.aceNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-        [alert show];
-
-    }
-    else{
+//    if (aceVC.aceNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
+//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+//        [alert show];
+//
+//    }
+//    else{
         aceVC.modalTransitionStyle = 0;
         [self presentViewController:aceVC animated:YES completion:^(void){
             
         }];
-    }
+//    }
     NSLog(@"press ace btn");
 }
 
@@ -257,17 +257,17 @@
 {
     xboxVC = [[XBoxViewController alloc] init];
     xboxVC.xboxNetWork = mainNetWork;
-    if (xboxVC.xboxNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-        [alert show];
-        
-    }
-    else{
+//    if (xboxVC.xboxNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
+//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+//        [alert show];
+//        
+//    }
+//    else{
         xboxVC.modalTransitionStyle = 0;
         [self presentViewController:xboxVC animated:YES completion:^{
             
         }];
-    }
+//    }
 //    hawxVC = [[HawxViewController alloc] init];
 //    hawxVC.modalTransitionStyle = 0;
 //    [self presentViewController:hawxVC animated:YES completion:^(void){
