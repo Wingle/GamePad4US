@@ -32,6 +32,9 @@
     //save the touches
     NSMutableArray * m_touchArray;
     
+    //nstimer
+    NSTimer * showTimer;
+    
     UIImage * accelerateImg;
     UIImage * accelerateHLImg;
     UIImageView * accelerateImgView;

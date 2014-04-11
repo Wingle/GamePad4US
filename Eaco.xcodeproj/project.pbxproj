@@ -464,6 +464,7 @@
 		621CF27B1850B78D0062DCE3 /* GamePad4US */ = {
 			isa = PBXGroup;
 			children = (
+				624EDFAD18F80E5100C345B0 /* oldFiles */,
 				621A29D518576884006D2A47 /* AsyncUdpSocket */,
 				621CF35D1850B8970062DCE3 /* nibFiles */,
 				621CF35C1850B88F0062DCE3 /* headers */,
@@ -471,7 +472,6 @@
 				621CF2851850B78D0062DCE3 /* AppDelegate.m */,
 				62228FBB18BB96010085FEC4 /* XBoxViewController.m */,
 				622BCE0D1867DE57001C4025 /* AceViewController.m */,
-				62692D0718686A73003685D5 /* HawxViewController.m */,
 				62FF89BF185AF3C2006F2F38 /* NfsViewController.m */,
 				62FF89C1185AF41E006F2F38 /* MainViewController.m */,
 				6218DFF518C04A23006DA06B /* loadingViewController.m */,
@@ -552,7 +552,6 @@
 			children = (
 				6218DFF418C04A23006DA06B /* loadingViewController.h */,
 				62228FBA18BB96010085FEC4 /* XBoxViewController.h */,
-				62692D0618686A73003685D5 /* HawxViewController.h */,
 				622BCE0C1867DE57001C4025 /* AceViewController.h */,
 				621CFD8618594A2A008971E0 /* NetWork.h */,
 				621EAB4218535E76004CB370 /* TouchRecord.h */,
@@ -661,6 +660,15 @@
 				622BCDF61867DD53001C4025 /* ace_example@2x.png */,
 			);
 			path = "皇牌空战ios";
+			sourceTree = "<group>";
+		};
+		624EDFAD18F80E5100C345B0 /* oldFiles */ = {
+			isa = PBXGroup;
+			children = (
+				62692D0618686A73003685D5 /* HawxViewController.h */,
+				62692D0718686A73003685D5 /* HawxViewController.m */,
+			);
+			name = oldFiles;
 			sourceTree = "<group>";
 		};
 		62692CDB186865A9003685D5 /* 鹰击长空ios */ = {

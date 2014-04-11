@@ -43,9 +43,6 @@
     return self;
 }
 
-
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -141,6 +138,7 @@
     //touches init
     m_touchArray = [[NSMutableArray alloc] init];
     
+
     //gesture init
     UISwipeGestureRecognizer * gestureExit = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(gestureToExit:)];
     [gestureExit setDirection:UISwipeGestureRecognizerDirectionDown];
@@ -171,6 +169,7 @@
     return YES;
 }
 
+
 #pragma mark - NSTimer
 
 - (void)initTimer
@@ -178,7 +177,6 @@
     //时间间隔
     NSTimeInterval timeInterval = NFS_REFRESH_TIME;
     //定时器
-    NSTimer *showTimer;
     showTimer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(checkTouchedBtnWithTimer:)userInfo:nil repeats:YES];
 }
 
@@ -474,6 +472,9 @@
 #pragma mark - gesture to exit
 - (IBAction)gestureToExit:(id)sender
 {
+    [nfsNetWork releaseAllKeys];
+    [showTimer invalidate];
+    showTimer = Nil;
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];

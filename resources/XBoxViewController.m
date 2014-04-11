@@ -204,7 +204,6 @@
     //时间间隔
     NSTimeInterval timeInterval = XBOX_REFRESH_TIME;
     //定时器
-    NSTimer *showTimer;
     showTimer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(checkTouchedBtnWithTimer:)userInfo:nil repeats:YES];
 }
 
@@ -584,6 +583,9 @@
 #pragma mark - gesture to exit
 - (IBAction)gestureToExit:(id)sender
 {
+    [xboxNetWork releaseAllKeys];
+    [showTimer invalidate];
+    showTimer = nil;
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];

@@ -31,10 +31,6 @@
         
         //禁止锁屏
         [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
-//        aceVC = [[AceViewController alloc] init];
-//        nfsVC = [[NfsViewController alloc] init];
-//        xboxVC = [[XBoxViewController alloc] init];
-        
     }
     return self;
 }
@@ -42,7 +38,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
     //load backgound pic
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
@@ -67,60 +62,16 @@
     positionOfXbox = 4;
     positionOfDescribe = 5;
     
-    //init ace button..
-    UIImage * aceImg = [UIImage imageNamed:@"main_ace.png"];
-    UIImage * aceHLImg = [UIImage imageNamed:@"main_ace_HL.png"];
-    aceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [aceBtn setImage:aceImg forState:UIControlStateNormal];
-    [aceBtn setImage:aceHLImg forState:UIControlStateHighlighted];
-    aceBtn.frame = theMainFrame[positionOfAce];
-    [self.view addSubview:aceBtn];
-    [aceBtn addTarget:self action:@selector(onPressAceBtn:) forControlEvents:UIControlEventTouchUpInside];
-    
-    //init hawx button..
-    UIImage * xboxImg = [UIImage imageNamed:@"main_xbox.png"];
-    UIImage * xboxHLImg = [UIImage imageNamed:@"main_xbox_HL.png"];
-    xboxBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [xboxBtn setImage:xboxImg forState:UIControlStateNormal];
-    [xboxBtn setImage:xboxHLImg forState:UIControlStateHighlighted];
-    xboxBtn.frame = theMainFrame[positionOfXbox];
-    [self.view addSubview:xboxBtn];
-    [xboxBtn addTarget:self action:@selector(onPressXboxBtn:) forControlEvents:UIControlEventTouchUpInside];
-    
-    //init nfs button..
-    UIImage * nfsImg = [UIImage imageNamed:@"main_nfs.png"];
-    UIImage * nfsHLImg = [UIImage imageNamed:@"main_nfs_HL.png"];
-    nfsBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [nfsBtn setImage:nfsImg forState:UIControlStateNormal];
-    [nfsBtn setImage:nfsHLImg forState:UIControlStateHighlighted];
-    nfsBtn.frame = theMainFrame[positionOfNfs];
-    [self.view addSubview:nfsBtn];
-    [nfsBtn addTarget:self action:@selector(onPressNfsBtn:) forControlEvents:UIControlEventTouchUpInside];
-    
-    //init describe scrollView
-    UIImage * describeBackground = [UIImage imageNamed:@"main_describe.png"];
-    UIImage * describeText = [UIImage imageNamed:@"main_describe_text.png"];
-    
-    describeView = [[UIImageView alloc] initWithImage:describeBackground];
-    describeView.frame = theMainFrame[positionOfDescribe];
-    [self.view addSubview:describeView];
-    
-    [describeView setUserInteractionEnabled:YES];
-    
-    UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:theMainFrame[positionOfDescribe]];
-    [scrollView addSubview:[[UIImageView alloc] initWithImage:describeText]];
-    
-    [scrollView setFrame:CGRectMake(26, 21, describeText.size.width, describeText.size.height * 0.6)];
-    scrollView.contentSize = CGSizeMake(describeText.size.width, describeText.size.height);
-    [describeView addSubview:scrollView];
+    //init main btns, nfs/ace/xbox/describe
+    [self initMainBtns];
     
     //init netTestBtn..
-    UIImage * testBtnImg = [UIImage imageNamed:@"main_test_btn_normal.png"];
-    UIImage * testBtnHLImg = [UIImage imageNamed:@"main_test_btn_normalHL.png"];
+    UIImage * netTestBtnImg = [UIImage imageNamed:@"main_test_btn_normal.png"];
+    UIImage * netTestBtnHLImg = [UIImage imageNamed:@"main_test_btn_normalHL.png"];
     netTestBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [netTestBtn setImage:testBtnImg forState:UIControlStateNormal];
-    [netTestBtn setImage:testBtnHLImg forState:UIControlStateHighlighted];
-    netTestBtn.frame = CGRectMake(12 - testBtnImg.size.width * 0.5, 20 - testBtnImg.size.height * 0.5, testBtnImg.size.width * 2, testBtnImg.size.height * 2);
+    [netTestBtn setImage:netTestBtnImg forState:UIControlStateNormal];
+    [netTestBtn setImage:netTestBtnHLImg forState:UIControlStateHighlighted];
+    netTestBtn.frame = CGRectMake(12 - netTestBtnImg.size.width * 0.5, 20 - netTestBtnImg.size.height * 0.5, netTestBtnImg.size.width * 2, netTestBtnImg.size.height * 2);
     [self.view addSubview:netTestBtn];
     [netTestBtn addTarget:self action:@selector(onPressTestBtn:) forControlEvents:UIControlEventTouchUpInside]; 
     
@@ -192,6 +143,57 @@
 
 }
 
+- (void)initMainBtns
+{
+    //init ace button..
+    UIImage * aceImg = [UIImage imageNamed:@"main_ace.png"];
+    UIImage * aceHLImg = [UIImage imageNamed:@"main_ace_HL.png"];
+    aceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [aceBtn setImage:aceImg forState:UIControlStateNormal];
+    [aceBtn setImage:aceHLImg forState:UIControlStateHighlighted];
+    aceBtn.frame = theMainFrame[positionOfAce];
+    [self.view addSubview:aceBtn];
+    [aceBtn addTarget:self action:@selector(onPressAceBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //init xbox button..
+    UIImage * xboxImg = [UIImage imageNamed:@"main_xbox.png"];
+    UIImage * xboxHLImg = [UIImage imageNamed:@"main_xbox_HL.png"];
+    xboxBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [xboxBtn setImage:xboxImg forState:UIControlStateNormal];
+    [xboxBtn setImage:xboxHLImg forState:UIControlStateHighlighted];
+    xboxBtn.frame = theMainFrame[positionOfXbox];
+    [self.view addSubview:xboxBtn];
+    [xboxBtn addTarget:self action:@selector(onPressXboxBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //init nfs button..
+    UIImage * nfsImg = [UIImage imageNamed:@"main_nfs.png"];
+    UIImage * nfsHLImg = [UIImage imageNamed:@"main_nfs_HL.png"];
+    nfsBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [nfsBtn setImage:nfsImg forState:UIControlStateNormal];
+    [nfsBtn setImage:nfsHLImg forState:UIControlStateHighlighted];
+    nfsBtn.frame = theMainFrame[positionOfNfs];
+    [self.view addSubview:nfsBtn];
+    [nfsBtn addTarget:self action:@selector(onPressNfsBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //init describe scrollView
+    UIImage * describeBackground = [UIImage imageNamed:@"main_describe.png"];
+    UIImage * describeText = [UIImage imageNamed:@"main_describe_text.png"];
+    
+    describeView = [[UIImageView alloc] initWithImage:describeBackground];
+    describeView.frame = theMainFrame[positionOfDescribe];
+    [self.view addSubview:describeView];
+    
+    [describeView setUserInteractionEnabled:YES];
+    
+    UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:theMainFrame[positionOfDescribe]];
+    [scrollView addSubview:[[UIImageView alloc] initWithImage:describeText]];
+    
+    [scrollView setFrame:CGRectMake(26, 21, describeText.size.width, describeText.size.height * 0.6)];
+    scrollView.contentSize = CGSizeMake(describeText.size.width, describeText.size.height);
+    [describeView addSubview:scrollView];
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -221,16 +223,14 @@
 {
     nfsVC = [[NfsViewController alloc] init];
     nfsVC.nfsNetWork = mainNetWork;
-//    if (nfsVC.nfsNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
-//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-//        [alert show];
-//    }
-//    else{
-        nfsVC.modalTransitionStyle = 0;
-        [self presentViewController:nfsVC animated:YES completion:^(void){
-            
-        }];
-//    }
+    if (nfsVC.nfsNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"warning!"message:@"Your computer does not open the client properly.\n Please go to www.ea-co.co to download our client and open it." delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    nfsVC.modalTransitionStyle = 0;
+    [self presentViewController:nfsVC animated:YES completion:^(void){
+        
+    }];
 
     NSLog(@"press nfs btn");
 }
@@ -239,17 +239,16 @@
 {
     aceVC = [[AceViewController alloc] init];
     aceVC.aceNetWork = mainNetWork;
-//    if (aceVC.aceNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
-//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-//        [alert show];
-//
-//    }
-//    else{
-        aceVC.modalTransitionStyle = 0;
-        [self presentViewController:aceVC animated:YES completion:^(void){
-            
-        }];
-//    }
+    if (aceVC.aceNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"warning!"message:@"Your computer does not open the client properly.\n Please go to www.ea-co.co to download our client and open it." delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+        [alert show];
+
+    }
+    aceVC.modalTransitionStyle = 0;
+    [self presentViewController:aceVC animated:YES completion:^(void){
+        
+    }];
+
     NSLog(@"press ace btn");
 }
 
@@ -257,23 +256,17 @@
 {
     xboxVC = [[XBoxViewController alloc] init];
     xboxVC.xboxNetWork = mainNetWork;
-//    if (xboxVC.xboxNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
-//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"网络还没连接上哈，看看PC端把~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-//        [alert show];
-//        
-//    }
-//    else{
-        xboxVC.modalTransitionStyle = 0;
-        [self presentViewController:xboxVC animated:YES completion:^{
-            
-        }];
-//    }
-//    hawxVC = [[HawxViewController alloc] init];
-//    hawxVC.modalTransitionStyle = 0;
-//    [self presentViewController:hawxVC animated:YES completion:^(void){
-//        
-//    }];
-//    [UIView transitionFromView:self.view toView:hawxVC.view duration:0.5f options:UIViewAnimationOptionTransitionFlipFromTop completion:nil];
+    if (xboxVC.xboxNetWork.connectState != STATE_CONNECT_ESTABLISHED) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"warning!"message:@"Your computer does not open the client properly.\n Please go to www.ea-co.co to download our client and open it." delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
+        [alert show];
+        
+    }
+    xboxVC.modalTransitionStyle = 0;
+    [self presentViewController:xboxVC animated:YES completion:^{
+        
+    }];
+
+    NSLog(@"press xbox btn");
 }
 
 #pragma mark - gesture swipe
@@ -340,10 +333,8 @@
 - (IBAction)onDetectTimer:(id)sender
 {
     NSArray *ifs = (__bridge id)CNCopySupportedInterfaces();
-//    NSLog(@"ifs:%@",ifs);
     for (NSString *ifnam in ifs) {
         NSDictionary *info = (__bridge id)CNCopyCurrentNetworkInfo((__bridge CFStringRef)ifnam);
-//        NSLog(@"dici：%@",[info  allKeys]);
         if ([info allKeys] == nil) {
             [netTestBtn setImage:[UIImage imageNamed:@"main_test_btn_error.png"] forState:UIControlStateNormal];
             [netTestBtn setImage:[UIImage imageNamed:@"main_test_btn_errorHL.png"] forState:UIControlStateHighlighted];
@@ -386,28 +377,6 @@
 
 - (IBAction)onPressSettingBtn:(id)sender
 {
-//    CABasicAnimation *TransformAnim = [CABasicAnimation animationWithKeyPath:@"transform"];
-//    TransformAnim.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
-//    
-//    //沿Z轴旋转
-//    TransformAnim.toValue = [NSValue valueWithCATransform3D: CATransform3DMakeRotation(M_PI,0,0,1)];
-//    
-//    //沿Y轴旋转
-//    //   scaleAnim.toValue = [NSValue valueWithCATransform3D: CATransform3DMakeRotation(M_PI,0,1.0,0)];
-//    
-//    //沿X轴旋转
-//    //     TransformAnim.toValue = [NSValue valueWithCATransform3D: CATransform3DMakeRotation(M_PI,1.0,0,0)];
-//    TransformAnim.cumulative = YES;
-//    TransformAnim.duration =3;
-//    //旋转2遍，360度
-//    TransformAnim.repeatCount =2;
-//    self.imageView.center = toPoint;
-//    TransformAnim.removedOnCompletion = YES;
-//    CAAnimationGroup *animGroup = [CAAnimationGroup animation];
-//    animGroup.animations = [NSArray arrayWithObjects:moveAnim, TransformAnim, nil];
-//    animGroup.duration = 6;
-//    
-//    [self.imageView.layer addAnimation:animGroup forKey:nil];
     CABasicAnimation * transformAnim = [CABasicAnimation animationWithKeyPath:@"transform"];
     transformAnim.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
     transformAnim.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI , 0, 0, 1)];

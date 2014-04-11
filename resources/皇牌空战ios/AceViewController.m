@@ -175,7 +175,6 @@
     //时间间隔
     NSTimeInterval timeInterval = ACE_REFRESH_TIME;
     //定时器
-    NSTimer *showTimer;
     showTimer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(checkTouchedBtnWithTimer:)userInfo:nil repeats:YES];
 }
 
@@ -580,6 +579,9 @@
 #pragma mark - gesture to exit
 - (IBAction)gestureToExit:(id)sender
 {
+    [aceNetWork releaseAllKeys];
+    [showTimer invalidate];
+    showTimer = Nil;
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];

@@ -10,12 +10,9 @@
 #import "MyHeader.h"
 #import "AsyncUdpSocket.h"
 
-//@class AsyncUdpSocket;
-
 @interface NetWork : NSObject<AsyncUdpSocketDelegate>{
     int connectState;
     
-//    NSString * targetIp;
     
     
     NSMutableString * activeMessageArrayList;
@@ -38,6 +35,7 @@
     NSString * receiveMessage;
     
     NSString * pcHost;
+    
 }
 //对外接口
 //添加按键信息
@@ -46,7 +44,8 @@
 -(int)connectState;
 //开始UDP
 -(void)start;
-
+//发送清空按钮消息
+-(void)releaseAllKeys;
 
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "NetWork.h"
-//#import "AsyncUdpSocket.h"
 
 @implementation NetWork
 
@@ -19,8 +18,7 @@
         connectState = STATE_CONNECT_NONE;
         
         pcHost = [NSString stringWithFormat:@"%@",USER_IP];
-        
-//        targetIp = [NSString stringWithFormat:@""];
+
         [self initSockets];
         [self initMessagesArrayList];
 
@@ -75,6 +73,7 @@
     
 }
 
+
 #pragma mark - 对外接口
 
 - (void)addKeyMessage:(NSString *)theKeyMessage withIndex:(int)theIndex
@@ -116,7 +115,14 @@
 
 }
 
-
+- (void)releaseAllKeys
+{
+    [self addKeyMessage:@"X*R#Q*R#W*R#E*R#A*R#Z*R#D*R#S*R#B*R#C*R#V*R#" withIndex:MESSAGE_ID_KEY_1];
+    [self addKeyMessage:@"X*R#Q*R#W*R#E*R#A*R#Z*R#D*R#S*R#B*R#C*R#V*R#" withIndex:MESSAGE_ID_KEY_2];
+    [self addKeyMessage:@"X*R#Q*R#W*R#E*R#A*R#Z*R#D*R#S*R#B*R#C*R#V*R#" withIndex:MESSAGE_ID_KEY_3];
+    [self addKeyMessage:@"90#" withIndex:MESSAGE_ID_X];
+    [self addKeyMessage:@"90#" withIndex:MESSAGE_ID_Y];
+}
 
  	
 
@@ -304,10 +310,10 @@
                           tag:0];
     
     if (!result) {
-//        NSLog(@"send failed");
+        NSLog(@"send failed");
     }
     else{
-//        NSLog(@"send succeed");
+        NSLog(@"send succeed");
     }
 }
 
@@ -360,23 +366,6 @@
     if ([info isEqualToString:CONNECT_RECEIVED_ALWAYS]) {
         receiveMessage = [NSString stringWithFormat:@"%@",info];
     }
-    
-//    if ((connectState == STATE_CONNECT_SEARCHING_CLIENT)&& (receiveMessage != nil)) {
-//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"可以进入手柄了~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-//        [alert show];
-//    }
-
-    
-    //已经处理完毕
-//    if (!([info isEqualToString:CONNECT_SEND_FIRST]||[info isEqualToString:CONNECT_SEND_SECOND]||[info isEqualToString:CONNECT_SEND_ALWAYS])) {
-//        receiveMessage = [NSString stringWithFormat:@"%@",info];
-//        if ((connectState == STATE_CONNECT_SEARCHING_CLIENT)&& (receiveMessage != nil)) {
-//            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示~"message:@"可以进入手柄了~" delegate:self cancelButtonTitle:@"Ok"otherButtonTitles:nil, nil];
-//            [alert show];
-//        }
-//        NSLog(@"recieved message:%@",info);
-//    }
-
     
     return YES;
 }

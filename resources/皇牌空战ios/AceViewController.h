@@ -39,6 +39,9 @@
     //save the touches
     NSMutableArray * m_touchArray;
     
+    //timer
+    NSTimer * showTimer;
+    
     //title
     UIImage * titleImg;
     UIImageView * titleImgView;
